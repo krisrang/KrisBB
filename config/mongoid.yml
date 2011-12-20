@@ -1,0 +1,10 @@
+development:
+  host: localhost
+  database: krisbb_dev
+
+test:
+  host: localhost
+  database: krisbb_test
+
+production:
+  uri: <%= ENV['MONGOLAB_URI'] %>

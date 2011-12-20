@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>KrisBB</title>
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag "application" %>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="fill">
+    <div class="container">
+      <ul class="nav">
+        <li class="active"><a href="/"><span class="icon-wrapper"><i class="icon-messages"></i></span>Messages</a></li>
+        <li><a href="/media"><span class="icon-wrapper"><i class="icon-media"></i></span>Media</a></li>
+        <li><a href="/stats"><span class="icon-wrapper"><i class="icon-stats"></i></span>Stats</a></li>
+      </ul>      
+
+      <i class="icon-bubble"></i>
+
+      <ul class="nav secondary-nav">
+        <form id="searchform" action="">
+          <input class="input-small" type="text" placeholder="Search">
+        </form>
+        <li class="dropdown" data-dropdown="dropdown">
+          <a href="#" class="dropdown-toggle"><span class="icon-wrapper"><i class="icon-user"></i></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Secondary link</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Log out</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="main container">
+  <%= yield %>
+</div>
+
+<script>
+    window.settings = <%= raw Settings.to_json %>;
+    window.user = <%= raw current_user.to_json %>;
+  </script>
+  <%= javascript_include_tag "application", "krisbb" %>
+  <%= render partial: 'shared/bottom_include' %>
+</body>
+</html>
