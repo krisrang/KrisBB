@@ -21,23 +21,20 @@
   <div class="fill">
     <div class="container">
       <ul class="nav">
-        <li class="active"><a href="/"><span class="icon-wrapper"><i class="icon-messages"></i></span>Messages</a></li>
-        <li><a href="/media"><span class="icon-wrapper"><i class="icon-media"></i></span>Media</a></li>
-        <li><a href="/stats"><span class="icon-wrapper"><i class="icon-stats"></i></span>Stats</a></li>
+        <li>
+          <form id="searchform" action="">
+            <input class="input-small" type="text" placeholder="Search">
+          </form>
+        </li>
       </ul>      
 
       <i class="icon-bubble"></i>
 
       <ul class="nav secondary-nav">
-        <form id="searchform" action="">
-          <input class="input-small" type="text" placeholder="Search">
-        </form>
         <li class="dropdown" data-dropdown="dropdown">
           <a href="#" class="dropdown-toggle"><span class="icon-wrapper"><i class="icon-user"></i></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Secondary link</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
+            <!--<li class="divider"></li>-->
             <li><a href="#">Log out</a></li>
           </ul>
         </li>

@@ -9,6 +9,7 @@
 #= require twitter/bootstrap
 #= require ./lib/modernizer
 #= require ./lib/date
+#= require ./lib/placeholder.shim
 #= require_self
 
 window.log = ->

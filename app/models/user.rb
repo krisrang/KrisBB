@@ -2,6 +2,8 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  has_many :messages
+
   field :admin, type: Boolean,  default: false
 
   #attr_accessible :email, :password, :password_confirmation

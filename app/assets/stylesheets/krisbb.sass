@@ -4,12 +4,74 @@
 @import "compass/css3/background-clip"
 @import "compass/utilities/sprites"
 $topbar: sprite-map("topbar/*.png")
+$buttons: sprite-map("buttons/*.png")
 
 body
   padding-top: 40px
   background: #B2C9ED
   color: #333
   font: 14px/18px "HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif
+
+li,
+.btn
+  .icon-wrapper
+    position: relative
+    float: left
+
+    i
+      float: left
+      margin: 0 6px 0 0
+      width: 22px
+      height: 22px
+      background: transparent
+      background-repeat: no-repeat
+
+      &.icon-messages
+        background: sprite($topbar, messages-inactive)
+
+      &.icon-media
+        background: sprite($topbar, media-inactive)
+
+      &.icon-stats
+        background: sprite($topbar, stats-inactive)
+      &.icon-user
+        background: sprite($topbar, user-inactive)
+
+  &.active,
+  &.active:hover
+    i
+      &.icon-messages
+        background: sprite($topbar, messages)
+
+      &.icon-media
+        background: sprite($topbar, media)
+
+      &.icon-stats
+        background: sprite($topbar, stats)
+      &.icon-user
+        background: sprite($topbar, user)
+
+  &:hover
+    i
+      &.icon-messages
+        background: sprite($topbar, messages-hover)
+
+      &.icon-media
+        background: sprite($topbar, media-hover)
+
+      &.icon-stats
+        background: sprite($topbar, stats-hover)
+      &.icon-user
+        background: sprite($topbar, user-hover)
+
+.btn
+  .icon-wrapper
+    i
+      &.icon-new-message
+        background: sprite($buttons, new-message)
+
+label.placeholder
+  padding-top: 2px !important
 
 .topbar
   .icon-bubble
@@ -26,57 +88,6 @@ body
       i
         margin: 0
 
-  li
-    .icon-wrapper
-      position: relative
-      float: left
-
-      i
-        float: left
-        margin: 0 6px 0 0
-        width: 22px
-        height: 22px
-        background: transparent
-        background-repeat: no-repeat
-
-        &.icon-messages
-          background: sprite($topbar, messages-inactive)
-
-        &.icon-media
-          background: sprite($topbar, media-inactive)
-
-        &.icon-stats
-          background: sprite($topbar, stats-inactive)
-        &.icon-user
-          background: sprite($topbar, user-inactive)
-    
-    &.active,
-    &.active:hover
-      i
-        &.icon-messages
-          background: sprite($topbar, messages)
-
-        &.icon-media
-          background: sprite($topbar, media)
-
-        &.icon-stats
-          background: sprite($topbar, stats)
-        &.icon-user
-          background: sprite($topbar, user)
-
-    &:hover
-      i
-        &.icon-messages
-          background: sprite($topbar, messages-hover)
-
-        &.icon-media
-          background: sprite($topbar, media-hover)
-
-        &.icon-stats
-          background: sprite($topbar, stats-hover)
-        &.icon-user
-          background: sprite($topbar, user-hover)
-
   a
     color: #BBB
     font-weight: bold
@@ -88,14 +99,15 @@ body
       @include text-shadow(0 1px 0 rgba(0, 0, 0, .5))
 
 #searchform
-  margin-right: 15px
+  margin-left: 15px
 
   input
-    @include transition(width 0.5s)
+    @include transition(width 0.3s)
+    width: 150px
 
   &.expand
     input
-      width: 200px
+      width: 300px
 
 .main.container
   width: 920px
@@ -110,16 +122,20 @@ body
   @include background-clip(padding-box)
 
   .header-inner
-    min-height: 20px
+    min-height: 26px
     padding: 12px
     background-color: white
     border-bottom: 1px solid #E8E8E8
     @include border-top-radius(5px)
 
+    .btn
+      float: right
+
     h2
       font-size: 18px
       font-weight: bold
       line-height: 20px
+      padding-top: 4px
 
 .message-item,
 .message-last-item
