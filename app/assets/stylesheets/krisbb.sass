@@ -4,7 +4,6 @@
 @import "compass/css3/background-clip"
 @import "compass/utilities/sprites"
 $topbar: sprite-map("topbar/*.png")
-$buttons: sprite-map("buttons/*.png")
 
 body
   padding-top: 40px
@@ -26,54 +25,34 @@ li,
       background: transparent
       background-repeat: no-repeat
 
-      &.icon-messages
-        background: sprite($topbar, messages-inactive)
-
-      &.icon-media
-        background: sprite($topbar, media-inactive)
-
-      &.icon-stats
-        background: sprite($topbar, stats-inactive)
       &.icon-user
         background: sprite($topbar, user-inactive)
 
   &.active,
   &.active:hover
     i
-      &.icon-messages
-        background: sprite($topbar, messages)
-
-      &.icon-media
-        background: sprite($topbar, media)
-
-      &.icon-stats
-        background: sprite($topbar, stats)
       &.icon-user
         background: sprite($topbar, user)
 
   &:hover
     i
-      &.icon-messages
-        background: sprite($topbar, messages-hover)
-
-      &.icon-media
-        background: sprite($topbar, media-hover)
-
-      &.icon-stats
-        background: sprite($topbar, stats-hover)
       &.icon-user
         background: sprite($topbar, user-hover)
 
-.btn
-  .icon-wrapper
-    i
-      &.icon-new-message
-        background: sprite($buttons, new-message)
+  &.username
+    img
+      padding: 0 5px
+    
+    span
+      color: #EEE
 
 label.placeholder
   padding-top: 2px !important
 
 .topbar
+  .btn
+    margin-top: 4px
+
   .icon-bubble
     position: absolute
     top: 10px
@@ -93,13 +72,14 @@ label.placeholder
     font-weight: bold
     font-size: 12px
     @include text-shadow(0 -1px 0 rgba(0, 0, 0, .75))
+
   .active
     a
       color: white
       @include text-shadow(0 1px 0 rgba(0, 0, 0, .5))
 
 #searchform
-  margin-left: 15px
+  margin-left: 10px
 
   input
     @include transition(width 0.3s)
@@ -113,45 +93,126 @@ label.placeholder
   width: 920px
   padding: 10px
   background: transparent url('/assets/blur.png')
-  @include border-bottom-radius(5px)
+  @include border-bottom-radius(6px)
+
+  &.form
+    border: 1px solid rgba(0, 0, 0, .1)
+    @include border-radius(6px)
+    @include background-clip(padding-box)
+
+    .form-inner
+      min-height: 50px
+      padding: 12px
+      background-color: white
+      @include border-radius(6px)
+
+      h2
+        text-align: center
+
+      p
+        text-align: right
+
+      form
+        margin-left: 330px
+        
+        div.input
+          margin: 0
+
+        input
+          font-size: 24px
+          margin: 10px 0
+          height: 26px
+          padding: 6px 10px
+          line-height: 26px
+
+        input.button
+          height: 38px
+
+        input.boolean
+          height: 12px
+          margin-right: 5px
+
+        div.boolean .hint
+          font-size: 16px
+
+        label
+          float: none
+
+          .boolean
+            text-align: left
 
 .content-header
   border: 1px solid rgba(0, 0, 0, .1)
   border-bottom: none
-  @include border-bottom-radius(6px)
+  @include border-top-radius(6px)
   @include background-clip(padding-box)
 
+  &.new-message
+    .header-inner
+      background: #F5F5F5
+
   .header-inner
-    min-height: 26px
+    min-height: 20px
     padding: 12px
     background-color: white
     border-bottom: 1px solid #E8E8E8
-    @include border-top-radius(5px)
-
-    .btn
-      float: right
+    @include border-top-radius(6px)
 
     h2
       font-size: 18px
       font-weight: bold
       line-height: 20px
-      padding-top: 4px
 
-.message-item,
-.message-last-item
-  padding: 12px 9px
-  background: white
-  border-left: 1px solid #E8E8E8
-  border-left: 1px solid rgba(0, 0, 0, .1)
-  border-right: 1px solid #E8E8E8
-  border-right: 1px solid rgba(0, 0, 0, .1)
-  border-bottom: 1px solid #E8E8E8
-  @include background-clip(padding-box)
+.messages
+  .message-item,
+  .message-loader,
+  .message-pager
+    padding: 12px 9px
+    background: white
+    border-left: 1px solid #E8E8E8
+    border-left: 1px solid rgba(0, 0, 0, .1)
+    border-right: 1px solid #E8E8E8
+    border-right: 1px solid rgba(0, 0, 0, .1)
+    border-bottom: 1px solid #E8E8E8
+    border-right: 1px solid rgba(0, 0, 0, .1)
+    @include background-clip(padding-box)
 
-.message-last-item
-  text-align: center
-  padding: 20px
-  border-bottom: 1px solid #E8E8E8
-  border-bottom: 1px solid rgba(0, 0, 0, .1)
-  @include border-bottom-radius(5px)
-  
+  .message-loader,
+  .message-pager
+    text-align: center
+    padding: 20px
+    @include border-bottom-radius(6px)
+
+  .message-pager
+    display: none
+
+    a
+      font-weight: bold
+
+    p
+      display: none
+      color: #888
+      margin: 0
+    
+    &:hover
+      background: #f0f6ff
+      cursor: pointer
+
+    &.disabled,
+    &.disabled:hover
+      cursor: default
+      background: #FFFFFF
+      @include background-clip(padding-box)
+
+      a
+        display: none
+
+      p
+        display: block
+
+#messageform
+  margin: 0 
+
+  textarea
+    height: 100px
+    width: 520px

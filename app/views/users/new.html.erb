@@ -1,0 +1,11 @@
+<h2>Register</h2>
+
+<%= simple_form_for @user do |f| %>
+  <%= f.input :username, label: false, placeholder: "Username" %>
+  <%= f.input :password, label: false, placeholder: "Password" %>
+  <label for="user_remember_me"><%= f.input :remember_me, as: :boolean, label: false, hint: "Keep me logged in" %></label>
+
+  <%= f.button :submit, "Register", class: "btn large" %>
+<% end %>
+
+<p><%= link_to "Sign in", login_path %></p>

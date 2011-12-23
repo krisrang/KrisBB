@@ -9,6 +9,17 @@ class App.Models.Message extends Backbone.Model
 class App.Collections.Messages extends Backbone.Collection
   url: '/messages'
   model: App.Models.Message
+  page: 1
 
-  comparator: (model)->
-    return -parseISO8601(model.get('created_at')).getTime()
+  fetchNextPage: (options)=>
+    params = _.extend
+      add:         true
+      data: {page: @page+1}
+    , options
+
+    params.complete = (xhr)=>
+      @page = @page+1
+      last = xhr.responseText == "[]"
+      options.complete(last)
+
+    @fetch params

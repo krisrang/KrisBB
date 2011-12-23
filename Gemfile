@@ -1,7 +1,5 @@
 source 'http://rubygems.org'
 
-gem 'status_cats'
-
 gem 'rails', '3.2.0.rc1'
 gem 'actionpack', '3.2.0.rc1'
 gem 'thin'
@@ -35,12 +33,8 @@ group :assets do
   gem 'uglifier'
   gem 'compass', "0.12.alpha.2"
   gem 'oily_png'
-  gem 'less-rails', git: 'git://github.com/metaskills/less-rails.git'
+  gem 'less-rails'
   gem 'less-rails-bootstrap'
-end
-
-group :development, :test do
-  gem 'pry'
 end
 
 group :test do

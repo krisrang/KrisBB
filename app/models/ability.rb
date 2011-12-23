@@ -7,9 +7,10 @@ class Ability
     if user && user.admin
       can :manage, :all
     elsif user
-      #can :create, Upload
-      #can :manage, Upload, user_id: user.id
-
+      can :create, Message
+      can :read, Message
+      
+      can :manage, Message, user_id: user.id
       can :manage, User, _id: user.id
     end
   end

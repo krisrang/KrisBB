@@ -4,5 +4,5 @@ class Message
 
   belongs_to :user
 
-  field :contents, type: String
+  field :text, type: String
 end

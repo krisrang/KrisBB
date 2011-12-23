@@ -3,13 +3,10 @@ class App.Router extends Backbone.Router
     "":                 "messages"
 
   initialize: ->
-    @messages = new App.Collections.Messages()
-    #@users = new UsersCollection()
-
-    #@user = new User(window.user)
-    #@uploaderView = new UploaderView user: @user, uploader: @uploader, collection: @uploads
-
-    #@uploaderView.render()
+    @collection = new App.Collections.Messages window.messages
+    @user = new App.Models.User window.user
+    @view = new App.Views.MessagesView user: @user, collection: @collection
     
   messages: ->
     log 'action: messages'
+    @view.render()

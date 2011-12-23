@@ -1,47 +1,20 @@
-<div class="content-header">
+<div class="content-header new-message">
   <div class="header-inner">
-    <h2>
-      <span>Messages</span>
-      <small class="view-toggler"></small>
-    </h2>
+    <h2>Messages</h2>
   </div>
 </div>
 
 <div class="messages">
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  <div class="message-item" data-message-id="123">Yoo meees</div>
-  
-  <div class="message-last-item">
+  <div class="message-list"></div>
+  <div class="message-loader">
     <%= image_tag "loader.gif" %>
   </div>
+  <div class="message-pager">
+    <a>Load more messages..</a>
+    <p>No more messages to show</p>
+  </div>
 </div>
+
+<script>
+  window.messages = <%= raw @messages.to_json %>;
+</script>

@@ -8,7 +8,8 @@
 window.App =
   Models: {}
   Collections: {}
+  Views: {}
 
 $ ->
   window.KrisBB = new App.Router()
-  Backbone.history.start pushState: true
+  Backbone.history.start() #pushState: true

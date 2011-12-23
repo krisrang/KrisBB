@@ -3,12 +3,6 @@
 <head>
   <meta charset="utf-8">
   <title>KrisBB</title>
-
-  <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-  <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -17,10 +11,29 @@
 </head>
 <body>
 
+<div id="message-modal" class="modal hide">
+  <div class="modal-header">
+    <a href="#" class="close">&times;</a>
+    <h3>New Message</h3>
+  </div>
+  <div class="modal-body">
+    <form id="messageform" action="">
+      <textarea type="text" placeholder="Write new message..."></textarea>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn primary post-message">Post</a>
+    <a href="#" class="btn secondary cancel-message">Cancel</a>
+  </div>
+</div>
+
 <div class="topbar">
   <div class="fill">
     <div class="container">
       <ul class="nav">
+        <li>
+          <button class="btn primary small" data-controls-modal="message-modal" data-backdrop="true">New Message</button>
+        </li>
         <li>
           <form id="searchform" action="">
             <input class="input-small" type="text" placeholder="Search">
@@ -34,8 +47,9 @@
         <li class="dropdown" data-dropdown="dropdown">
           <a href="#" class="dropdown-toggle"><span class="icon-wrapper"><i class="icon-user"></i></span></a>
           <ul class="dropdown-menu">
-            <!--<li class="divider"></li>-->
-            <li><a href="#">Log out</a></li>
+            <li class="username"><%= image_tag(current_user.avatar_url 20) %><span><%= current_user.username %></span></li>
+            <li class="divider"></li>
+            <li><%= link_to "Log out", logout_path, method: :delete %></li>
           </ul>
         </li>
       </ul>
@@ -48,10 +62,10 @@
 </div>
 
 <script>
-    window.settings = <%= raw Settings.to_json %>;
-    window.user = <%= raw current_user.to_json %>;
-  </script>
-  <%= javascript_include_tag "application", "krisbb" %>
-  <%= render partial: 'shared/bottom_include' %>
+  window.settings = <%= raw Settings.to_json %>;
+  window.user = <%= raw current_user.to_json %>;
+</script>
+<%= javascript_include_tag "application", "krisbb" %>
+<%= render partial: 'shared/bottom_include' %>
 </body>
 </html>

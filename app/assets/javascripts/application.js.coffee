@@ -20,7 +20,7 @@ window.log = ->
     newarr = [].slice.call(arguments)
     if console.log? then log.apply.call(console.log, console, newarr) else console.log.apply(console, newarr)
 
-parseISO8601 = (date)->
+window.parseISO8601 = (date)->
   if date.getTime
       return date
   else if typeof date == "string"
