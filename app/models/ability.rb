@@ -9,6 +9,7 @@ class Ability
     elsif user
       can :create, Message
       can :read, Message
+      can :read, User
       
       can :manage, Message, user_id: user.id
       can :manage, User, _id: user.id

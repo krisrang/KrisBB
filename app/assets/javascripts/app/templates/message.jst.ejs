@@ -7,10 +7,10 @@
       <% if (KrisBB.user.admin() || model.get("user_id") == KrisBB.user.get("id")) { %>
       <a href="" class="delete-link" data-method="delete">Delete</a>
       <% } %>
-      <span class="longtime"><%= Date.parse(model.get("created_at")).toString("HH:mm dS MMM yyyy") %></span>
+      <span class="longtime"><%= model.created_at().toString("HH:mm dS MMM yyyy") %></span>
     </div>
     <span class="username"><a href="/users/<%= model.get("user_id") %>"><%= model.get("username") %></a></span>
-    <span class="time"><%= dateToAgo(Date.parse(model.get("created_at"))) %></span>
+    <span class="time"><%= dateToAgo(model.created_at()) %></span>
   </div>
   <div class="message-contents"><%= model.get("html") %></div>
 </div>

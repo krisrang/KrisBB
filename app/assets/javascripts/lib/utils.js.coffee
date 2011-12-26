@@ -15,6 +15,13 @@ window.parseISO8601 = (date)->
   else if typeof date == "number"
     return new Date(date)
 
+window.dateToUTC = (date)->
+  ms = date.getTime()
+  localoffset = new Date().getTimezoneOffset() - date.getTimezoneOffset()
+  offset = localoffset * 60 * 1000
+
+  return new Date(ms-offset)
+
 window.dateToAgo = (date)->
   date = parseISO8601(date)
   ms = new Date().getTime() - date.getTime()
