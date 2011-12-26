@@ -32,6 +32,7 @@ class Message
       hash["id"] = self.id
       hash["username"] = self.user.username
       hash["avatar"] = self.user.avatar_url
+      hash["created_at_human"] = self.created_at.to_s :long_ordinal
     end
   end
 

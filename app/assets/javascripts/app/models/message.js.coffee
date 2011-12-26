@@ -4,10 +4,10 @@ class App.Models.Message extends Backbone.Model
   #  created_at: new Date().getTime()
 
   created_at: =>
-    dateToUTC(Date.parse(@get('created_at')))
+    Date.parse(@get('created_at'))
 
   updated_at: =>
-    dateToUTC(Date.parse(@get('updated_at')))
+    Date.parse(@get('updated_at'))
  
   url: =>
     return "/messages/" + (if @isNew() then '' else @id)

@@ -54,8 +54,8 @@ module Kreubb
     config.action_mailer.delivery_method = :amazon_ses
 
     # weird fucking shit
-    #config.mongoid.use_utc = false
-    #config.mongoid.use_activesupport_time_zone = true
+    config.mongoid.use_utc = false
+    config.mongoid.use_activesupport_time_zone = true
     config.mongoid.identity_map_enabled = true
   end
 end
