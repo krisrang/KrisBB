@@ -37,6 +37,7 @@ class MessagesController < ApplicationController
   def destroy
     #@message = Message.find(params[:id])
     @message.destroy
-    head :ok
+    #head :ok
+    respond_with @message
   end
 end

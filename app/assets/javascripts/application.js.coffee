@@ -10,23 +10,8 @@
 #= require ./lib/modernizer
 #= require ./lib/date
 #= require ./lib/placeholder.shim
+#= require ./lib/utils
 #= require_self
-
-window.log = ->
-  log.history = log.history || []
-  log.history.push(arguments)
-  if this.console
-    arguments.callee = arguments.callee.caller
-    newarr = [].slice.call(arguments)
-    if console.log? then log.apply.call(console.log, console, newarr) else console.log.apply(console, newarr)
-
-window.parseISO8601 = (date)->
-  if date.getTime
-      return date
-  else if typeof date == "string"
-    return Date.parse(date)
-  else if typeof date == "number"
-    return new Date(date)
 
 $ ->
   $('#searchform input').focus ->
@@ -34,3 +19,11 @@ $ ->
 
   $('#searchform input').blur ->
     $('#searchform').removeClass 'expand'
+
+  $('.smilies a').twipsy()
+  $('.message-contents img, .tutorial img').twipsy live: true, title: 'alt'
+
+  $('a.smilie').live 'click', (e)->
+    e.preventDefault()
+    key = $(this).attr('data-key')
+    $('#messageform textarea').insertAtCaret(key)

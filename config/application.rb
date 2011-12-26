@@ -56,6 +56,6 @@ module Kreubb
     # weird fucking shit
     #config.mongoid.use_utc = false
     #config.mongoid.use_activesupport_time_zone = true
-    #config.mongoid.identity_map_enabled = true
+    config.mongoid.identity_map_enabled = true
   end
 end

@@ -24,7 +24,6 @@ class User
       hash["id"] = self.id
       hash.delete "crypted_password"
       hash.delete "salt"
-      hash.delete "admin"
       hash.delete "failed_logins_count"
       hash.delete "remember_me_token"
       hash.delete "remember_me_token_expires_at"

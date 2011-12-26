@@ -27,7 +27,7 @@ Rails.application.config.sorcery.configure do |config|
                                                                       # session timeout.
 
   # -- http_basic_auth --
-  config.controller_to_realm_map = {"application" => "KreuBB"} # What realm to display for which controller name.
+  config.controller_to_realm_map = {"application" => "KrisBB"} # What realm to display for which controller name.
                                                                       # For example {"My App" => "Application"}
 
   # -- activity logging --

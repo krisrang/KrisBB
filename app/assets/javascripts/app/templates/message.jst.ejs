@@ -1,1 +1,13 @@
-<div class="message-item" data-message-id="<%= model.get("id") %>"><%= model.get("text") %></div>
+<div class="message-item" data-message-id="<%= model.get("id") %>">
+  <div class="message-info">
+    <div class="message-controls">
+      <% if (KrisBB.user.admin() || model.get("user_id") == KrisBB.user.get("id")) { %>
+      <a href="" class="delete-link" data-method="delete">Delete</a>
+      <% } %>
+      <span class="longtime"><%= Date.parse(model.get("created_at")).toString("HH:mm dS MMM yyyy") %></span>
+    </div>
+    <span class="username"><%= model.get("username") %></span>
+    <span class="time"><%= dateToAgo(Date.parse(model.get("created_at"))) %></span>
+  </div>
+  <div class="message-contents"><%= model.get("html") %></div>
+</div>

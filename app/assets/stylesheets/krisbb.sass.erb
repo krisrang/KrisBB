@@ -4,6 +4,7 @@
 @import "compass/css3/background-clip"
 @import "compass/utilities/sprites"
 $topbar: sprite-map("topbar/*.png")
+$smilies: sprite-map("smilies/*.png")
 
 body
   padding-top: 40px
@@ -40,10 +41,7 @@ li,
         background: sprite($topbar, user-hover)
 
   &.username
-    img
-      padding: 0 5px
-    
-    span
+    a
       color: #EEE
 
 label.placeholder
@@ -210,9 +208,91 @@ label.placeholder
       p
         display: block
 
+  .message-item
+    .message-info
+      margin-bottom: 4px
+      font-size: 12px
+      color: #999
+
+      .username
+        font-weight: bold
+
+      .time,
+      .message-controls
+        float: right
+        font-size: 12px
+
+      .message-controls
+        display: none
+
+    &.hover
+      .message-controls
+        display: block
+
+      .time
+        display: none
+
+#message-modal
+  .smilies
+    margin-bottom: 5px
+
+    a
+      margin-right: 5px
+      cursor: pointer
+
 #messageform
   margin: 0 
 
   textarea
     height: 100px
     width: 520px
+
+.smilie
+  display: inline-block
+  width: 16px
+  height: 16px
+  text-indent: -999em
+  overflow: hidden
+  text-align: left
+  direction: ltr
+  background: transparent
+  background-repeat: no-repeat
+  background: sprite($smilies, smile)
+
+  &.biggrin
+    background: sprite($smilies, biggrin)
+
+  &.frown
+    background: sprite($smilies, frown)
+
+  &.confused
+    background: sprite($smilies, confused)
+
+  &.mad
+    background: sprite($smilies, mad)
+
+  &.tongue
+    background: sprite($smilies, tongue)
+
+  &.wink
+    background: sprite($smilies, wink)
+
+  &.redface
+    background: sprite($smilies, redface)
+
+  &.rolleyes
+    background: sprite($smilies, rolleyes)
+
+  &.cool
+    background: sprite($smilies, cool)
+
+  &.eek
+    background: sprite($smilies, eek)
+
+  &.lol 
+    width: 39px
+    height: 15px
+    background: url(<%= asset_path "smilies/lol.gif" %>) no-repeat
+
+.twipsy
+  z-index: 12000

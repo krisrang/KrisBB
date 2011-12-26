@@ -85,13 +85,14 @@ class App.Views.MessagesView extends Backbone.View
 
   postMessage: =>
     text = @messageText.val()
-    message = @collection.create text: text, 
-      silent: true
-      success: (model)=>
-        view = new App.Views.MessageView model: model
-        @list.prepend view.render()
-        @views[model.cid] = view
-        @cancelMessage()
+    if text? && text.length > 0
+      message = @collection.create text: text, 
+        silent: true
+        success: (model)=>
+          view = new App.Views.MessageView model: model
+          @list.prepend view.render()
+          @views[model.cid] = view
+          @cancelMessage()
 
   cancelMessage: =>
     @messageModal.modal('hide')
