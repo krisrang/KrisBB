@@ -1,6 +1,6 @@
+<div>kasutaja: BRC<br />pass: ajutine</div>
 <h2>Sign in</h2>
-
-<%= simple_form_for(@user, url: sessions_path) do |f| %>
+<%= simple_form_for(@user, url: sessions_path, html: {class: "form-stacked"}) do |f| %>
   <%= f.input :username, label: false, placeholder: "Username" %>
   <%= f.input :password, label: false, placeholder: "Password" %>
   <label for="user_remember_me"><%= f.input :remember_me, as: :boolean, label: false, hint: "Keep me logged in" %></label>

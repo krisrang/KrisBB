@@ -1,0 +1,26 @@
+<div class="content-box user-box">
+  <div class="user-controls">
+    <% if can? :edit, @user %>
+    <p><a class="btn" href="<%= edit_user_path @user %>">Edit Account</a></p>
+    <% end %>
+    <table>
+      <tbody>
+       <!--<tr>
+         <td><a href=""><strong><%= @user.messages.count %></strong> posts</a></td>
+       </tr>
+       <tr>
+         <td><a href=""><strong><%= @user.messages.count %></strong> links</a></td>
+       </tr>
+       <tr>
+         <td><a href=""><strong><%= @user.messages.count %></strong> media</a></td>
+       </tr>-->
+       <tr>
+         <td><a><strong><%= @user.messages.count %></strong> posts</a></td>
+       </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="user-avatar"><img src="<%= @user.avatar_url 140 %>" /></div>
+  <div class="user-name"><h1><%= @user.username %></h1></div>
+</div>

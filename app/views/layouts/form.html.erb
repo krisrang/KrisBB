@@ -11,9 +11,8 @@
 </head>
 <body>
 
-<div class="main container form">
-  <% if flash.key? :alert %><div class="alert-message warning"><%= flash[:alert] %></div><% end %>
-  <% if flash.key? :notice %><div class="alert-message info"><%= flash[:notice] %></div><% end %>
+<div class="main container form form-stacked">
+  <%= render_flash %>
 
   <div class="form-inner">
     <%= yield %>

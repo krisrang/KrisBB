@@ -12,6 +12,9 @@ body
   color: #333
   font: 14px/18px "HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif
 
+.btn.small
+  padding: 5px 9px 5px
+
 li,
 .btn
   .icon-wrapper
@@ -65,14 +68,14 @@ label.placeholder
       i
         margin: 0
 
-  a
+  .tab
     color: #BBB
     font-weight: bold
     font-size: 12px
     @include text-shadow(0 -1px 0 rgba(0, 0, 0, .75))
 
   .active
-    a
+    .tab
       color: white
       @include text-shadow(0 1px 0 rgba(0, 0, 0, .5))
 
@@ -118,7 +121,7 @@ label.placeholder
 
         input
           font-size: 24px
-          margin: 10px 0
+          margin: 10px 0 0
           height: 26px
           padding: 6px 10px
           line-height: 26px
@@ -130,7 +133,8 @@ label.placeholder
           height: 12px
           margin-right: 5px
 
-        div.boolean .hint
+        div.boolean span.help-block
+          display: inline
           font-size: 16px
 
         label
@@ -145,21 +149,70 @@ label.placeholder
   @include border-top-radius(6px)
   @include background-clip(padding-box)
 
-  &.new-message
-    .header-inner
-      background: #F5F5F5
-
   .header-inner
     min-height: 20px
     padding: 12px
-    background-color: white
+    background: #F5F5F5
     border-bottom: 1px solid #E8E8E8
     @include border-top-radius(6px)
+
+    .btn
+      float: right
+      margin-top: -5px
 
     h2
       font-size: 18px
       font-weight: bold
       line-height: 20px
+
+.content-bottom
+  padding: 12px 9px
+  background: white
+  border-left: 1px solid #E8E8E8
+  border-left: 1px solid rgba(0, 0, 0, .1)
+  border-right: 1px solid #E8E8E8
+  border-right: 1px solid rgba(0, 0, 0, .1)
+  border-bottom: 1px solid #E8E8E8
+  border-right: 1px solid rgba(0, 0, 0, .1)
+  @include background-clip(padding-box)
+  @include border-bottom-radius(6px)
+
+  .actions
+    margin: 0 -9px -30px
+    padding-left: 160px
+    @include border-bottom-radius(6px)
+
+.content-box
+  padding: 12px 9px
+  background: white
+  border: 1px solid #E8E8E8
+  border: 1px solid rgba(0, 0, 0, .1)
+  @include background-clip(padding-box)
+  @include border-radius(6px)
+
+  &.user-box
+    height: 150px
+
+  .user-controls
+    float: right
+    width: 130px
+
+    td
+      a
+        color: #999
+        font-size: 10px
+        line-height: 16px
+        text-transform: uppercase
+
+      strong
+        color: #333
+        font-size: 14px
+
+  .user-avatar
+    float: left
+    width: 140px
+    height: 140px
+    margin-right: 10px
 
 .messages
   .message-item,
@@ -209,13 +262,24 @@ label.placeholder
         display: block
 
   .message-item
+    .message-avatar
+      float: left
+      padding-right: 10px
+
+    .message-contents
+      padding-left: 50px
+
     .message-info
       margin-bottom: 4px
       font-size: 12px
       color: #999
 
-      .username
+      .username a
+        color: #999
         font-weight: bold
+
+        &:hover
+          color: #0069D6
 
       .time,
       .message-controls

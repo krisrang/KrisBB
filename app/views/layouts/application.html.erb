@@ -18,7 +18,11 @@
     <div class="container">
       <ul class="nav">
         <li>
-          <button class="btn primary small" data-controls-modal="message-modal" data-backdrop="true">New Message</button>
+          <% if current_page? root_path %>
+          <a class="btn primary small" data-controls-modal="message-modal" data-backdrop="true">New Message</a>
+          <% else %>
+          <a class="btn primary small" href="/">Messages</a>
+          <% end %>
         </li>
         <!--
         <li>
@@ -53,6 +57,8 @@
 </div>
 
 <div class="main container">
+  <%= render_flash %>
+
   <%= yield %>
 </div>
 

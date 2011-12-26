@@ -1,0 +1,2 @@
+<% if flash.key? :alert %><div class="alert-message warning" data-alert="alert"><a class="close" href="#">×</a><%= flash[:alert] %></div><% end %>
+<% if flash.key? :notice %><div class="alert-message info" data-alert="alert"><a class="close" href="#">×</a><%= flash[:notice] %></div><% end %>

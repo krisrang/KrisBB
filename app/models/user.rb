@@ -7,16 +7,21 @@ class User
   field :username
   field :admin, type: Boolean,  default: false
 
-  attr_accessor :remember_me
+  attr_accessor :remember_me, :password_confirmation
+  attr_protected :admin
   #attr_accessible :email, :password, :password_confirmation
+
+  validates_confirmation_of :password, if: :password
+  validates_length_of :password, minimum: 6, maximum: 16, if: :password
 
   authenticates_with_sorcery!
 
   before_create :enable_signup
 
-  def avatar_url(size=96)
+  def avatar_url(size=40)
     hash = Digest::MD5.hexdigest(self.email || self.username)
-    "http://robohash.org/#{hash}?size=#{size}x#{size}&gravatar=hashed"
+    #"http://robohash.org/#{hash}?size=#{size}x#{size}&gravatar=hashed"
+    "http://www.gravatar.com/avatar/#{hash}?s=#{size}&d=identicon"
   end
 
   def as_json(options = nil)

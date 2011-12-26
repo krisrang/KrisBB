@@ -1,4 +1,7 @@
 <div class="message-item" data-message-id="<%= model.get("id") %>">
+  <div class="message-avatar">
+    <img src="<%= model.get("avatar") %>" />
+  </div>
   <div class="message-info">
     <div class="message-controls">
       <% if (KrisBB.user.admin() || model.get("user_id") == KrisBB.user.get("id")) { %>
@@ -6,7 +9,7 @@
       <% } %>
       <span class="longtime"><%= Date.parse(model.get("created_at")).toString("HH:mm dS MMM yyyy") %></span>
     </div>
-    <span class="username"><%= model.get("username") %></span>
+    <span class="username"><a href="/users/<%= model.get("user_id") %>"><%= model.get("username") %></a></span>
     <span class="time"><%= dateToAgo(Date.parse(model.get("created_at"))) %></span>
   </div>
   <div class="message-contents"><%= model.get("html") %></div>

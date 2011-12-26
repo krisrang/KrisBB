@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource except: :show
+  load_and_authorize_resource
 
-  layout 'form'
+  layout 'form', only: ["new", "create"]
 
   def index
     #@users = User.all
@@ -11,14 +11,11 @@ class UsersController < ApplicationController
 
   def show
     #@user = User.find(params[:id])
-    if params[:id] == "me" # ObjectID
-      @user = current_user
-    else
-      @user = User.find(params[:id])
-    end
 
-    authorize! :show, @user
-    render json: @user
+    respond_to do |format|
+      format.html
+      format.json { render json: @new }
+    end
   end
 
   def new
@@ -27,6 +24,15 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: @new }
+    end
+  end
+
+  def edit
+    #@user = User.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @user }
     end
   end
 
@@ -48,11 +54,18 @@ class UsersController < ApplicationController
   def update
     #@user = User.find(params[:id])
 
+    if params[:user][:password] && params[:user][:password].empty?
+      params[:user].delete :password
+      params[:user].delete :password_confirmation
+    end
+
     respond_to do |format|
-      if @user.update_attributes(params[:upload])
-        render json: @user, status: :ok
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to root_url, notice: "Updated!" }
+        format.json { render json: @user, status: :ok }
       else
-        render json: @user.errors, status: :unprocessable_entity
+        format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end

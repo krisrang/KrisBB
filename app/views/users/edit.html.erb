@@ -1,0 +1,16 @@
+<div class="content-header">
+  <div class="header-inner">
+    <h2>Edit Account &raquo; <%= @user.username %></h2>
+  </div>
+</div>
+<div class="content-bottom">
+  <%= simple_form_for @user, html: {autocomplete: "off"} do |f| %>
+    <%= f.input :email %>
+    <%= f.input :password, label: "New password", hint: "Leave blank to keep current password" %>
+    <%= f.input :password_confirmation, label: "Confirm new password" %>
+
+    <div class="actions">
+      <%= f.button :submit, "Save", class: "btn primary" %>
+    </div>    
+  <% end %>
+</div>

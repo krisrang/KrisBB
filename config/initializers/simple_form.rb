@@ -4,25 +4,36 @@ SimpleForm.setup do |config|
   # You can remove any component from the wrapper, change the order or even
   # add your own to the stack. The options given to the wrappers method
   # are used to wrap the whole input.
-  config.wrappers :class => :input, :error_class => :field_with_errors do |b|
-    ## Extensions
-    # Determines whether to use HTML5 (:email, :url, :search, :tel) and required attributes
-    b.use :html5
-    # Calculates maxlength from length validations automatically for string inputs
-    # b.use :maxlength
-    # Calculates pattern from format validations automatically for string inputs
-    # b.use :pattern
-    # Calculates min and max from length validations automatically for numeric inputs
-    # b.use :min_max
-    # Calculates readonly automatically from readonly attributes
-    # b.use :readonly
-    # Calculates placeholders automatically from I18n
-    b.use :placeholder
+  #config.wrappers :class => :input, :error_class => :field_with_errors do |b|
+  #  ## Extensions
+  #  # Determines whether to use HTML5 (:email, :url, :search, :tel) and required attributes
+  #  b.use :html5
+  #  # Calculates maxlength from length validations automatically for string inputs
+  #  # b.use :maxlength
+  #  # Calculates pattern from format validations automatically for string inputs
+  #  # b.use :pattern
+  #  # Calculates min and max from length validations automatically for numeric inputs
+  #  # b.use :min_max
+  #  # Calculates readonly automatically from readonly attributes
+  #  # b.use :readonly
+  #  # Calculates placeholders automatically from I18n
+  #  b.use :placeholder
+  #
+  #  ## Inputs
+  #  b.use :label_input
+  #  b.use :hint,  :tag => :span, :class => :hint
+  #  b.use :error, :tag => :span, :class => :error
+  #end
 
-    ## Inputs
-    b.use :label_input
-    b.use :hint,  :tag => :span, :class => :hint
-    b.use :error, :tag => :span, :class => :error
+  config.wrappers :class => 'clearfix', :error_class => :error do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :label
+    b.use :tag => 'div', :class => 'input' do |ba|
+      ba.use :input #, :class => 'xlarge'
+      ba.use :error, :tag => :span, :class => 'help-inline'
+      ba.use :hint,  :tag => :span, :class => 'help-block'
+    end
   end
 
   # Method used to tidy up errors.

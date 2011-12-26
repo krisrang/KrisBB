@@ -31,6 +31,7 @@ class Message
     serializable_hash(options).tap do |hash|
       hash["id"] = self.id
       hash["username"] = self.user.username
+      hash["avatar"] = self.user.avatar_url
     end
   end
 
