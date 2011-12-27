@@ -4,10 +4,10 @@
   </div>
   <div class="message-info">
     <div class="message-controls">
+      <span class="longtime"><%= model.get("created_at_human") %></span>
       <% if (KrisBB.user.admin() || model.get("user_id") == KrisBB.user.get("id")) { %>
       <a href="" class="delete-link" data-method="delete">Delete</a>
-      <% } %>
-      <span class="longtime"><%= model.get("created_at_human") %></span>
+      <% } %>      
     </div>
     <span class="username"><a href="/users/<%= model.get("user_id") %>"><%= model.get("username") %></a></span>
     <span class="time"><%= dateToAgo(model.created_at()) %></span>

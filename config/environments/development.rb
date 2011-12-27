@@ -30,12 +30,4 @@ Kreubb::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'bb.kristjanrang.dev:3000' }
   config.mongoid.preload_models = true
-  
-  silence_warnings do
-    begin
-      require 'pry'
-      IRB = Pry
-    rescue LoadError
-    end
-  end
 end

@@ -4,6 +4,8 @@ buttons-scfd2a680db.png: buttons-scfd2a680db-653114a4084f1f2c55174c970de4a0d4.pn
 buttons/new-message.png: buttons/new-message-fec14f3f85b2a4fd046a4b520a89ca56.png
 emboss.png: emboss-564bb8a69781af2edf812eacc09f3d0b.png
 loader.gif: loader-6de0f62b6ad30b2703d2baf02c5781dc.gif
+offline.png: offline-9946c54ac88ce896a7e94c02cd6de6ca.png
+online.png: online-58f08bedd75d5e7625b28a748bc3cb24.png
 smilies-s97e26fe616.png: smilies-s97e26fe616-669820156ba0b2253b61af9d81c6fcfe.png
 smilies/biggrin.png: smilies/biggrin-5167578554886329ececa84e16869f06.png
 smilies/confused.png: smilies/confused-8d44adbb8bb68a4b7283b8f5ed29ab3b.png
@@ -17,7 +19,7 @@ smilies/rolleyes.png: smilies/rolleyes-2196e3ca1f08070c902eb91f31e1313e.png
 smilies/smile.png: smilies/smile-e91ec738cab4da7d6afd7c9343db0be3.png
 smilies/tongue.png: smilies/tongue-20f83c684e5194cb36ee579296327ba7.png
 smilies/wink.png: smilies/wink-025adc03b1b4135809fc4cce805e8f4f.png
-topbar-s3dfac8cfec.png: topbar-s3dfac8cfec-8d5262a0f350b95914a26a9e9e229da7.png
+topbar-sa8c15bcffe.png: topbar-sa8c15bcffe-fbca898c328cd2a912470b02ec92fd2a.png
 topbar/media-hover.png: topbar/media-hover-0583de9dae736ae72e4dc7652ff20e92.png
 topbar/media-inactive.png: topbar/media-inactive-d5f0110bfcd5ccf5acb4d461ed2ef92c.png
 topbar/media.png: topbar/media-b40a4d782420d76b706e31aa2ba5adf5.png
@@ -27,9 +29,9 @@ topbar/messages.png: topbar/messages-e5e4aa25e9c2c7b9c0226340bf748575.png
 topbar/stats-hover.png: topbar/stats-hover-910b0b4c8381b40af1fe0ab7af240920.png
 topbar/stats-inactive.png: topbar/stats-inactive-d8b9f3d5e13095f7ee968e691b25d625.png
 topbar/stats.png: topbar/stats-5ea80b5c0258578def743ecb6f19f575.png
-topbar/user-hover.png: topbar/user-hover-14ad0a581b9735f1e5d49bb8c4ee3795.png
-topbar/user-inactive.png: topbar/user-inactive-5dce50596758899fc161eced3c973af4.png
-topbar/user.png: topbar/user-a2ec31e6b8f9f990927632a1b2609014.png
-application.js: application-dbf1aed84a6abd094622895460cd43df.js
-krisbb.js: krisbb-c6cffd0079f24dc56dbad00b16cd42a2.js
-application.css: application-77fe937679683c5ee27924beb594b542.css
+topbar/user-hover.png: topbar/user-hover-fd851e02fa5da3190ae76006d109a70d.png
+topbar/user-inactive.png: topbar/user-inactive-3ed570bd3c736a0457619af65c8217b5.png
+topbar/user.png: topbar/user-1ec06f573f25bf62022e175b9a4c5bd3.png
+application.js: application-801999a112585c1d7481ea9ff07f0a9b.js
+krisbb.js: krisbb-469d10d47841f13ba5df63e9cf8f7f3b.js
+application.css: application-4ddb7887fc676fc0ea10cb4d32d10695.css

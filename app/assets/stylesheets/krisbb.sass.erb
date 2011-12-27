@@ -43,9 +43,23 @@ li,
       &.icon-user
         background: sprite($topbar, user-hover)
 
-  &.username
+.user-menu
+  max-width: 250px
+
+  li.useritem
+    color: #999
+    height: 45px
+
     a
-      color: #EEE
+      height: 45px
+
+    .avatar
+      float: left
+      padding-right: 10px
+    
+    small
+      display: block
+      font-size: 11px
 
 label.placeholder
   padding-top: 2px !important
@@ -289,12 +303,20 @@ label.placeholder
       .message-controls
         display: none
 
+        a
+          margin-left: 5px
+
     &.hover
       .message-controls
         display: block
 
       .time
         display: none
+
+div.avatar
+  input,
+  p
+    padding-left: 150px
 
 #message-modal
   .smilies

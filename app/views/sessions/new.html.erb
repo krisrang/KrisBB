@@ -1,4 +1,3 @@
-<div>kasutaja: BRC<br />pass: ajutine</div>
 <h2>Sign in</h2>
 <%= simple_form_for(@user, url: sessions_path, html: {class: "form-stacked"}) do |f| %>
   <%= f.input :username, label: false, placeholder: "Username" %>
@@ -8,4 +7,4 @@
   <%= f.button :submit, "Sign In", class: "btn large" %>
 <% end %>
 
-<p><%= link_to "Register", signup_path %></p>
+<!--p><%= link_to "Register", signup_path %></p-->

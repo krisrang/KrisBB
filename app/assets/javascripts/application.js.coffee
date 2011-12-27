@@ -21,6 +21,7 @@ $ ->
 
   $('.smilies a').twipsy()
   $('.message-contents img, .tutorial img').twipsy live: true, title: 'alt'
+  $('.online-bit').twipsy()
 
   $('a.smilie').live 'click', (e)->
     e.preventDefault()

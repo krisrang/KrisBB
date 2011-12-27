@@ -21,6 +21,10 @@ gem 'aws-sdk'
 gem 'heroku'
 gem 'rdiscount'
 gem 'httparty'
+gem 'mini_magick'
+gem 'carrierwave'
+gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
+gem 'fog'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -21,6 +21,6 @@
     </table>
   </div>
 
-  <div class="user-avatar"><img src="<%= @user.avatar_url 140 %>" /></div>
-  <div class="user-name"><h1><%= @user.username %></h1></div>
+  <div class="user-avatar"><img src="<%= @user.avatar.big.url %>" /></div>
+  <div class="user-name"><h1><%= @user.username %> <%= online_bit @user %></h1></div>
 </div>

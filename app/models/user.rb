@@ -4,6 +4,8 @@ class User
 
   has_many :messages
 
+  mount_uploader :avatar, AvatarUploader
+
   field :username
   field :admin, type: Boolean,  default: false
 
