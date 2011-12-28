@@ -2,7 +2,6 @@
 
 <%= simple_form_for @user, html: {autocomplete: "off"} do |f| %>
   <%= f.input :username, label: false, placeholder: "Username" %>
-  <%= f.input :email, label: false, placeholder: "Email" %>
   <%= f.input :password, label: false, placeholder: "Password" %>
   <%= f.input :password_confirmation, label: false, placeholder: "Password again" %>
   <label for="user_remember_me"><%= f.input :remember_me, as: :boolean, label: false, hint: "Keep me logged in" %></label>

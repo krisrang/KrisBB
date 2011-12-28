@@ -20,12 +20,6 @@ class User
 
   before_create :enable_signup
 
-  def avatar_url(size=40)
-    hash = Digest::MD5.hexdigest(self.email || self.username)
-    #"http://robohash.org/#{hash}?size=#{size}x#{size}&gravatar=hashed"
-    "http://www.gravatar.com/avatar/#{hash}?s=#{size}&d=identicon"
-  end
-
   def as_json(options = nil)
     serializable_hash(options).tap do |hash|
       hash["id"] = self.id

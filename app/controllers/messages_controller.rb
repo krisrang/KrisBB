@@ -3,7 +3,14 @@ class MessagesController < ApplicationController
   respond_to :html, :json
   
   def index
-    @messages = @messages.order_by([:created_at, :desc]).page(params[:page] || 1)
+    @messages = @messages.order_by([:created_at, :desc])
+
+    if params[:last]
+      @messages = @messages.where(:_id.gt => params[:last])
+    else
+      @messages = @messages.page(params[:page] || 1)
+    end
+
     respond_with @messages
   end
 

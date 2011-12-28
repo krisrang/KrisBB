@@ -21,5 +21,6 @@ class App.Views.MessageView extends Backbone.View
   
   clickDelete: (e)=>
     e.preventDefault()
-    @model.destroy()
+    if confirm("Delete message?")
+      @model.destroy()
     return false
