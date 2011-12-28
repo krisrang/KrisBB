@@ -13,3 +13,7 @@ window.App =
 $ ->
   window.KrisBB = new App.Router()
   Backbone.history.start() #pushState: true
+
+  window.Pusher.log = (message)->
+    if (window.console && window.console.log)
+      window.console.log(message)

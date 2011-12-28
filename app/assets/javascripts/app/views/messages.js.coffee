@@ -2,12 +2,16 @@ class App.Views.MessagesView extends Backbone.View
   rendered: false
   scrolling: false
   last: false
+  pusher: null
+  channel: null
   views: {}
+  newMessages: []
 
   events:
     'click .message-pager':   'processScroll'
     'click .cancel-message':  'cancelMessage'
     'click .post-message':    'postMessage'
+    'click .waiting-item':    'processNewMessages'
 
   initialize: ->
     @el = $('body')
@@ -16,6 +20,7 @@ class App.Views.MessagesView extends Backbone.View
     @pager = $('.message-pager')
     @messageModal = $('#message-modal')
     @messageText = $('#messageform textarea')
+    @waitingItem = $('.waiting-item')
 
     @user = @options.user
 
@@ -38,15 +43,23 @@ class App.Views.MessagesView extends Backbone.View
 
   load: =>
     @collection.each @add
+    @setupPusher()
+
     @loader.hide()
     @pager.show()
+
     @rendered = true
     @scrolling = false
 
   add: (model)=>
     if !@views[model.cid]?
       view = new App.Views.MessageView model: model
-      @list.append view.render()
+
+      if !@rendered or @scrolling
+        @list.append view.render()
+      else
+        @list.prepend view.render()
+
       @views[model.cid] = view
 
   remove: (model)=>
@@ -68,6 +81,30 @@ class App.Views.MessagesView extends Backbone.View
 
     @loader.hide()
 
+  setupPusher: =>
+    @pusher = new Pusher '6b7a73dad4f1f3333653'
+    @channel = @pusher.subscribe 'messages_channel'
+    @channel.bind 'new_message', @processMessage
+
+  processMessage: (message)=>
+    msg = new @collection.model(message)
+
+    if message.user_id == @user.id
+      @collection.add msg
+    else
+      @newMessages.push msg
+      newText = "#{@newMessages.length} new message"
+      newText += "s" if @newMessages.length > 1
+      @waitingItem.text newText
+      document.title = "(#{@newMessages.length}) KrisBB"
+      @waitingItem.show()
+
+  processNewMessages: =>
+    @waitingItem.hide()
+    @collection.add @newMessages
+    @newMessages = []
+    document.title = "KrisBB"
+
   processScroll: =>
     #if ($(window).scrollTop() >= $(document).height() - $(window).height()) and @rendered == true and @scrolling == false
     unless @last
@@ -86,12 +123,8 @@ class App.Views.MessagesView extends Backbone.View
   postMessage: =>
     text = @messageText.val()
     if text? && text.length > 0
-      message = @collection.create text: text, 
-        silent: true
-        success: (model)=>
-          view = new App.Views.MessageView model: model
-          @list.prepend view.render()
-          @views[model.cid] = view
+      message = @collection.create text: text, socket_id: @pusher.connection.socket_id,
+        success: =>
           @cancelMessage()
 
   cancelMessage: =>

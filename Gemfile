@@ -25,6 +25,8 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
 gem 'fog'
+gem 'pusher'
+gem 'em-http-request'
 
 # Gems used only for assets and not required
 # in production environments by default.

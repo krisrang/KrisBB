@@ -32,6 +32,9 @@ class MessagesController < ApplicationController
     #@message = Message.new(params[:message])
     @message.user = current_user
     @message.save
+
+    deferrable = Pusher['messages_channel'].trigger_async('new_message', @message, params[:socket_id])
+
     respond_with @message
   end
 

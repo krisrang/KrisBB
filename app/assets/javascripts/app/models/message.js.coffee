@@ -2,7 +2,7 @@ class App.Models.Message extends Backbone.Model
   #defaults:
   #  loaded: 0
   #  created_at: new Date().getTime()
-
+  
   created_at: =>
     Date.parse(@get('created_at'))
 

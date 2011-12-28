@@ -68,7 +68,7 @@
   window.settings = <%= raw Settings.to_json %>;
   window.user = <%= raw current_user.to_json %>;
 </script>
-<%= javascript_include_tag "application", "krisbb" %>
+<%= javascript_include_tag "application", "krisbb", "http://js.pusherapp.com/1.10/pusher.min.js" %>
 <%= render partial: 'shared/bottom_include' %>
 </body>
 </html>
