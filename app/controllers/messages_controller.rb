@@ -34,6 +34,7 @@ class MessagesController < ApplicationController
     @message.save
 
     deferrable = Pusher['messages_channel'].trigger_async('new_message', @message, params[:socket_id])
+    MessageMailer.new_message(@message).deliver
 
     respond_with @message
   end

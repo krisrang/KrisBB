@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.0.rc1'
+gem 'rails', '3.2.1'
 gem 'thin'
 
 gem "mongoid"
@@ -37,7 +37,7 @@ group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
-  gem 'compass', "0.12.alpha.3"
+  gem 'compass', "0.12.alpha.4"
   gem 'oily_png'
   gem 'less-rails'
   gem 'less-rails-bootstrap'

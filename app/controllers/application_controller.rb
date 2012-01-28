@@ -12,6 +12,14 @@ class ApplicationController < ActionController::Base
       !!current_user && current_user.admin
     end
 
+    def login_api
+      authenticate_with_http_basic do |username, password|
+        @current_user = User.authenticate(username, password)
+        auto_login(@current_user) if @current_user
+        @current_user
+      end
+    end
+
     def render_unauthorized e    
       respond_to do |format|
         format.html do

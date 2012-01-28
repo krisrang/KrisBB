@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_filter :login_api, only: [:mobile_login]
+
   layout 'form'
 
   def new
@@ -20,5 +22,9 @@ class SessionsController < ApplicationController
   def destroy
     logout
     redirect_to root_url, notice: "Logged out!"
+  end
+
+  def mobile_login
+    render json: current_user
   end
 end
