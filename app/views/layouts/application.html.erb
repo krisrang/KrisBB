@@ -14,31 +14,20 @@
 
 <%= render partial: 'shared/message_dialog' %>
 
-<div class="topbar">
-  <div class="fill">
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
     <div class="container">
-      <ul class="nav">
-        <li>
           <% if current_page? root_path %>
-          <a class="btn primary small" data-controls-modal="message-modal" data-backdrop="true">New Message</a>
+          <a class="btn btn-primary small" data-toggle="modal" data-target="#message-modal" data-backdrop="true">New Message</a>
           <% else %>
-          <a class="btn primary small" href="/">Messages</a>
-          <% end %>
-        </li>
-        <!--
-        <li>
-          <form id="searchform" action="">
-            <input class="input-small" type="text" placeholder="Search">
-          </form>
-        </li>
-        -->
-      </ul>      
+          <a class="btn btn-primary small" href="/">Messages</a>
+          <% end %>  
 
       <i class="icon-bubble"></i>
 
-      <ul class="nav secondary-nav">
-        <li class="dropdown" data-dropdown="dropdown">
-          <a href="#" class="dropdown-toggle"><span class="icon-wrapper"><i class="icon-user"></i></span></a>
+      <ul class="nav pull-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-white"></i><b class="caret"></b></a>
           <ul class="dropdown-menu user-menu">
             <li class="useritem">
               <a href="<%= user_path(current_user) %>">

@@ -13,9 +13,9 @@ $ ->
   $('#searchform input').blur ->
     $('#searchform').removeClass 'expand'
 
-  $('.smilies a').twipsy()
-  $('.message-contents img, .tutorial img').twipsy live: true, title: 'alt'
-  $('.online-bit').twipsy()
+  $('.smilies a').tooltip()
+  $('.message-contents img, .tutorial img').tooltip live: true, title: 'alt'
+  $('.online-bit').tooltip()
 
   $('a.smilie').live 'click', (e)->
     e.preventDefault()

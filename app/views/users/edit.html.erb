@@ -4,7 +4,7 @@
   </div>
 </div>
 <div class="content-bottom">
-  <%= simple_form_for @user, html: {multipart: true, autocomplete: "off"} do |f| %>
+  <%= simple_form_for @user, html: {multipart: true, autocomplete: "off", class: "well"} do |f| %>
     <%= f.input :password, label: "New password", hint: "Leave blank to keep current password" %>
     <%= f.input :password_confirmation, label: "Confirm new password" %>
 
