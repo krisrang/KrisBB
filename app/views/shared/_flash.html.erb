@@ -1,2 +1,2 @@
-<% if flash.key? :alert %><div class="alert alert-error" data-alert="alert"><a class="close" href="#">×</a><%= flash[:alert] %></div><% end %>
-<% if flash.key? :notice %><div class="alert alert-info" data-alert="alert"><a class="close" href="#">×</a><%= flash[:notice] %></div><% end %>
+<% if flash.key? :alert %><div class="alert alert-error" data-alert="alert"><a class="close" data-dismiss="alert" href="#">×</a><%= flash[:alert] %></div><% end %>
+<% if flash.key? :notice %><div class="alert alert-info" data-alert="alert"><a class="close" data-dismiss="alert" href="#">×</a><%= flash[:notice] %></div><% end %>

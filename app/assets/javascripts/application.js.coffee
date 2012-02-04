@@ -1,6 +1,7 @@
 #= require jquery
 #= require jquery_ujs
 #= require twitter/bootstrap
+#= require ./lib/date
 #= require ./lib/modernizer
 #= require ./lib/placeholder.shim
 #= require ./lib/utils
