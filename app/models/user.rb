@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -7,6 +9,7 @@ class User
   mount_uploader :avatar, AvatarUploader
 
   field :username
+  field :token
   field :admin, type: Boolean,  default: false
 
   attr_accessor :remember_me, :password_confirmation
@@ -18,11 +21,13 @@ class User
 
   authenticates_with_sorcery!
 
-  before_create :enable_signup
-
+  before_create :enable_signup, :generate_token
+  before_update :generate_token
+  
   def as_json(options = nil)
     serializable_hash(options).tap do |hash|
       hash["id"] = self.id
+      hash.delete "password"
       hash.delete "crypted_password"
       hash.delete "salt"
       hash.delete "failed_logins_count"
@@ -34,5 +39,9 @@ class User
   protected
     def enable_signup
       Settings.enable_signup
+    end
+
+    def generate_token
+      self.token = SecureRandom.base64(15).tr('+/=lIO0', 'pqrsxyz') if self.token.nil?
     end
 end

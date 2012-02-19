@@ -12,12 +12,20 @@ class ApplicationController < ActionController::Base
       !!current_user && current_user.admin
     end
 
-    def login_api
+    def login_http_basic
       authenticate_with_http_basic do |username, password|
         @current_user = User.authenticate(username, password)
         auto_login(@current_user) if @current_user
         @current_user
       end
+    end
+
+    def login_api
+      if !params[:token].nil? && !params[:token].nil?
+        @current_user = User.first(conditions: {token: params[:token]})
+        auto_login(@current_user) if @current_user
+      end
+      true
     end
 
     def render_unauthorized e    

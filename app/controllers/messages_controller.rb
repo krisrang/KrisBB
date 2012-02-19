@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  before_filter :login_api
   load_and_authorize_resource
   respond_to :html, :json
   
@@ -34,7 +35,7 @@ class MessagesController < ApplicationController
     @message.save
 
     deferrable = Pusher['messages_channel'].trigger_async('new_message', @message, params[:socket_id])
-    MessageMailer.new_message(@message).deliver
+    MessageMailer.new_message(@message).deliver if @message.user.username != "DVSBSTD"
 
     respond_with @message
   end

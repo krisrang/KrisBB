@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_filter :login_api, only: [:mobile_login]
+  before_filter :login_http_basic, only: [:mobile_login]
 
   layout 'form'
 
