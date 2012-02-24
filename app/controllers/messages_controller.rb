@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-  before_filter :login_api
   load_and_authorize_resource
   respond_to :html, :json
   

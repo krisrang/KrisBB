@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied, with: :render_unauthorized
 
+  before_filter :login_api
+
   protect_from_forgery
 
   private
@@ -21,9 +23,8 @@ class ApplicationController < ActionController::Base
     end
 
     def login_api
-      if !params[:token].nil? && !params[:token].nil?
-        @current_user = User.first(conditions: {token: params[:token]})
-        auto_login(@current_user) if @current_user
+      if !request.headers["X-KrisBB-Token"].nil?
+        @current_user = User.first(conditions: {token: request.headers["X-KrisBB-Token"]})
       end
       true
     end

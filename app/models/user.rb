@@ -30,10 +30,15 @@ class User
       hash.delete "password"
       hash.delete "crypted_password"
       hash.delete "salt"
+      hash.delete "token"
       hash.delete "failed_logins_count"
       hash.delete "remember_me_token"
       hash.delete "remember_me_token_expires_at"
     end
+  end
+
+  def api_key
+    self.token
   end
 
   protected

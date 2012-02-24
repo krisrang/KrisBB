@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_filter :login_api
   load_and_authorize_resource
 
   layout 'form', only: ["new", "create"]

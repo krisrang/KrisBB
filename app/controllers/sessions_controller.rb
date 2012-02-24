@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_filter :login_api
   before_filter :login_http_basic, only: [:mobile_login]
 
   layout 'form'
@@ -25,6 +26,6 @@ class SessionsController < ApplicationController
   end
 
   def mobile_login
-    render json: current_user
+    render json: current_user, methods: :api_key
   end
 end
