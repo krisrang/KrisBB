@@ -7,12 +7,8 @@ class App.Views.MessageView extends Backbone.View
   initialize: ->
   
   render: =>
-    log @model.get('id')
     tplHtml = JST['app/templates/message'](model: @model)
     @$el = @el = $(tplHtml)
-
-    log tplHtml
-    log @el.html()
 
     @delegateEvents()
 

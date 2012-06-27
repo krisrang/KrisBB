@@ -3,8 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.5'
 gem 'puma'
 
-gem "mongoid"
-gem "bson_ext"
+gem "mongoid", "3.0.0.rc"
 gem 'dalli'
 
 # Frontend

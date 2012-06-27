@@ -56,8 +56,6 @@ class App.Views.MessagesView extends Backbone.View
 
   add: (model)=>
     if !@views[model.cid]?
-      log 'adding model'
-      log model.get('id')
       view = new App.Views.MessageView model: model
 
       if !@rendered or @scrolling
