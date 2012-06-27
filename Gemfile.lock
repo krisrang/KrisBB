@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/jnicklas/carrierwave-mongoid.git
+  revision: ccbec883f6443a6bc05341a4863c0ffe8db40d05
+  branch: mongoid-3.0
+  specs:
+    carrierwave-mongoid (0.3.0.alpha)
+      carrierwave (~> 0.6.1)
+      mongoid (~> 3.0.0.rc)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -41,9 +50,6 @@ GEM
     carrierwave (0.6.2)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
-    carrierwave-mongoid (0.1.0)
-      carrierwave
-      mongoid
     chunky_png (1.2.5)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -227,7 +233,7 @@ DEPENDENCIES
   bcrypt-ruby
   cancan
   carrierwave
-  carrierwave-mongoid
+  carrierwave-mongoid!
   coffee-rails
   compass-rails
   dalli

@@ -22,7 +22,7 @@ gem 'heroku'
 gem 'rdiscount'
 gem 'mini_magick'
 gem 'carrierwave'
-gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
+gem "carrierwave-mongoid", :git => "git://github.com/jnicklas/carrierwave-mongoid.git", :branch => "mongoid-3.0"
 gem 'fog'
 gem 'pusher'
 gem 'em-http-request'

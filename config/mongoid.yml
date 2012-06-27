@@ -61,12 +61,12 @@ development:
 
 <% uri = URI.parse(ENV['MONGOLAB_URI'] || 'mongodb://host:user@pass:1000') %>
 production:
-  <<: *defaults
   sessions:
     default:
-      <<: *default_session
       database: <%= uri.path.sub('/','') %>
       username: <%= uri.user %>
       password: <%= uri.password %>
       hosts:
         - <%= uri.host %>:<%= uri.port %>
+      options:
+        consistency: :strong
