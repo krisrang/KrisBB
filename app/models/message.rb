@@ -54,7 +54,7 @@ class Message
     
     def smilie_parse(text)
       @@smilies.each do |k, v|
-        text.gsub! k, "<i class=\"smilie #{v}\">#{k}</i>"
+        text.gsub! k, "<i class=\"smilie smilies-#{v}\"></i>"
       end
       
       text

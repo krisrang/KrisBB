@@ -14,7 +14,7 @@ class App.Views.MessagesView extends Backbone.View
     'click .waiting-item':    'processNewMessages'
 
   initialize: ->
-    @el = $('body')
+    @$el = @el = $('body')
     @list = $('.message-list')
     @loader = $('.message-loader')
     @pager = $('.message-pager')
@@ -31,6 +31,7 @@ class App.Views.MessagesView extends Backbone.View
       
   render: =>
     if !@rendered
+      log 'rendering'
       @loader.show()
       @pager.hide()
 
@@ -42,6 +43,7 @@ class App.Views.MessagesView extends Backbone.View
       #$(window).scroll @processScroll
 
   load: =>
+    log 'loading'
     @collection.each @add
     @setupPusher()
 
@@ -50,6 +52,7 @@ class App.Views.MessagesView extends Backbone.View
 
     @rendered = true
     @scrolling = false
+    log 'loaded'
 
   add: (model)=>
     if !@views[model.cid]?
@@ -121,6 +124,7 @@ class App.Views.MessagesView extends Backbone.View
         @scrolling = false
 
   postMessage: =>
+    log 'posting'
     text = @messageText.val()
     if text? && text.length > 0
       message = @collection.create text: text, socket_id: @pusher.connection.socket_id,

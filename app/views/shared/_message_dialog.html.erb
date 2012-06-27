@@ -6,7 +6,7 @@
   <div class="modal-body">
     <div class="smilies">
       <% Message.smilies.each do |k,v| %>
-        <a class="smilie <%= v %>" data-key="<%= k %>" data-placement="above" title="<%= k %>"><%= k %></a>
+        <a class="smilie smilies-<%= v %>" data-key="<%= k %>" data-placement="top" title="<%= k %>"></a>
       <% end %>
     </div>
     <form id="messageform" action="">
@@ -36,10 +36,6 @@
          <tr>
            <td>[Google](http://www.google.com/)</td>
            <td><a href="http://www.google.com/">Google</a></td>
-         </tr>
-         <tr>
-           <td>![MiniStig](http://dl.dropbox.com/u/473532/ministig.png)</td>
-           <td><img src="http://dl.dropbox.com/u/473532/ministig.png" alt="MiniStig" /></td>
          </tr>
         </tbody>
       </table>

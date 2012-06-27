@@ -1,7 +1,7 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
-gem 'rails', '3.2.1'
-gem 'thin'
+gem 'rails', '3.2.5'
+gem 'puma'
 
 gem "mongoid"
 gem "bson_ext"
@@ -13,6 +13,7 @@ gem 'simple_form'
 gem 'kaminari'
 
 # Auth
+gem 'bcrypt-ruby'
 gem 'sorcery'
 gem 'cancan'
 
@@ -20,7 +21,6 @@ gem 'rails_config'
 gem 'aws-sdk'
 gem 'heroku'
 gem 'rdiscount'
-gem 'httparty'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
@@ -41,9 +41,4 @@ group :assets do
   gem 'oily_png'
   gem 'less-rails'
   gem 'less-rails-bootstrap'
-end
-
-group :test do
-  # Pretty printed test output
-  gem 'turn', '~> 0.8.3', :require => false
 end

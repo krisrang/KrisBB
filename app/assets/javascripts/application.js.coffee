@@ -8,17 +8,11 @@
 #= require_self
 
 $ ->
-  $('#searchform input').focus ->
-    $('#searchform').addClass 'expand'
-
-  $('#searchform input').blur ->
-    $('#searchform').removeClass 'expand'
-
-  $('.smilies a').tooltip()
+  $('.smilie').tooltip()
   $('.message-contents img, .tutorial img').tooltip live: true, title: 'alt'
   $('.online-bit').tooltip()
 
-  $('a.smilie').live 'click', (e)->
+  $('.smilies a').live 'click', (e)->
     e.preventDefault()
     key = $(this).attr('data-key')
     $('#messageform textarea').insertAtCaret(key)

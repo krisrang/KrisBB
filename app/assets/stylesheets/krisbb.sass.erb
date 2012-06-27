@@ -3,11 +3,8 @@
 @import "compass/css3/transition"
 @import "compass/css3/border-radius"
 @import "compass/css3/background-clip"
-@import "compass/utilities/sprites"
-$smilies: sprite-map("smilies/*.png")
 
 body
-  padding-top: 40px
   background: #B2C9ED
   color: #333
   font: 14px/18px "HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif
@@ -57,29 +54,10 @@ label.placeholder
   .btn
     margin-top: 4px
 
-  .icon-bubble
-    position: absolute
-    top: 10px
-    left: 50%
-    margin-left: -12px
-    height: 23px
-    width: 24px
-    background: transparent url('/assets/emboss.png') no-repeat
-
-#searchform
-  margin-left: 10px
-
-  input
-    @include transition(width 0.3s)
-    width: 150px
-
-  &.expand
-    input
-      width: 300px
-
 .main.container
   width: 920px
   padding: 10px
+  padding-top: 50px
   background: transparent url('/assets/blur.png')
   @include border-bottom-radius(6px)
 
@@ -97,38 +75,8 @@ label.placeholder
       h2
         text-align: center
 
-      p
-        text-align: right
-
       form
         margin-left: 330px
-        
-        div.input
-          margin: 0
-
-        input
-          font-size: 24px
-          /*margin: 10px 0 0*/
-          height: 26px
-          padding: 6px 10px
-          line-height: 26px
-
-        input.button
-          height: 38px
-
-        input.boolean
-          height: 12px
-          margin-right: 5px
-
-        div.boolean span.help-block
-          display: inline
-          font-size: 16px
-
-        label
-          float: none
-
-          .boolean
-            text-align: left
 
 .content-header
   border: 1px solid rgba(0, 0, 0, .1)
@@ -320,54 +268,7 @@ label.placeholder
     height: 100px
     width: 520px
 
-.smilie
-  display: inline-block
-  width: 16px
-  height: 16px
-  text-indent: -999em
-  overflow: hidden
-  text-align: left
-  direction: ltr
-  background: transparent
-  background-repeat: no-repeat
-  background: sprite($smilies, smile)
-
-  &.biggrin
-    background: sprite($smilies, biggrin)
-
-  &.frown
-    background: sprite($smilies, frown)
-
-  &.confused
-    background: sprite($smilies, confused)
-
-  &.mad
-    background: sprite($smilies, mad)
-
-  &.tongue
-    background: sprite($smilies, tongue)
-
-  &.wink
-    background: sprite($smilies, wink)
-
-  &.redface
-    background: sprite($smilies, redface)
-
-  &.rolleyes
-    background: sprite($smilies, rolleyes)
-
-  &.cool
-    background: sprite($smilies, cool)
-
-  &.eek
-    background: sprite($smilies, eek)
-
-  &.lol 
-    width: 39px
-    height: 15px
-    background: url(<%= asset_path "smilies/lol.gif" %>) no-repeat
-
-.tooltip
+.modal-open .tooltip
   z-index: 12000
 
 @media screen and (max-width: 480px), screen and (max-device-width: 480px)
@@ -375,8 +276,12 @@ label.placeholder
     width: auto
     padding: 0 10px
 
+  .navbar-fixed-top
+    margin-bottom: 0
+
   .main.container
     width: 92%
+    padding-top: 10px
 
     .message-contents
       overflow: hidden

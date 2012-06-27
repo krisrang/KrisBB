@@ -1,10 +1,9 @@
 <h2>Sign in</h2>
 <%= simple_form_for(@user, url: sessions_path, html: {class: "form-vertical"}) do |f| %>
-  <%= f.input :username, label: false, placeholder: "Username" %>
-  <%= f.input :password, label: false, placeholder: "Password" %>
-  <label for="user_remember_me" class="checkbox"><%= f.input :remember_me, as: :boolean, label: false, hint: "Keep me logged in" %></label>
+    <%= f.input :username, label: false, placeholder: "Username" %>
+    <%= f.input :password, label: false, placeholder: "Password" %>
+    <%= f.input :remember_me, as: :boolean, label: "Keep me logged in" %>
 
-  <%= f.button :submit, "Sign In", class: "btn btn-primary large" %>
+    <%= f.button :submit, "Sign In", class: "btn btn-primary" %>
+    <!--<%= link_to "Sign Up", signup_path, class: "btn" %>-->
 <% end %>
-
-<!--p><%= link_to "Register", signup_path %></p-->
