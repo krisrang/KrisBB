@@ -59,7 +59,14 @@ development:
     # Ensure all times are UTC in the app side. (default: false)
     # use_utc: false
 
+<% uri = URI.parse(ENV['MONGOLAB_URI'] || 'mongodb://host:user@pass:1000') %>
 production:
+  <<: *defaults
   sessions:
     default:
-      uri: <%= ENV['MONGOLAB_URI'] %>
+      <<: *default_session
+      database: <%= uri.path.sub('/','') %>
+      username: <%= uri.user %>
+      password: <%= uri.password %>
+      hosts:
+        - <%= uri.host %>:<%= uri.port %>
