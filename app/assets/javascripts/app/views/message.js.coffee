@@ -1,6 +1,5 @@
 class App.Views.MessageView extends Backbone.View
   rendered: false
-  tpl: JST['app/templates/message']
 
   events:
     'click .delete-link': 'clickDelete'
@@ -8,7 +7,12 @@ class App.Views.MessageView extends Backbone.View
   initialize: ->
   
   render: =>
-    @el = $(@tpl(model: @model))
+    log @model.get('id')
+    tplHtml = JST['app/templates/message'](model: @model)
+    @$el = @el = $(tplHtml)
+
+    log tplHtml
+    log @el.html()
 
     @delegateEvents()
 

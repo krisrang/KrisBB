@@ -56,6 +56,8 @@ class App.Views.MessagesView extends Backbone.View
 
   add: (model)=>
     if !@views[model.cid]?
+      log 'adding model'
+      log model.get('id')
       view = new App.Views.MessageView model: model
 
       if !@rendered or @scrolling
@@ -90,6 +92,7 @@ class App.Views.MessagesView extends Backbone.View
     @channel.bind 'new_message', @processMessage
 
   processMessage: (message)=>
+    log 'new pushed message'
     msg = new @collection.model(message)
 
     if message.user_id == @user.id
@@ -129,7 +132,9 @@ class App.Views.MessagesView extends Backbone.View
     if text? && text.length > 0
       message = @collection.create text: text, socket_id: @pusher.connection.socket_id,
         success: =>
+          log 'post success'
           @cancelMessage()
+        , wait: true
 
   cancelMessage: =>
     @messageModal.modal('hide')
