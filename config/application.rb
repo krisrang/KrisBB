@@ -1,3 +1,4 @@
+
 require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
@@ -28,9 +29,6 @@ module Kreubb
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
 
-    # Activate observers that should always be running.
-    # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
-
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     config.time_zone = 'Tallinn'
@@ -44,6 +42,9 @@ module Kreubb
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    # Enable escaping HTML in JSON.
+    config.active_support.escape_html_entities_in_json = true
 
     # Enable the asset pipeline
     config.assets.enabled = true

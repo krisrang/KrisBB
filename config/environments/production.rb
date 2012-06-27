@@ -20,7 +20,7 @@ Kreubb::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
-  # Defaults to Rails.root.join("public/assets")
+  # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 
   # Specifies the header that your server uses for sending files
@@ -33,14 +33,17 @@ Kreubb::Application.configure do
   # See everything in the log (default is :info)
   # config.log_level = :debug
 
+  # Prepend all log lines with the following tags
+  # config.log_tags = [ :subdomain, :uuid ]
+
   # Use a different logger for distributed setups
-  # config.logger = SyslogLogger.new
+  # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache store in production
   config.cache_store = :dalli_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
-  # config.action_controller.asset_host = "http://assets.forum.kristjanrang.eu"
+  # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   config.assets.precompile += %w( krisbb.js )
