@@ -1,17 +1,15 @@
-<div class="content-header">
-  <div class="header-inner">
-    <h2>Users</h2>
-  </div>
-</div>
-<div class="content-bottom">
-  <table class="table table-striped">
+<div class="well">
+  <h2>Users</h2>
+  <table class="users table table-striped">
     <tbody>
       <% @users.each do |user| %>
       <tr>
-        <td><img src="<%= user.avatar.thumb.url %>" /></td>
-        <td><strong><%= link_to user.username, user_path(user) %></strong></td>
+        <td>
+          <img src="<%= user.avatar.thumb.url %>" />
+          <strong><%= link_to user.username, user_path(user) %></strong>
+        </td>
         <td><a><strong><%= user.messages.count %></strong> posts</a></td>
-        <td><%= online_bit user %></td>
+        <td class="online_bit"><%= online_bit user %></td>
       </tr>
       <% end %>
     </tbody>

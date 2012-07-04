@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied, with: :render_unauthorized
 
-  before_filter :login_api
+  #before_filter :login_api
 
   protect_from_forgery
 
@@ -23,10 +23,11 @@ class ApplicationController < ActionController::Base
     end
 
     def login_api
-      if !request.headers["X-KrisBB-Token"].nil?
-        @current_user = User.first(conditions: {token: request.headers["X-KrisBB-Token"]})
+      # Authorization: Token token="abc", nonce="def"
+      authenticate_or_request_with_http_token do |token, options|
+        # TODO: implement nonce-based token check
+        @current_user = User.first(conditions: {token: token})
       end
-      true
     end
 
     def render_unauthorized e    

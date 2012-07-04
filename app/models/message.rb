@@ -24,6 +24,8 @@ class Message
   field :text
   field :html
 
+  scope :recent, desc(:created_at).limit(5)
+
   before_save :process_text
   validates_presence_of :text
 

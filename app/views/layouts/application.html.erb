@@ -1,63 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
   <title>KrisBB</title>
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  
-  <meta name="viewport" content="width=device-width" />
+
+  <%= stylesheet_link_tag "application", :media => "all" %>
   <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag "application" %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container-fluid">
 
-<%= render partial: 'shared/message_dialog' %>
+        <ul class="nav pull-right">
+          <li class="user-menu">
+             <a href="<%= user_path(current_user) %>">
+              <img src="<%= current_user.avatar.thumb.url %>" />
+              <strong><%= current_user.username %></strong>
+            </a>
+          </li>
+          <li class="dropdown">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to raw('<i class="icon-wrench"></i>') + " Settings", edit_user_path(current_user) %></li>            
+              <li class="divider"></li>
+              <li><%= link_to raw('<i class="icon-list-alt"></i>') + " Users", users_path %></li>
+              <li class="divider"></li>            
+              <li><%= link_to raw('<i class="icon-off"></i>') + " Log out", logout_path, method: :delete, confirm: "You sure?" %></li>
+            </ul>
+          </li>
+        </ul>
 
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      
-      <ul class="nav pull-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-white"></i><b class="caret"></b></a>
-          <ul class="dropdown-menu user-menu">
-            <li class="useritem">
-              <a href="<%= user_path(current_user) %>">
-                <div class="avatar"><img src="<%= current_user.avatar.thumb.url %>" /></div>
-                <strong><%= current_user.username %></strong>
-                <small>View my profile</small>
-              </a>
-            </li>
-            <li class="divider"></li>
-            <li><%= link_to "Users", users_path %></li>
-            <li class="divider"></li>            
-            <li><%= link_to "Log out", logout_path, method: :delete %></li>
-          </ul>
-        </li>
-      </ul>
-
-      <% if current_page? root_path %>
-      <a class="btn btn-primary small" data-toggle="modal" data-target="#message-modal" data-backdrop="true">New Message</a>
-      <% else %>
-      <a class="btn btn-primary small" href="/">Messages</a>
-      <% end %>
-
+        <a class="brand" href="/">KrisBB</a>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="main container">
-  <%= render_flash %>
+  <div id="main">
+    <%= render_flash %>
 
-  <%= yield %>
-</div>
+    <%= yield %>
+  </div>
 
-<script>
-  window.settings = <%= raw Settings.to_json %>;
-  window.user = <%= raw current_user.to_json %>;
-</script>
-<%= javascript_include_tag "application", "krisbb", "http://js.pusherapp.com/1.10/pusher.min.js" %>
-<%= render partial: 'shared/bottom_include' %>
+  <script>
+    window.flash = <%= raw flash.to_json %>;
+    window.settings = <%= raw Settings.to_json %>;
+    window.user = <%= raw current_user.to_json %>;
+  </script>
+  <%= javascript_include_tag "application" %>
 </body>
 </html>

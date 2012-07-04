@@ -33,9 +33,6 @@ class MessagesController < ApplicationController
     @message.user = current_user
     @message.save
 
-    deferrable = Pusher['messages_channel'].trigger('new_message', @message, params[:socket_id]) if Rails.env.production?
-    MessageMailer.new_message(@message).deliver if @message.user.username != "DVSBSTD"
-
     respond_with @message
   end
 

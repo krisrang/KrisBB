@@ -1,22 +1,25 @@
-<div class="content-header">
-  <div class="header-inner">
-    <h2>Edit Account &raquo; <%= @user.username %></h2>
-  </div>
-</div>
-<div class="content-bottom">
-  <%= simple_form_for @user, html: {multipart: true, autocomplete: "off", class: "well"} do |f| %>
-    <%= f.input :password, label: "New password", hint: "Leave blank to keep current password" %>
-    <%= f.input :password_confirmation, label: "Confirm new password" %>
+<%= simple_form_for(@user, html: {multipart: true, class: "well", autocomplete: "off"}) do |f| %>
+  <fieldset>
+    <legend>Edit Account &raquo; <%= @user.username %></legend>
+  
+    <div class="form-inputs">
+      <%= f.input :password, label: "New password", hint: "Leave blank to keep current password" %>
+      <%= f.input :password_confirmation, label: "Confirm new password" %>
 
-    <div class="clearfix avatar optional">
-      <label>Current Avatar</label>
-      <p><%= image_tag(@user.avatar.big.url) %></p>
-      <%= f.file_field :avatar %>
+      <%= f.input :avatar, label: "Set avatar" %>
       <%= f.hidden_field :avatar_cache %>
+
+      <div class="control-group avatar optional">
+        <label class="avatar optional control-label">Current Avatar</label>
+        <div class="controls">
+          <%= image_tag(@user.avatar.big.url) %>
+        </div>
+      </div>
     </div>
 
-    <div class="actions">
-      <%= f.button :submit, "Save", class: "btn primary" %>
-    </div>    
-  <% end %>
-</div>
+    <div class="form-actions">
+      <%= f.button :submit, "Save", class: "btn btn-primary" %>
+      <%= link_to "Back to messages", root_path, class: "btn btn-small" %>
+    </div>
+  </fieldset>
+<% end %>

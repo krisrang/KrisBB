@@ -1,332 +1,92 @@
-@import "compass/css3/box-shadow"
-@import "compass/css3/text-shadow"
-@import "compass/css3/transition"
-@import "compass/css3/border-radius"
-@import "compass/css3/background-clip"
-
+html,
 body
-  background: #B2C9ED
-  color: #333
-  font: 14px/18px "HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif
+  margin: 0
+  padding: 0
+  width: 100%
+  height: 100%
 
-.container,
-.navbar-fixed-top .container,
-.navbar-fixed-bottom .container
-  width: 940px
-
-.btn.small
-  padding: 5px 9px 5px
-
-li,
-.btn
-  .icon-wrapper
-    position: relative
-    float: left
-
-    i
-      float: left
-      margin: 0 6px 0 0
-      width: 22px
-      height: 22px
-      background: transparent
-      background-repeat: no-repeat
+#main
+  position: fixed
+  top: 60px
+  left: 10px
+  bottom: 0
+  right: 10px
 
 .user-menu
-  max-width: 250px
+  img
+    height: 20px
 
-  li.useritem
-    color: #999
-    height: 45px
+table.users
+  td
+    vertical-align: middle
 
-    a
-      height: 45px
+    &.online_bit
+      text-align: right
 
-    .avatar
-      float: left
-      padding-right: 10px
-    
-    small
-      display: block
-      font-size: 11px
+.user-messages
+  margin-left: 160px
+  min-height: 200px
 
-label.placeholder
-  padding-top: 2px !important
+  table
+    td.message
+      width: 100%
 
-#message-modal
-  max-height: 700px
+.user-controls
+  float: left
 
-.navbar
-  .btn
-    margin-top: 4px
+ul.messages
+  position: fixed
+  top: 60px
+  left: 20px
+  bottom: 60px
+  right: 300px
+  padding: 0
+  overflow: auto
 
-.main.container
-  width: 920px
-  padding: 10px
-  padding-top: 50px
-  background: transparent url('/assets/blur.png')
-  @include border-bottom-radius(6px)
 
-  &.form
-    border: 1px solid rgba(0, 0, 0, .1)
-    @include border-radius(6px)
-    @include background-clip(padding-box)
+  li
+    position: relative
+    border-left: 185px solid #181b1d
+    padding: 0
 
-    .form-inner
-      min-height: 50px
-      padding: 12px
-      background-color: white
-      @include border-radius(6px)
-
-      h2
-        text-align: center
-
-      form
-        margin-left: 330px
-
-.content-header
-  border: 1px solid rgba(0, 0, 0, .1)
-  border-bottom: none
-  @include border-top-radius(6px)
-  @include background-clip(padding-box)
-
-  .header-inner
-    min-height: 20px
-    padding: 12px
-    background: #F5F5F5
-    border-bottom: 1px solid #E8E8E8
-    @include border-top-radius(6px)
-
-    .btn
-      float: right
-      margin-top: -5px
-
-    h2
-      font-size: 18px
-      font-weight: bold
-      line-height: 20px
-
-.content-bottom
-  padding: 12px 9px
-  background: white
-  border-left: 1px solid #E8E8E8
-  border-left: 1px solid rgba(0, 0, 0, .1)
-  border-right: 1px solid #E8E8E8
-  border-right: 1px solid rgba(0, 0, 0, .1)
-  border-bottom: 1px solid #E8E8E8
-  border-right: 1px solid rgba(0, 0, 0, .1)
-  @include background-clip(padding-box)
-  @include border-bottom-radius(6px)
-
-.content-box
-  padding: 12px 9px
-  background: white
-  border: 1px solid #E8E8E8
-  border: 1px solid rgba(0, 0, 0, .1)
-  @include background-clip(padding-box)
-  @include border-radius(6px)
-
-  &.user-box
-    min-height: 150px
-
-  .user-controls
-    float: right
-    width: 130px
-
-    td
-      a
-        color: #999
-        font-size: 10px
-        line-height: 16px
-        text-transform: uppercase
-
-      strong
-        color: #333
-        font-size: 14px
-
-  .user-avatar
-    float: left
-    width: 140px
-    height: 140px
-    margin-right: 10px
-    text-align: center
-
-.messages
-  .message-item,
-  .message-loader,
-  .message-pager
-    padding: 12px 9px
-    background: white
-    border-left: 1px solid #E8E8E8
-    border-left: 1px solid rgba(0, 0, 0, .1)
-    border-right: 1px solid #E8E8E8
-    border-right: 1px solid rgba(0, 0, 0, .1)
-    border-bottom: 1px solid #E8E8E8
-    border-right: 1px solid rgba(0, 0, 0, .1)
-    @include background-clip(padding-box)
-
-  .message-loader,
-  .message-pager
-    text-align: center
-    padding: 20px
-    @include border-bottom-radius(6px)
-
-  .message-pager
-    display: none
-
-    a
-      font-weight: bold
-
-    p
-      display: none
-      color: #888
-      margin: 0
-    
-    &:hover
-      background: #f0f6ff
-      cursor: pointer
-
-    &.disabled,
-    &.disabled:hover
-      cursor: default
-      background: #FFFFFF
-      @include background-clip(padding-box)
-
-      a
-        display: none
-
-      p
-        display: block
-
-  .message-item
-    .message-avatar
-      float: left
-      padding-right: 10px
+    &.timeskip
+      border-left: none
+      border-top: 2px solid #1F637C
+      background: #23282B
+      color: #C2D9DD
+      padding: 5px 10px
       text-align: center
-      width: 40px
-      height: 40px
 
-    .message-contents
-      margin-left: 50px
+    .username,
+    .message,
+    .time
+      padding: 10px 5px
 
-    .message-info
-      margin-bottom: 4px
-      padding-left: 50px
+    .username
+      margin-left: -185px
+      padding: 5px
+      float: left
+      width: 180px
+      color: #EEE
+
+    .message
+      padding: 5px
+      border-left: 1px solid #33B5E5
+
+    .time
+      position: absolute
+      padding: 5px
+      top: 0
+      right: 0
+      width: 85px
+      color: #666
       font-size: 12px
-      color: #999
 
-      .username a
-        color: #999
-        font-weight: bold
+#sidebar
+  position: fixed
+  width: 240px
+  top: 60px
+  bottom: 0
+  right: 20px
 
-        &:hover
-          color: #0069D6
-
-      .time,
-      .message-controls
-        float: right
-        font-size: 12px
-
-      .message-controls
-        display: none
-
-        a
-          margin-left: 5px
-
-    &.hover
-      .message-controls
-        display: block
-
-      .time
-        display: none
-
-  .waiting-item
-    display: none
-    color: #0069D6
-    cursor: pointer
-    text-align: center
-    border-left: 1px solid #E8E8E8
-    border-left: 1px solid rgba(0, 0, 0, .1)
-    border-right: 1px solid #E8E8E8
-    border-right: 1px solid rgba(0, 0, 0, .1)
-    border-bottom: 1px solid #E8E8E8
-    border-right: 1px solid rgba(0, 0, 0, .1)
-    font-size: 13px
-    padding: 10px 1px
-    @include text-shadow(0 1px 0 rgba(255, 255, 255, .6))
-    background-color: #F5F5F5
-    border-top: 1px solid #DDD
-    @include box-shadow(inset 0 3px 8px rgba(0,0,0,.05))
-    @include background-clip(padding-box)
-
-#message-modal
-  .smilies
-    margin-bottom: 5px
-
-    a
-      margin-right: 5px
-      cursor: pointer
-
-#messageform
-  margin: 0 
-
-  textarea
-    height: 100px
-    width: 520px
-
-.modal-open .tooltip
-  z-index: 12000
-
-@media screen and (max-width: 480px), screen and (max-device-width: 480px)
-  .navbar .navbar-inner .container
-    width: auto
-    padding: 0 10px
-
-  .navbar-fixed-top
-    margin-bottom: 0
-
-  .main.container
-    width: 92%
-    padding-top: 10px
-
-    .message-contents
-      overflow: hidden
-      text-overflow: ellipsis
-
-  .main.container.form
-    width: 270px
-
-    .form-inner
-      padding: 12px 0
-
-      form
-        margin-left: 0
-
-  .modal
-    top: 0
-    left: 0
-    margin: 0
-    width: auto
-
-    .tutorial
-      display: none
-
-  #messageform textarea
-    width: 95%
-
-  .content-box .user-avatar
-    float: none
-
-  form
-    label
-      float: none
-
-    .input
-      margin: 0
-
-    div.avatar input,
-    div.avatar p
-      padding-left: 0
-
-  .content-bottom 
-    .actions
-      padding-left: 10px
+@media (max-width: 979px)

@@ -14,8 +14,8 @@ class User
 
   attr_accessor :remember_me, :password_confirmation
   attr_protected :admin
-  #attr_accessible :email, :password, :password_confirmation
 
+  validates_presence_of :username
   validates_confirmation_of :password, if: :password
   validates_length_of :password, minimum: 6, maximum: 16, if: :password
 
@@ -31,6 +31,8 @@ class User
       hash.delete "crypted_password"
       hash.delete "salt"
       hash.delete "token"
+      hash.delete "unlock_token"
+      hash.delete "lock_expires_at"
       hash.delete "failed_logins_count"
       hash.delete "remember_me_token"
       hash.delete "remember_me_token_expires_at"

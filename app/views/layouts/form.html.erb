@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
   <title>KrisBB</title>
+  <%= stylesheet_link_tag "static", :media => "all" %>
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <style>
+  /*body { background: #666 url(<%= asset_path "crossed_stripes.png" %>) }*/
 
-  <meta name="viewport" content="width=device-width" />
+  .form-page {
+    width: 550px;
+    margin: 50px auto 0;
+  }
+  </style>
   <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag "application" %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
-<div class="main container form form-stacked">
+<div class="form-page">
   <%= render_flash %>
 
-  <div class="form-inner">
-    <%= yield %>
-  </div>
+  <%= yield %>
 </div>
 
-<%= javascript_include_tag "application" %>
-<%= render partial: 'shared/bottom_include' %>
+<%= javascript_include_tag "static" %>
 </body>
 </html>

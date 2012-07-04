@@ -1,21 +1,11 @@
-<div class="content-header new-message">
-  <div class="header-inner">
-    <h2>Messages</h2>
-  </div>
-</div>
+<ul class="unstyled well messages">
+  <li>
+    <div class="username">Kris</div>
+    <div class="message">Yo onju lahe chat</div>
+    <div class="time">5 seconds ago</div>
+  </li>
+</ul>
 
-<div class="messages">
-  <div class="waiting-item">1 new message</div>
-  <div class="message-list"></div>
-  <div class="message-loader">
-    <%= image_tag "loader.gif" %>
-  </div>
-  <div class="message-pager">
-    <a>Load more messages..</a>
-    <p>No more messages to show</p>
-  </div>
+<div id="sidebar">
+  Users
 </div>
-
-<script>
-  window.messages = <%= raw @messages.to_json %>;
-</script>

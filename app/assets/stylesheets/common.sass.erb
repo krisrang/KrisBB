@@ -1,3 +1,4 @@
+@import "compass/css3/border-radius"
 @import "smilies/*.png"
 @include all-smilies-sprites
 
@@ -18,12 +19,6 @@
   width: 39px
   height: 15px
   background: url(<%= asset_path "smilies/lol.gif" %>) no-repeat
-
-.btn
-  border-radius: 0px
-
-[class^="icon-"], [class*=" icon-"]
-  vertical-align: middle
 
 \::-webkit-input-placeholder
   color: #666
@@ -58,3 +53,13 @@
 
 .navbar .dropdown-menu
   font-size: 14px
+
+.form-horizontal
+  .control-label
+    width: 160px
+  
+  .controls
+    margin-left: 170px
+
+.alert
+  @include border-radius(2px)

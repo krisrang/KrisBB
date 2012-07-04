@@ -1,9 +1,16 @@
-<h2>Sign in</h2>
-<%= simple_form_for(@user, url: sessions_path, html: {class: "form-vertical"}) do |f| %>
-    <%= f.input :username, label: false, placeholder: "Username" %>
-    <%= f.input :password, label: false, placeholder: "Password" %>
-    <%= f.input :remember_me, as: :boolean, label: "Keep me logged in" %>
+<%= simple_form_for(@user, url: sessions_path, html: {class: "well"}) do |f| %>
+  <fieldset>
+    <legend>Sign In</legend>
+  
+    <div class="form-inputs">
+      <%= f.input :username, label: "Username" %>
+      <%= f.input :password, label: "Password" %>
+      <%= f.input :remember_me, as: :boolean, label: "Keep me logged in" %>
+    </div>
 
-    <%= f.button :submit, "Sign In", class: "btn btn-primary" %>
-    <!--<%= link_to "Sign Up", signup_path, class: "btn" %>-->
+    <div class="form-actions">
+      <%= f.button :submit, "Sign In", class: "btn btn-primary" %>
+      <%= link_to "Sign Up", signup_path, class: "btn btn-small" if Settings.enable_signup %>
+    </div>
+  </fieldset>
 <% end %>
