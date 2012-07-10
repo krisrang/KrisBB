@@ -26,10 +26,6 @@ gem 'carrierwave'
 gem "carrierwave-mongoid", :git => "git://github.com/jnicklas/carrierwave-mongoid.git", :branch => "mongoid-3.0"
 gem 'fog'
 
-# RT
-gem 'pusher'
-gem 'em-http-request'
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

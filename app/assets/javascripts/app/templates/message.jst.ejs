@@ -1,16 +1,10 @@
-<div class="message-item" data-message-id="<%= model.get("id") %>">
-  <div class="message-avatar">
-    <img src="<%= model.get("avatar") %>" />
+<li class="user<%= message.user.colour %>">
+  <div class="username">
+    <img src="<%= message.user.avatar.thumb.url %>" />
+    <%= message.user.username %>
   </div>
-  <div class="message-info">
-    <div class="message-controls">
-      <span class="longtime"><%= model.get("created_at_human") %></span>
-      <% if (KrisBB.user.admin() || model.get("user_id") == KrisBB.user.get("id")) { %>
-      <a href="" class="delete-link" data-method="delete">Delete</a>
-      <% } %>      
-    </div>
-    <span class="username"><a href="/users/<%= model.get("user_id") %>"><%= model.get("username") %></a></span>
-    <span class="time"><%= dateToAgo(model.created_at()) %></span>
+  <div class="message"><%= message.contents %></div>
+  <div class="time">
+    <time class="timeago" datetime="<%= message.created_at %>"><%= message.created_at %></time>
   </div>
-  <div class="message-contents"><%= model.get("html") %></div>
-</div>
+</li>

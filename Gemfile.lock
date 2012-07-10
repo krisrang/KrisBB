@@ -158,11 +158,11 @@ GEM
       chunky_png (~> 1.2.1)
     origin (1.0.4)
     polyglot (0.3.3)
+    pubnub (0.1.12)
+      em-http-request (>= 1.0.2)
+      json
     puma (1.4.0)
       rack (~> 1.2)
-    pusher (0.9.4)
-      multi_json (~> 1.0)
-      signature (~> 0.1.2)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -200,7 +200,6 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-    signature (0.1.3)
     simple_form (2.0.2)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
@@ -239,7 +238,6 @@ DEPENDENCIES
   compass-rails
   dalli
   ejs
-  em-http-request
   execjs
   fog
   heroku
@@ -251,8 +249,8 @@ DEPENDENCIES
   mini_magick
   mongoid
   oily_png
+  pubnub
   puma
-  pusher
   rails (= 3.2.5)
   rails_config
   rdiscount

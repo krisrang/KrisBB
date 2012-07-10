@@ -1,12 +1,14 @@
 <ul class="unstyled messages">
-  <% @messages.each do |message| %>
+  <% @messages.includes(:user).reverse.each do |message| %>
   <li class="user<%= message.user.colour %>">
     <div class="username">
       <img src="<%= message.user.avatar.thumb.url %>" />
       <%= message.user.username %>
     </div>
     <div class="message"><%= raw message.html %></div>
-    <div class="time"><%= message.created_at.to_s :long_ordinal %></div>
+    <div class="time">
+      <time class="timeago" datetime="<%= message.created_at %>"><%= message.created_at.to_s :long_ordinal %></time>
+    </div>
   </li>
   <% end %>
 </ul>
@@ -15,9 +17,10 @@
   <div id="messagebox">
     <textarea></textarea>
   </div>
-  <button class="btn btn-primary"><i class="icon-comment icon-white"></i></button>
+  <button id="push-message" class="btn btn-primary"><i class="icon-comment icon-white"></i></button>
 </div>
 
 <div id="sidebar">
-  Users
+  <h3 class="usercount">Users</h3>
+  <ul class="users unstyled"></ul>
 </div>

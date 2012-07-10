@@ -1,7 +1,7 @@
 <%= simple_form_for(@user, html: {multipart: true, class: "well", autocomplete: "off"}) do |f| %>
   <fieldset>
     <legend>Edit Account &raquo; <%= @user.username %></legend>
-  
+
     <div class="form-inputs">
       <%= f.input :password, label: "New password", hint: "Leave blank to keep current password" %>
       <%= f.input :password_confirmation, label: "Confirm new password" %>
@@ -19,7 +19,7 @@
 
     <div class="form-actions">
       <%= f.button :submit, "Save", class: "btn btn-primary" %>
-      <%= link_to "Back to messages", root_path, class: "btn btn-small" %>
+      <%= link_to "Cancel", user_path(current_user), class: "btn btn-small" %>
     </div>
   </fieldset>
 <% end %>

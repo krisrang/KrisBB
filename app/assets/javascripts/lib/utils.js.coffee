@@ -1,11 +1,3 @@
-window.log = ->
-  log.history = log.history || []
-  log.history.push(arguments)
-  if this.console
-    arguments.callee = arguments.callee.caller
-    newarr = [].slice.call(arguments)
-    if console.log? then log.apply.call(console.log, console, newarr) else console.log.apply(console, newarr)
-
 window.parseISO8601 = (date)->
   return new Date() if !date?
   if date.getTime
@@ -58,7 +50,7 @@ window.dateToAgo = (date)->
       str = "over "+years+" years"
     else
       str = "almost "+years+1+" years"
-  
+
   return str+" ago"
 
 jQuery.fn.extend

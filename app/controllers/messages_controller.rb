@@ -3,10 +3,12 @@ class MessagesController < ApplicationController
   respond_to :html, :json
 
   def index
+
+
     if params[:page]
       @messages = @messages.page params[:page]
     else
-      @messages = @messages.desc(:created_at).limit(50).reverse
+      @messages = @messages.desc(:created_at).limit(50)
     end
 
     respond_with @messages
@@ -30,6 +32,12 @@ class MessagesController < ApplicationController
     #@message = Message.new(params[:message])
     @message.user = current_user
     @message.save
+
+    PUBNUB.publish({
+      'channel' => 'krisbb',
+      'message' => {message: @message},
+      'callback' => lambda  {  |message| puts(message) }
+    })
 
     respond_with @message
   end

@@ -1,0 +1,10 @@
+//= require jquery
+//= require jquery_ujs
+//= require twitter/bootstrap
+//= require ./lib/json2
+//= require ./lib/underscore
+//= require ./lib/backbone
+//= require ./lib/placeholder.shim
+//= require ./lib/timeago
+//= require common
+//= require app
