@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.5'
 gem 'puma'
 
-gem "mongoid", "3.0.0.rc"
+gem "mongoid"
 gem 'memcachier'
 gem 'dalli'
 

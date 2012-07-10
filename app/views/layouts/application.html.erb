@@ -10,6 +10,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+  <noscript>This application requires Javascript enabled!</noscript>
+
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container-fluid">
@@ -17,18 +19,17 @@
         <ul class="nav pull-right">
           <li class="user-menu">
              <a href="<%= user_path(current_user) %>">
-              <img src="<%= current_user.avatar.thumb.url %>" />
               <strong><%= current_user.username %></strong>
             </a>
           </li>
           <li class="dropdown">
             <a href="" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><%= link_to raw('<i class="icon-wrench"></i>') + " Settings", edit_user_path(current_user) %></li>            
+              <li><%= link_to raw('<i class="icon-wrench icon-white"></i>') + " Settings", edit_user_path(current_user) %></li>
               <li class="divider"></li>
-              <li><%= link_to raw('<i class="icon-list-alt"></i>') + " Users", users_path %></li>
-              <li class="divider"></li>            
-              <li><%= link_to raw('<i class="icon-off"></i>') + " Log out", logout_path, method: :delete, confirm: "You sure?" %></li>
+              <li><%= link_to raw('<i class="icon-list-alt icon-white"></i>') + " Users", users_path %></li>
+              <li class="divider"></li>
+              <li><%= link_to raw('<i class="icon-off icon-white"></i>') + " Log out", logout_path, method: :delete, confirm: "You sure?" %></li>
             </ul>
           </li>
         </ul>
@@ -39,16 +40,20 @@
   </div>
 
   <div id="main">
-    <%= render_flash %>
+    <%= render_flash unless in_app? %>
 
     <%= yield %>
   </div>
 
+  <% if in_app? %>
   <script>
     window.flash = <%= raw flash.to_json %>;
     window.settings = <%= raw Settings.to_json %>;
     window.user = <%= raw current_user.to_json %>;
   </script>
   <%= javascript_include_tag "application" %>
+  <% else %>
+  <%= javascript_include_tag "static" %>
+  <% end %>
 </body>
 </html>

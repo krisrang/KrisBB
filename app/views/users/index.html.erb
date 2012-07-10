@@ -7,9 +7,9 @@
         <td>
           <img src="<%= user.avatar.thumb.url %>" />
           <strong><%= link_to user.username, user_path(user) %></strong>
+          <%= online_bit user %>
         </td>
         <td><a><strong><%= user.messages.count %></strong> posts</a></td>
-        <td class="online_bit"><%= online_bit user %></td>
       </tr>
       <% end %>
     </tbody>

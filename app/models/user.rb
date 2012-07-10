@@ -11,6 +11,7 @@ class User
   field :username
   field :token
   field :admin, type: Boolean,  default: false
+  field :colour, type: Integer
 
   attr_accessor :remember_me, :password_confirmation
   attr_protected :admin
@@ -21,9 +22,8 @@ class User
 
   authenticates_with_sorcery!
 
-  before_create :enable_signup, :generate_token
-  before_update :generate_token
-  
+  before_create :enable_signup, :generate_token, :generate_colour
+
   def as_json(options = nil)
     serializable_hash(options).tap do |hash|
       hash["id"] = self.id
@@ -39,8 +39,10 @@ class User
     end
   end
 
-  def api_key
-    self.token
+  def upgrade_user
+    generate_token if self.token.nil?
+    generate_colour if self.colour.nil?
+    save
   end
 
   protected
@@ -49,6 +51,12 @@ class User
     end
 
     def generate_token
-      self.token = SecureRandom.base64(15).tr('+/=lIO0', 'pqrsxyz') if self.token.nil?
+      self.token = SecureRandom.base64(15).tr('+/=lIO0', 'pqrsxyz')
+    end
+
+    def generate_colour
+      self.colour = rand 1..5
+
+      #self.colour = "%06x" % (rand * 0xffffff)
     end
 end

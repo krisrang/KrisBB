@@ -1,14 +1,12 @@
 class MessagesController < ApplicationController
   load_and_authorize_resource
   respond_to :html, :json
-  
-  def index
-    @messages = @messages.order_by([:created_at, :desc])
 
-    if params[:last]
-      @messages = @messages.where(:_id.gt => params[:last])
+  def index
+    if params[:page]
+      @messages = @messages.page params[:page]
     else
-      @messages = @messages.page(params[:page] || 1)
+      @messages = @messages.desc(:created_at).limit(50).reverse
     end
 
     respond_with @messages
@@ -23,7 +21,7 @@ class MessagesController < ApplicationController
     #@message = Message.new
     respond_with @message
   end
-  
+
   def edit
     #@message = Message.find(params[:id])
   end

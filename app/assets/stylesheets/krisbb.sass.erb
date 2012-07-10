@@ -1,9 +1,13 @@
+$usercolours: #0099CC, #562573, #FF8800, #669900, #99CC00
+
 html,
 body
   margin: 0
   padding: 0
   width: 100%
   height: 100%
+
+// GENERAL
 
 #main
   position: fixed
@@ -16,11 +20,13 @@ body
   img
     height: 20px
 
+// Static user pages
+
 table.users
   td
     vertical-align: middle
 
-    &.online_bit
+    &:last-child
       text-align: right
 
 .user-messages
@@ -34,6 +40,8 @@ table.users
 .user-controls
   float: left
 
+// Main app
+
 ul.messages
   position: fixed
   top: 60px
@@ -46,16 +54,18 @@ ul.messages
 
   li
     position: relative
-    border-left: 185px solid #181b1d
+    border-left: 2px solid #94A686
+    border-bottom: 1px solid #282A2C
     padding: 0
+    min-height: 50px
 
-    &.timeskip
-      border-left: none
-      border-top: 2px solid #1F637C
-      background: #23282B
-      color: #C2D9DD
-      padding: 5px 10px
-      text-align: center
+    @for $i from 1 through length($usercolours)
+      $value: nth($usercolours, $i)
+      &.user#{$i}
+        border-left: 2px solid $value
+
+    &:hover
+      background: #000000
 
     .username,
     .message,
@@ -63,15 +73,19 @@ ul.messages
       padding: 10px 5px
 
     .username
-      margin-left: -185px
       padding: 5px
       float: left
-      width: 180px
-      color: #EEE
+      overflow: hidden
+      width: 160px
+
+      img
+        height: 35px
+        padding: 0 5px
 
     .message
+      margin-left: 165px
       padding: 5px
-      border-left: 1px solid #33B5E5
+      color: #EEE
 
     .time
       position: absolute
@@ -82,6 +96,32 @@ ul.messages
       color: #666
       font-size: 12px
 
+#send-message
+  position: fixed
+  height: 40px
+  left: 20px
+  bottom: 20px
+  right: 300px
+
+  button
+    position: absolute
+    right: 0
+    width: 60px
+    height: 35px
+
+  #messagebox
+    position: absolute
+    left: 0
+    right: 80px
+    padding: 0
+    margin: 0
+
+    textarea
+      width: 100%
+      height: 23px
+      padding: 5px
+      font-size: 14px
+
 #sidebar
   position: fixed
   width: 240px
@@ -89,4 +129,35 @@ ul.messages
   bottom: 0
   right: 20px
 
-@media (max-width: 979px)
+@media (max-width: 480px)
+  .navbar-fixed-top,
+  .navbar-fixed-bottom
+    margin-left: 0
+    margin-right: 0
+
+    .navbar-inner
+      padding: 0
+
+  #main
+    position: relative
+    margin: 5px 10px
+    top: auto
+    left: auto
+    right: auto
+    bottom: auto
+
+  ul.messages
+    right: 20px
+
+  #send-message
+    right: 20px
+
+  #sidebar
+    display: none
+
+  .user-messages
+    margin-left: 0
+    min-height: 0
+
+  .user-controls
+    float: none

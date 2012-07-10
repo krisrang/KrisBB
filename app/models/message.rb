@@ -45,20 +45,20 @@ class Message
   protected
     def process_text
       value = RDiscount.new(self.text, :autolink).to_html
-      
+
       value.gsub!(/\r\n?/u, "\n")
       value.gsub!(/([^\n]\n)(?=[^\n])/u, '\1<br />')
 
       value = smilie_parse(value)
-      
+
       self.html = value
     end
-    
+
     def smilie_parse(text)
       @@smilies.each do |k, v|
         text.gsub! k, "<i class=\"smilie smilies-#{v}\"></i>"
       end
-      
+
       text
     end
 end
