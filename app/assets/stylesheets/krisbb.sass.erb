@@ -1,5 +1,12 @@
 $usercolours: #0099CC, #562573, #FF8800, #669900, #99CC00
 
+@mixin reset-fixed
+  position: relative
+  top: auto
+  bottom: auto
+  right: auto
+  left: auto
+
 html,
 body
   margin: 0
@@ -142,6 +149,64 @@ ul.messages
       img
         height: 20px
 
+.archivelink
+  display: none
+
+html.no-js
+  width: auto
+  height: auto
+
+  body
+    width: auto
+    height: auto
+
+    .dropdown-toggle
+      display: none
+
+    .dropdown-menu
+      @include reset-fixed
+      display: block
+      float: none
+      padding: 0
+      margin: 0
+
+      li
+        float: left
+
+    .navbar-fixed-top
+      @include reset-fixed
+
+    #main
+      @include reset-fixed
+      margin: 10px
+
+      #sidebar
+        display: none
+
+      ul.messages,
+      #send-message
+        @include reset-fixed
+        margin-top: 10px
+
+      #send-message
+        height: 75px
+
+        button
+          height: 75px
+
+        textarea
+          height: 60px
+
+      .archivelink
+        display: block
+        padding: 20px
+        font-size: 14px
+        font-weight: bold
+        text-align: center
+
+        &:hover
+          background: #000
+
 @media (max-width: 480px)
   .navbar-fixed-top,
   .navbar-fixed-bottom
@@ -152,12 +217,8 @@ ul.messages
       padding: 0
 
   #main
-    position: relative
     margin: 5px 10px
-    top: auto
-    left: auto
-    right: auto
-    bottom: auto
+    @include reset-fixed
 
   ul.messages
     right: 20px

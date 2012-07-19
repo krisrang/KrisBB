@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   respond_to :html, :json
 
   def index
-
+    @messages = @messages.includes(:user)
 
     if params[:page]
       @messages = @messages.page params[:page]

@@ -7,8 +7,8 @@ class SocketModule
     #app.events.on 'send-message',  @sendMessage
 
   connect: () =>
-    app.socket = @socket = io.connect 'http://pubsub.pubnub.com', pubnub_setup
-    @addSocketHandlers()
+    #app.socket = @socket = io.connect 'http://pubsub.pubnub.com', pubnub_setup
+    #@addSocketHandlers()
 
   #sendMessage: (message) =>
   #  @socket.emit 'message',

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js">
 <head>
   <title>KrisBB</title>
   <link rel="shortcut icon" href="/favicon.ico">
@@ -10,8 +10,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <noscript>This application requires Javascript enabled!</noscript>
-
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container-fluid">
@@ -51,7 +49,6 @@
     window.settings = <%= raw Settings.public.to_json %>;
     window.user = <%= raw current_user.to_json %>;
   </script>
-  <script src="http://cdn.pubnub.com/socket.io.min.js"></script>
   <%= javascript_include_tag "application" %>
   <% else %>
   <%= javascript_include_tag "static" %>

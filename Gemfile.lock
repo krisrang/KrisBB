@@ -1,21 +1,21 @@
 GIT
   remote: git://github.com/jnicklas/carrierwave-mongoid.git
-  revision: ccbec883f6443a6bc05341a4863c0ffe8db40d05
+  revision: 70d73e1ba30748d63b828cabe290f070cde73f41
   branch: mongoid-3.0
   specs:
     carrierwave-mongoid (0.3.0.alpha)
       carrierwave (~> 0.6.1)
-      mongoid (~> 3.0.0.rc)
+      mongoid (~> 3.0.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    actionmailer (3.2.5)
-      actionpack (= 3.2.5)
+    actionmailer (3.2.6)
+      actionpack (= 3.2.6)
       mail (~> 2.4.4)
-    actionpack (3.2.5)
-      activemodel (= 3.2.5)
-      activesupport (= 3.2.5)
+    actionpack (3.2.6)
+      activemodel (= 3.2.6)
+      activesupport (= 3.2.6)
       builder (~> 3.0.0)
       erubis (~> 2.7.0)
       journey (~> 1.0.1)
@@ -23,23 +23,23 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.1.3)
-    activemodel (3.2.5)
-      activesupport (= 3.2.5)
+    activemodel (3.2.6)
+      activesupport (= 3.2.6)
       builder (~> 3.0.0)
-    activerecord (3.2.5)
-      activemodel (= 3.2.5)
-      activesupport (= 3.2.5)
+    activerecord (3.2.6)
+      activemodel (= 3.2.6)
+      activesupport (= 3.2.6)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
-    activeresource (3.2.5)
-      activemodel (= 3.2.5)
-      activesupport (= 3.2.5)
-    activesupport (3.2.5)
+    activeresource (3.2.6)
+      activemodel (= 3.2.6)
+      activesupport (= 3.2.6)
+    activesupport (3.2.6)
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.2.8)
     arel (3.0.2)
-    aws-sdk (1.5.6)
+    aws-sdk (1.5.7)
       httparty (~> 0.7)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
@@ -65,19 +65,9 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
-    cookiejar (0.3.0)
     dalli (2.1.0)
     ejs (1.1.1)
-    em-http-request (1.0.2)
-      addressable (>= 2.2.3)
-      cookiejar
-      em-socksify
-      eventmachine (>= 1.0.0.beta.4)
-      http_parser.rb (>= 0.5.3)
-    em-socksify (0.2.0)
-      eventmachine (>= 1.0.0.beta.4)
     erubis (2.7.0)
-    eventmachine (1.0.0.rc.4)
     excon (0.14.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -95,16 +85,15 @@ GEM
       ruby-hmac
     formatador (0.2.3)
     fssm (0.2.9)
-    heroku (2.28.10)
-      heroku-api (~> 0.2.7)
+    heroku (2.28.12)
+      heroku-api (~> 0.2.8)
       launchy (>= 0.3.2)
       netrc (~> 0.7.5)
       rest-client (~> 1.6.1)
       rubyzip
-    heroku-api (0.2.7)
+    heroku-api (0.2.8)
       excon (~> 0.14.3)
     hike (1.2.1)
-    http_parser.rb (0.5.3)
     httparty (0.8.3)
       multi_json (~> 1.0)
       multi_xml
@@ -136,12 +125,12 @@ GEM
     mime-types (1.19)
     mini_magick (3.4)
       subexec (~> 0.2.1)
-    mongoid (3.0.0)
+    mongoid (3.0.1)
       activemodel (~> 3.1)
       moped (~> 1.1.1)
       origin (~> 1.0.3)
       tzinfo (~> 0.3.22)
-    moped (1.1.1)
+    moped (1.1.2)
     multi_json (1.3.6)
     multi_xml (0.5.1)
     multipart-post (1.1.5)
@@ -158,9 +147,6 @@ GEM
       chunky_png (~> 1.2.1)
     origin (1.0.4)
     polyglot (0.3.3)
-    pubnub (0.1.12)
-      em-http-request (>= 1.0.2)
-      json
     puma (1.4.0)
       rack (~> 1.2)
     rack (1.4.1)
@@ -170,19 +156,19 @@ GEM
       rack
     rack-test (0.6.1)
       rack (>= 1.0)
-    rails (3.2.5)
-      actionmailer (= 3.2.5)
-      actionpack (= 3.2.5)
-      activerecord (= 3.2.5)
-      activeresource (= 3.2.5)
-      activesupport (= 3.2.5)
+    rails (3.2.6)
+      actionmailer (= 3.2.6)
+      actionpack (= 3.2.6)
+      activerecord (= 3.2.6)
+      activeresource (= 3.2.6)
+      activesupport (= 3.2.6)
       bundler (~> 1.0)
-      railties (= 3.2.5)
+      railties (= 3.2.6)
     rails_config (0.3.1)
       activesupport (>= 3.0)
-    railties (3.2.5)
-      actionpack (= 3.2.5)
-      activesupport (= 3.2.5)
+    railties (3.2.6)
+      actionpack (= 3.2.6)
+      activesupport (= 3.2.6)
       rack-ssl (~> 1.3.2)
       rake (>= 0.8.7)
       rdoc (~> 3.4)
@@ -223,7 +209,7 @@ GEM
     uglifier (1.2.6)
       execjs (>= 0.3.0)
       multi_json (~> 1.3)
-    uuidtools (2.1.2)
+    uuidtools (2.1.3)
 
 PLATFORMS
   ruby
@@ -249,9 +235,8 @@ DEPENDENCIES
   mini_magick
   mongoid
   oily_png
-  pubnub
   puma
-  rails (= 3.2.5)
+  rails (= 3.2.6)
   rails_config
   rdiscount
   sass-rails

@@ -1,5 +1,12 @@
+<div id="send-message">
+  <div id="messagebox">
+    <textarea></textarea>
+  </div>
+  <button id="push-message" class="btn btn-primary"><i class="icon-comment icon-white"></i></button>
+</div>
+
 <ul class="unstyled messages">
-  <% @messages.includes(:user).reverse.each do |message| %>
+  <% @messages.each do |message| %>
   <li class="user<%= message.user.colour %>">
     <div class="username">
       <img src="<%= message.user.avatar.thumb.url %>" />
@@ -13,12 +20,8 @@
   <% end %>
 </ul>
 
-<div id="send-message">
-  <div id="messagebox">
-    <textarea></textarea>
-  </div>
-  <button id="push-message" class="btn btn-primary"><i class="icon-comment icon-white"></i></button>
-</div>
+<!-- TODO: archives link -->
+<%= link_to "Older messages..", "archive", class: "archivelink" %>
 
 <div id="sidebar">
   <h3 class="usercount">Users</h3>
