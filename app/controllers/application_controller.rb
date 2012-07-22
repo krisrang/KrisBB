@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
             require_login
           end
         end
-        format.json { render json: { error: "Unauthorized" }, status: 403 }
+        format.json { render json: { error: "Unauthorized" }, status: 401 }
       end
     end
 end
