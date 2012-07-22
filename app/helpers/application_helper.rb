@@ -17,4 +17,10 @@ module ApplicationHelper
     image_tag img, title: "Last seen " + time_ago_in_words(time) + " ago",
       class: "online-bit"
   end
+
+  def avatar(user, type)
+    content_tag :i, class: "avatar #{type}" do
+      image_tag user.avatar.versions[type]
+    end
+  end
 end

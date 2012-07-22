@@ -9,7 +9,7 @@
   <% @messages.each do |message| %>
   <li class="user<%= message.user.colour %>">
     <div class="username">
-      <img src="<%= message.user.avatar.thumb.url %>" />
+      <%= avatar message.user, :small %>
       <%= message.user.username %>
     </div>
     <div class="message"><%= raw message.html %></div>

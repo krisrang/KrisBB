@@ -7,6 +7,10 @@ $usercolours: #0099CC, #562573, #FF8800, #669900, #99CC00
   right: auto
   left: auto
 
+@mixin avatar($max)
+  max-height: $max
+  max-width: $max
+
 html,
 body
   margin: 0
@@ -23,9 +27,37 @@ body
   bottom: 0
   right: 10px
 
+.avatar
+  display: inline-block
+  padding: 0 5px
+
+  &.small
+    width: 35px
+    height: 35px
+
+    img
+      max-height: 35px
+      max-width: 35px
+
+  &.big
+    width: 140px
+    height: 140px
+
+    img
+      max-height: 140px
+      max-width: 140px
+
+  &.thumn
+    width: 20px
+    height: 20px
+
+    img
+      max-height: 20px
+      max-width: 20px
+
 .user-menu
   img
-    height: 20px
+    max-height: 20px
 
 // Static user pages
 
@@ -58,7 +90,6 @@ ul.messages
   padding: 0
   overflow: auto
 
-
   li
     position: relative
     border-left: 2px solid #94A686
@@ -89,7 +120,7 @@ ul.messages
       width: 160px
 
       img
-        height: 35px
+        @include avatar(35px)
         padding: 0 5px
 
     .message
@@ -147,7 +178,7 @@ ul.messages
       padding: 5px
 
       img
-        height: 20px
+        @include avatar(20px)
 
 .archivelink
   display: none

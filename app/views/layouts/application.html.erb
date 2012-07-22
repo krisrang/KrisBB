@@ -17,6 +17,7 @@
         <ul class="nav pull-right">
           <li class="user-menu">
              <a href="<%= user_path(current_user) %>">
+              <%= avatar current_user, :thumb %>
               <strong><%= current_user.username %></strong>
             </a>
           </li>
