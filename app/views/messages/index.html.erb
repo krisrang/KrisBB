@@ -7,7 +7,7 @@
 
 <ul class="unstyled messages">
   <% @messages.reverse.each do |message| %>
-  <li class="user<%= message.user.colour %>">
+  <li id="message-#{message.id}" class="user<%= message.user.colour %>">
     <div class="username">
       <%= avatar message.user, :small %>
       <%= message.user.username %>
@@ -19,9 +19,6 @@
   </li>
   <% end %>
 </ul>
-
-<!-- TODO: archives link -->
-<%= link_to "Older messages..", "archive", class: "archivelink" %>
 
 <div id="sidebar">
   <h3 class="usercount">Users</h3>
