@@ -1,14 +1,12 @@
-<%= form_for(@message, html: {autocomplete: "off"}) do |f| %>
 <div id="send-message">
   <div id="messagebox">
-    <textarea id="message_text" name="message[text]"></textarea>
+    <textarea id="message_text"></textarea>
   </div>
-  <button name="commit" type="submit" id="commit" class="btn btn-primary"><i class="icon-comment icon-white"></i></button>
+  <button type="submit" id="commit" class="btn btn-primary"><i class="icon-comment icon-white"></i></button>
 </div>
-<% end %>
 
 <ul class="unstyled messages">
-  <% @messages.each do |message| %>
+  <% @messages.reverse.each do |message| %>
   <li class="user<%= message.user.colour %>">
     <div class="username">
       <%= avatar message.user, :small %>
