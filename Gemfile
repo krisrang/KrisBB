@@ -41,3 +41,7 @@ group :assets do
   gem 'less-rails'
   gem 'less-rails-bootstrap'
 end
+
+group :development do
+  gem 'pry-remote'
+end

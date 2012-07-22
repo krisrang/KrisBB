@@ -1,5 +1,2 @@
 enable_signup: false
-pubnub_secret: <%= ENV['PUBNUB_SECRET'] %>
-public:
-  pubnub_publish: <%= ENV['PUBNUB_PUBLISH'] %>
-  pubnub_subscribe: <%= ENV['PUBNUB_SUBSCRIBE'] %>
+public: {}
