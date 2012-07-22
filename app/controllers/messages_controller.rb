@@ -3,6 +3,7 @@ class MessagesController < ApplicationController
   respond_to :html, :json
 
   def index
+    @message = Message.new
     @messages = @messages.includes(:user)
 
     if params[:page]
@@ -16,12 +17,16 @@ class MessagesController < ApplicationController
 
   def show
     #@message = Message.find(params[:id])
-    respond_with @message
+    respond_with @message do |format|
+      format.html { redirect_to root_path }
+    end
   end
 
   def new
     #@message = Message.new
-    respond_with @message
+    respond_with @message do |format|
+      format.html { redirect_to root_path }
+    end
   end
 
   def edit
@@ -33,25 +38,25 @@ class MessagesController < ApplicationController
     @message.user = current_user
     @message.save
 
-    PUBNUB.publish({
-      'channel' => 'krisbb',
-      'message' => {message: @message},
-      'callback' => lambda  {  |message| puts(message) }
-    })
-
-    respond_with @message
+    respond_with @message do |format|
+      format.html { redirect_to root_path }
+    end
   end
 
   def update
     #@message = Message.find(params[:id])
     @message.update_attributes(params[:message])
-    respond_with @message
+    respond_with @message do |format|
+      format.html { redirect_to root_path }
+    end
   end
 
   def destroy
     #@message = Message.find(params[:id])
     @message.destroy
     #head :ok
-    respond_with @message
+    respond_with @message do |format|
+      format.html { redirect_to root_path }
+    end
   end
 end
