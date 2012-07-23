@@ -4,7 +4,7 @@ ruby "1.9.3"
 gem 'rails', '3.2.6'
 gem 'puma'
 
-gem "mongoid"
+gem 'mongoid'
 gem 'memcachier'
 gem 'dalli'
 
@@ -24,7 +24,7 @@ gem 'heroku'
 gem 'rdiscount'
 gem 'mini_magick'
 gem 'carrierwave'
-gem "carrierwave-mongoid", :git => "git://github.com/jnicklas/carrierwave-mongoid.git", :branch => "mongoid-3.0"
+gem 'carrierwave-mongoid', git: 'git://github.com/jnicklas/carrierwave-mongoid.git', branch: 'mongoid-3.0'
 gem 'fog'
 
 # Gems used only for assets and not required
