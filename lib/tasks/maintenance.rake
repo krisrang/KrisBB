@@ -15,7 +15,7 @@ namespace :users do
   desc "Make sure all users have necessary generated values"
   task :upgrade => :environment do
     Mongoid.unit_of_work(disable: :all) do
-      User.all.each do |m|
+      User.all.each do |user|
         user.upgrade_user
       end
     end
