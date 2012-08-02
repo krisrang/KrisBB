@@ -28,12 +28,16 @@
               <li class="divider"></li>
               <li><%= link_to raw('<i class="icon-list-alt icon-white"></i>') + " Users", users_path %></li>
               <li class="divider"></li>
-              <li><%= link_to raw('<i class="icon-off icon-white"></i>') + " Log out", logout_path, method: :delete, confirm: "You sure?" %></li>
+              <li><%= link_to raw('<i class="icon-off icon-white"></i>') + " Log out",
+              logout_path, method: :delete, "data-confirm" => "You sure?" %></li>
             </ul>
           </li>
         </ul>
 
         <a class="brand" href="/">KrisBB</a>
+        <ul class="nav">
+          <li><a href="/">Archive</a></li>
+        </ul>
       </div>
     </div>
   </div>

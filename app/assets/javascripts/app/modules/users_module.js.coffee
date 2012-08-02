@@ -34,6 +34,9 @@ class UsersModule
 
   render: () =>
     @$el = $ @el
+
+  connect: () =>
+    @$el.addClass('connected')
     @title = $ '.usercount', @$el
     @list = $ '.users', @$el
     @updateList()

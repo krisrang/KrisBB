@@ -11,6 +11,8 @@ class Messages extends Backbone.Collection
   model: Message
 
 class MessagesModule
+  resizeTimer: null
+
   constructor: () ->
     @el = ".messages"
     @collection = new Messages()
@@ -28,6 +30,10 @@ class MessagesModule
   render: () =>
     @$el = $(@el)
     @scrollBottom()
+
+    $(window).resize () =>
+      clearTimeout(@resizeTimer)
+      @resizeTimer = setTimeout(@scrollBottom, 100)
 
   scrollBottom: () =>
     @$el.scrollTop @$el[0].scrollHeight
