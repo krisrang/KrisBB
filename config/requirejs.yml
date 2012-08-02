@@ -1,0 +1,23 @@
+modules:
+  - name: 'common'
+  - name: 'application'
+    exclude: ['common']
+  - name: 'static'
+    exclude: ['common']
+priority: ['common']
+paths:
+  bootstrap: "twitter/bootstrap"
+  backbone: "lib/backbone"
+  underscore: "lib/lodash"
+  modernizr: "lib/modernizr"
+  placeholder.shim: "lib/placeholder.shim"
+  timeago: "lib/timeago"
+  utils: "lib/utils"
+shim:
+  jquery_ujs: ['jquery']
+  placeholder.shim: ['jquery']
+  timeago:
+    deps: ['jquery']
+    exports: 'jQuery.fn.timeago'
+  bootstrap:
+    deps: ['jquery']
