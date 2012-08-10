@@ -59,7 +59,7 @@ development:
     # Ensure all times are UTC in the app side. (default: false)
     # use_utc: false
 
-<% uri = URI.parse(ENV['MONGOLAB_URI'] || 'mongodb://host:user@pass:1000') %>
+<% uri = URI.parse(ENV['MONGOLAB_URI'] || 'mongodb://localhost:27017/krisbb_dev') %>
 production:
   sessions:
     default:

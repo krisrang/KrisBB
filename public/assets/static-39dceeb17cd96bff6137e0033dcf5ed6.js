@@ -1,1 +1,0 @@
-(function(){require(["common"],function(){})}).call(this),define("static",function(){})

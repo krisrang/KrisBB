@@ -6,6 +6,7 @@ modules:
     exclude: ['common']
 priority: ['common']
 paths:
+  jquery: "jquery"
   bootstrap: "twitter/bootstrap"
   backbone: "lib/backbone"
   marionette: "lib/backbone.marionette"
@@ -21,5 +22,4 @@ shim:
   timeago:
     deps: ['jquery']
     exports: 'jQuery.fn.timeago'
-  bootstrap:
-    deps: ['jquery']
+  bootstrap: ['jquery']
