@@ -13,6 +13,7 @@ gem 'dalli'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'kaminari'
+gem 'requirejs-rails'
 
 # Auth
 gem 'bcrypt-ruby'
@@ -31,7 +32,6 @@ gem 'fog'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'requirejs-rails'
   gem 'ejs'
   gem 'execjs'
   gem 'therubyracer'
