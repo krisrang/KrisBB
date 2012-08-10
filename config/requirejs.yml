@@ -1,6 +1,6 @@
 modules:
   - name: 'common'
-  - name: 'application'
+  - name: 'app'
     exclude: ['common']
   - name: 'static'
     exclude: ['common']
@@ -8,11 +8,13 @@ priority: ['common']
 paths:
   bootstrap: "twitter/bootstrap"
   backbone: "lib/backbone"
+  marionette: "lib/backbone.marionette"
   underscore: "lib/lodash"
   modernizr: "lib/modernizr"
   placeholder.shim: "lib/placeholder.shim"
   timeago: "lib/timeago"
   utils: "lib/utils"
+  io: "http://krisbb-node.dev/socket.io/socket.io.js"
 shim:
   jquery_ujs: ['jquery']
   placeholder.shim: ['jquery']

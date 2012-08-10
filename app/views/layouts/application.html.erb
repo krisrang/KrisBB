@@ -43,18 +43,17 @@
   </div>
 
   <div id="main">
-    <%= render_flash unless in_app? %>
+    <%= render_flash %>
 
     <%= yield %>
   </div>
 
   <% if in_app? %>
   <script>
-    window.flash = <%= raw flash.to_json %>;
     window.settings = <%= raw Settings.public.to_json %>;
     window.user = <%= raw current_user.to_json %>;
   </script>
-  <%= requirejs_include_tag "application" %>
+  <%= requirejs_include_tag "app" %>
   <% else %>
   <%= requirejs_include_tag "static" %>
   <% end %>

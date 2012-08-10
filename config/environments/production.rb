@@ -43,10 +43,10 @@ Kreubb::Application.configure do
   config.cache_store = :dalli_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
-  config.action_controller.asset_host = "http://assets.forum.kristjanrang.eu"
+  # config.action_controller.asset_host = "http://assets.forum.kristjanrang.eu"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += %w( static.js static.css )
+  config.assets.precompile += %w( static.css )
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
@@ -62,4 +62,6 @@ Kreubb::Application.configure do
   config.active_support.deprecation = :notify
 
   config.action_mailer.default_url_options = { :host => 'forum.kristjanrang.eu' }
+
+  config.requirejs.run_config['paths']['io'] = "http://node.forum.kristjanrang.eu/socket.io/socket.io.js"
 end
