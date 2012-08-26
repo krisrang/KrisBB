@@ -1,15 +1,16 @@
 class MessagesController < ApplicationController
+  layout 'bb', only: ['bb']
   load_and_authorize_resource
   respond_to :html, :json
 
+  def bb
+    @messages = @messages.includes(:user).desc(:created_at).limit(50)
+    respond_with @messages
+  end
+
   def index
     @messages = @messages.includes(:user)
-
-    if params[:page]
-      @messages = @messages.page params[:page]
-    else
-      @messages = @messages.desc(:created_at).limit(50)
-    end
+    @messages = @messages.page(params[:page] || 1)
 
     respond_with @messages
   end

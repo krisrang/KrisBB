@@ -14,13 +14,22 @@
 
   <div class="container">
     <div class="row">
-      <div class="span12">
-        <%= bootstrap_flash %>
+      <%= bootstrap_flash %>
+    </div>
+    <div class="row">
+      <div class="span2">
+        <!--Sidebar content-->
+      </div>
+      <div class="span10">
         <%= yield %>
       </div>
     </div>
   </div>
 
-  <%= requirejs_include_tag "static" %>
+  <script>
+    window.settings = <%= raw Settings.public.to_json %>;
+    window.user = <%= raw current_user.to_json %>;
+  </script>
+  <%= requirejs_include_tag "app" %>
 </body>
 </html>

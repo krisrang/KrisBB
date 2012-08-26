@@ -1,6 +1,11 @@
-<%= paginate @messages %>
+<div id="send-message">
+  <div id="messagebox">
+    <textarea id="message_text"></textarea>
+  </div>
+  <button type="submit" id="commit" class="btn btn-primary"><i class="icon-comment icon-white"></i></button>
+</div>
 
-<ul class="unstyled messages well">
+<ul class="unstyled messages">
   <% @messages.each do |message| %>
   <li id="message-<%= message.id %>" class="user<%= message.user.colour %>">
     <div class="username">
@@ -15,4 +20,8 @@
   <% end %>
 </ul>
 
-<%= paginate @messages %>
+<div id="sidebar">
+  <p class="connecting">Connecting...</p>
+  <h3 class="usercount">Users</h3>
+  <ul class="users unstyled"></ul>
+</div>

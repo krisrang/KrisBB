@@ -16,7 +16,8 @@ class Message
     ':o' => 'redface',
     ':rolleyes:' => 'rolleyes',
     ':cool:' => 'cool',
-    ':eek:' => 'eek'
+    ':eek:' => 'eek',
+    ':facepalm:' => 'facepalm'
   }
 
   belongs_to :user
