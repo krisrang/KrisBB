@@ -1,4 +1,4 @@
-require ["jquery", "marionette", "krisbb", "common"],
+require ['jquery', 'marionette', 'krisbb', 'common'],
   ($, Marionette, KrisBB) ->
     Backbone.Marionette.TemplateCache.prototype.loadTemplate = (templateId) ->
       template = templateId

@@ -6,7 +6,7 @@
 </div>
 
 <ul class="unstyled messages">
-  <% @messages.reverse.each do |message| %>
+  <% @messages.each do |message| %>
   <li id="message-<%= message.id %>" class="user<%= message.user.colour %>">
     <div class="username">
       <%= avatar message.user, :small %>

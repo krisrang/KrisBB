@@ -1,13 +1,4 @@
 module ApplicationHelper
-  def render_flash
-    render partial: 'shared/flash', locals: { flash: flash }
-  end
-
-  def in_app?
-    current_page?(action: 'index', controller: 'messages') ||
-    current_page?('/')
-  end
-
   def online_bit(user)
     time = user.last_activity_at || 1000.years.ago
     img = time > 15.minutes.ago ?

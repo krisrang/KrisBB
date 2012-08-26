@@ -2,9 +2,6 @@
 @import "smilies/*.png"
 @include all-smilies-sprites
 
-.btn
-  @include border-radius(2px)
-
 .btn-large [class^="smilies-"]
   margin-top: 1px
 
@@ -23,37 +20,6 @@
   height: 15px
   background: url(<%= asset_path "smilies/lol.gif" %>) no-repeat
 
-\::-webkit-input-placeholder
-  color: #666
-
-\::-moz-placeholder
-  color: #666
-
-select,
-textarea,
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"],
-.uneditable-input
-  color: #444
-
-input.file
-  color: #999
-
-.navbar .dropdown-menu
-  font-size: 14px
-
 .form-horizontal
   .control-label
     width: 160px
@@ -63,12 +29,12 @@ input.file
 
 .form-page
   width: 550px
-  margin: 50px auto 0
+  margin: 0 auto
 
-.alert
-  @include border-radius(2px)
+@media (max-width: 600px)
+  body
+    padding-top: 0
 
-@media (max-width: 480px)
   .form-page
     width: auto
     margin: 10px auto 0

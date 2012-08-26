@@ -14,6 +14,7 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem 'kaminari'
 gem 'requirejs-rails'
+gem 'twitter-bootstrap-rails'
 
 # Auth
 gem 'bcrypt-ruby'
@@ -40,8 +41,7 @@ group :assets do
   gem 'uglifier'
   gem 'compass-rails'
   gem 'oily_png'
-  gem 'less-rails'
-  gem 'less-rails-bootstrap'
+  gem 'asset_sync'
 end
 
 group :development do
