@@ -16,5 +16,9 @@ define ['jquery', 'modernizr', 'placeholder', 'jquery_ujs', 'bootstrap', 'timeag
         return
 
     $ ->
+      # Temporary fix for bootstrap 2.1.0
+      $('body')
+        .off('click.dropdown touchstart.dropdown.data-api', '.dropdown')
+        .on('click.dropdown touchstart.dropdown.data-api', '.dropdown form', (e) -> e.stopPropagation())
       $('.online-bit').tooltip()
       $("time.timeago").timeago()
