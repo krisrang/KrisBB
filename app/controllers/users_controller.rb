@@ -48,7 +48,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to root_url, notice: "Updated!" }
+        format.html { redirect_to root_url, notice: "Settings updated!" }
         format.json { render json: @user, status: :ok }
       else
         format.html { render :edit }

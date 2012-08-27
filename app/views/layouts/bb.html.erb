@@ -9,7 +9,7 @@
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
+<body data-spy="scroll">
   <%= render partial: "layouts/nav" %>
 
   <div class="container">
@@ -17,11 +17,15 @@
       <%= bootstrap_flash %>
     </div>
     <div class="row">
-      <div class="span2">
-        <!--Sidebar content-->
-      </div>
-      <div class="span10">
+      <div class="span9">
         <%= yield %>
+      </div>
+      <div class="span3">
+        <div class="sidebar">
+          <p class="connecting">Connecting...</p>
+          <h3 class="usercount">Users</h3>
+          <ul class="users unstyled"></ul>
+        </div>
       </div>
     </div>
   </div>

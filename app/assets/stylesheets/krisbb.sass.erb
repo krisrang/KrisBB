@@ -1,36 +1,30 @@
+@import "compass"
+
 $usercolours: #0099CC, #562573, #FF8800, #669900, #99CC00
 
 @mixin avatar($max)
-  max-height: $max
-  max-width: $max
+  width: $max
+  height: $max
+
+  img
+    max-height: $max
+    max-width: $max
+
+.form-page
+  width: 550px
+  margin: 0 auto
 
 .avatar
   display: inline-block
-  padding: 0 5px
 
   &.small
-    width: 35px
-    height: 35px
-
-    img
-      max-height: 35px
-      max-width: 35px
+    @include avatar(35px)
 
   &.big
-    width: 140px
-    height: 140px
-
-    img
-      max-height: 140px
-      max-width: 140px
+    @include avatar(140px)
 
   &.thumb
-    width: 20px
-    height: 20px
-
-    img
-      max-height: 20px
-      max-width: 20px
+    @include avatar(20px)
 
 table.users
   td
@@ -39,11 +33,50 @@ table.users
     &:last-child
       text-align: right
 
-//@for $i from 1 through length($usercolours)
-//  $value: nth($usercolours, $i)
-//  &.user#{$i}
-//    border-left: 2px solid $value
+.archive-link
+  display: block
+  text-align: center
+  padding: 10px
+  margin-bottom: 20px
+  font-weight: bold
+  border: 1px solid #DDD
+  @include border-radius(3px)
+
+  &:hover
+    text-decoration: none
+    background: #0095CE
+    color: #FFF
+
+.sidebar
+  position: fixed
+  width: inherit
+
+.messages
+  li
+    margin: 20px 0
+
+    .avatar
+      float: left
+      padding: 0 5px
+
+    .contents
+      padding: 5px
+      overflow: hidden
+      word-wrap:  break-word
+
+    .info
+      margin-left: 50px
+
+    .time
+      color: #999
+      font-size: 12px
+
+    @for $i from 1 through length($usercolours)
+      $value: nth($usercolours, $i)
+      &.user#{$i}
+        border-bottom: 1px solid rgba($value, 0.5)
 
 @media (max-width: 767px)
-
+  .sidebar
+    position: relative
 

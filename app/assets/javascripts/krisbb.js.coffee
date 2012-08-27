@@ -1,4 +1,4 @@
-define ["jquery", "underscore", "marionette"], ($, _, Marionette) ->
+define ["marionette", "modules/vent"], (Marionette, vent) ->
   # set up the app instance
   KrisBB = new Marionette.Application()
 
@@ -6,5 +6,7 @@ define ["jquery", "underscore", "marionette"], ($, _, Marionette) ->
   KrisBB.bind "initialize:after", (options) ->
   if Backbone.history
     Backbone.history.start()
+
+  vent.trigger("test")
 
   return KrisBB
