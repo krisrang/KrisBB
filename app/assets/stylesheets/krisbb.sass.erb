@@ -10,6 +10,9 @@ $usercolours: #0099CC, #562573, #FF8800, #669900, #99CC00
     max-height: $max
     max-width: $max
 
+body
+  padding-top: 60px
+
 .form-page
   width: 550px
   margin: 0 auto
@@ -52,9 +55,6 @@ table.users
   width: inherit
 
 .messages
-  &.bb
-    padding-bottom: 100px
-
   li
     margin-bottom: 20px
     background: #FFFFFF
@@ -84,6 +84,10 @@ table.users
         @include box-shadow(0px 2px 5px rgba($value, 0.1))
         border-top: 1px solid rgba($value, 0.1)
 
+body.bb
+  .messages
+    padding-bottom: 100px
+
 .send-message
   position: fixed
   bottom: 0
@@ -107,6 +111,11 @@ table.users
       height: 60px
       width: 100%
 
+@media (max-width: 600px)
+  .form-page
+    width: auto
+    margin: 10px auto 0
+
 @media (max-width: 767px)
   .sidebar
     position: relative
@@ -117,11 +126,18 @@ table.users
     margin: 0
     box-sizing: content-box
 
-  .navbar-fixed-top
-    margin-left: 0px
-    margin-right: 0px
+  body.bb
+    .navbar-fixed-top
+      margin-left: 0px
+      margin-right: 0px
 
 @media (max-width: 979px)
-  .navbar-fixed-top
-    position: fixed
+  body
+    padding-top: 0
+
+    &.bb
+      padding-top: 60px
+
+      .navbar-fixed-top
+        position: fixed
 

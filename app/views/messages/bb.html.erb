@@ -1,4 +1,4 @@
-<ul id="bb-messages" class="unstyled messages bb">
+<ul id="bb-messages" class="unstyled messages">
   <% @messages.each do |message| %>
   <li id="message-<%= message.id %>" class="user<%= message.user.colour %>">
     <%= avatar message.user, :small %>

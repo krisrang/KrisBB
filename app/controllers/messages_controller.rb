@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
 
   # Main app
   def bb
-    @messages = @messages.includes(:user).desc(:created_at).limit(50)
+    @messages = @messages.includes(:user).desc(:created_at).limit(30)
     respond_with @messages
   end
 
