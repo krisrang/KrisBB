@@ -42,3 +42,62 @@
 .form-actions {
   background: none;
 }
+
+.btn-large [class^="smilies-"] {
+  margin-top: 1px;
+}
+
+[class^="smilies-"],
+[class*=" smilies-"] {
+  vertical-align: middle;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  vertical-align: text-top;
+  background-repeat: no-repeat;
+}
+
+.form-horizontal {
+  .control-label {
+    width: 160px;
+  }
+
+  .controls {
+    margin-left: 170px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-horizontal .controls {
+    margin-left: 0;
+  }
+
+  .form-horizontal .control-group.boolean {
+    > label {
+      display: inline;
+    }
+
+    > div.controls {
+      display: inline;
+      margin-left: 5px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .pagination li.page {
+    display: none;
+
+    &.active {
+      display: inline;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .pagination a,
+  .pagination span {
+    padding: 0 7px;
+  }
+}
