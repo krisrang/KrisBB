@@ -14,18 +14,9 @@
 
   <div class="container">
     <div class="row">
-      <%= bootstrap_flash %>
-    </div>
-    <div class="row">
-      <div class="span9">
+      <div class="span12">
+        <%= bootstrap_flash %>
         <%= yield %>
-      </div>
-      <div class="span3">
-        <div class="sidebar">
-          <p class="connecting">Connecting...</p>
-          <h3 class="usercount">Users</h3>
-          <ul class="users unstyled"></ul>
-        </div>
       </div>
     </div>
   </div>

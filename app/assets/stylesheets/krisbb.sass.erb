@@ -52,8 +52,15 @@ table.users
   width: inherit
 
 .messages
+  &.bb
+    padding-bottom: 100px
+
   li
-    margin: 20px 0
+    margin-bottom: 20px
+    background: #FFFFFF
+    padding-top: 10px
+    border-top: 1px solid rgba(0,0,0,0.1)
+    @include box-shadow(0px 2px 5px rgba(0,0,0,0.1))
 
     .avatar
       float: left
@@ -74,9 +81,47 @@ table.users
     @for $i from 1 through length($usercolours)
       $value: nth($usercolours, $i)
       &.user#{$i}
-        border-bottom: 1px solid rgba($value, 0.5)
+        @include box-shadow(0px 2px 5px rgba($value, 0.1))
+        border-top: 1px solid rgba($value, 0.1)
+
+.send-message
+  position: fixed
+  bottom: 0
+  float: none
+  height: 70px
+  margin: 0 -10px
+  padding: 10px
+  background: #F5F4F2
+  border-top: 1px solid #99CC00
+
+  .message-controls
+    float: right
+
+    .message-submit
+      width: 60px
+
+  .message-box
+    margin-right: 80px
+
+    textarea
+      height: 60px
+      width: 100%
 
 @media (max-width: 767px)
   .sidebar
     position: relative
+
+  .send-message
+    left: 0
+    right: 0
+    margin: 0
+    box-sizing: content-box
+
+  .navbar-fixed-top
+    margin-left: 0px
+    margin-right: 0px
+
+@media (max-width: 979px)
+  .navbar-fixed-top
+    position: fixed
 

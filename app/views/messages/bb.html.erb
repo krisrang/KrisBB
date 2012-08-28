@@ -1,13 +1,4 @@
-<div id="send-message">
-  <div id="messagebox">
-    <textarea id="message_text"></textarea>
-  </div>
-  <button type="submit" id="commit" class="btn btn-primary">
-    <i class="icon-comment icon-white"></i>
-  </button>
-</div>
-
-<ul id="bb-messages" class="unstyled messages">
+<ul id="bb-messages" class="unstyled messages bb">
   <% @messages.each do |message| %>
   <li id="message-<%= message.id %>" class="user<%= message.user.colour %>">
     <%= avatar message.user, :small %>
@@ -27,4 +18,13 @@
   <% end %>
 </ul>
 
-<%= link_to "Older messages", messages_path, class: "archive-link" %>
+<div class="send-message span12">
+  <div class="message-controls">
+    <button type="submit" class="message-submit btn btn-large">
+      <i class="icon-comment icon-white"></i>
+    </button>
+  </div>
+  <div class="message-box">
+    <textarea id="message_text" name="message[text]"></textarea>
+  </div>
+</div>

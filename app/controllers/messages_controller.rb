@@ -3,13 +3,15 @@ class MessagesController < ApplicationController
   load_and_authorize_resource
   respond_to :html, :json
 
+  # Main app
   def bb
     @messages = @messages.includes(:user).desc(:created_at).limit(50)
     respond_with @messages
   end
 
+  # Archive
   def index
-    @messages = @messages.includes(:user)
+    @messages = @messages.includes(:user).desc(:created_at)
     @messages = @messages.page(params[:page] || 1)
 
     respond_with @messages

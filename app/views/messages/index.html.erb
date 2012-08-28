@@ -1,6 +1,6 @@
 <%= paginate @messages %>
 
-<ul class="unstyled messages well">
+<ul class="unstyled messages">
   <% @messages.each do |message| %>
   <li id="message-<%= message.id %>" class="user<%= message.user.colour %>">
     <%= avatar message.user, :small %>
