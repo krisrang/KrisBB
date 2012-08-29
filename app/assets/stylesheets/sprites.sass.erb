@@ -1,2 +1,26 @@
 @import "smilies/*.png"
 @include all-smilies-sprites
+@import "pixels/*.png"
+@include all-pixels-sprites
+
+.btn-large [class^="smilies-"]
+  margin-top: 1px
+
+[class^="pixels-"],
+[class*=" pixels-"],
+[class^="pixels-"],
+[class*=" pixels-"]
+  vertical-align: middle
+  display: inline-block
+  width: 16px
+  height: 16px
+  line-height: 16px
+  vertical-align: text-top
+  background-repeat: no-repeat
+
+
+[class^="smilies-"],
+[class*=" smilies-"]
+  width: 20px
+  height: 20px
+  line-height: 20px

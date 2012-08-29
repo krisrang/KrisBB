@@ -20,5 +20,5 @@ define ['jquery', 'modernizr', 'placeholder', 'jquery_ujs', 'bootstrap', 'timeag
       $('body')
         .off('click.dropdown touchstart.dropdown.data-api', '.dropdown')
         .on('click.dropdown touchstart.dropdown.data-api', '.dropdown form', (e) -> e.stopPropagation())
-      $('.online-bit').tooltip()
+      $('[rel=tooltip]').tooltip()
       $("time.timeago").timeago()

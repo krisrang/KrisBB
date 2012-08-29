@@ -1,12 +1,11 @@
 module ApplicationHelper
   def online_bit(user)
-    time = user.last_activity_at || 1000.years.ago
-    img = time > 15.minutes.ago ?
-      "online.png" :
-      "offline.png"
+    time = user.last_activity_at || 1.years.ago
+    klass = time > 15.minutes.ago ?
+      "pixels-online" :
+      "pixels-offline"
 
-    image_tag img, title: "Last seen " + time_ago_in_words(time) + " ago",
-      class: "online-bit"
+    raw "<i class=\"#{klass} online-bit\" rel=\"tooltip\" title=\"Last seen #{time_ago_in_words(time)} ago\"></i>"
   end
 
   def avatar(user, type)

@@ -3,7 +3,10 @@
   <li id="message-<%= message.id %>" class="user<%= message.user.colour %>">
     <%= avatar message.user, :small %>
     <div class="info">
-      <span class="username"><%= message.user.username %></span>
+      <span class="username">
+        <%= message.user.username %>
+        <%= online_bit(message.user) %>
+      </span>
       <span class="time">
         <time class="timeago" datetime="<%= message.created_at %>">
           <%= message.created_at.to_s :long_ordinal %>
@@ -22,6 +25,10 @@
     <button type="submit" class="message-submit btn btn-large">
       <i class="icon-comment icon-white"></i>
     </button>
+    <div class="enter-toggle" rel="tooltip" title="Press Enter to send">
+      <input id="send-message-enter" type="checkbox"></input>
+      <label for="send-message-enter"><i class="pixels-return"></i></label>
+    </div>
   </div>
   <div class="message-box">
     <textarea id="message_text" name="message[text]"></textarea>
