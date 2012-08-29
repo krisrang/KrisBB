@@ -56,12 +56,6 @@ table.users
 
 .messages
   li
-    margin-bottom: 20px
-    background: #FFFFFF
-    padding-top: 10px
-    border-top: 1px solid rgba(0,0,0,0.1)
-    @include box-shadow(0px 2px 5px rgba(0,0,0,0.1))
-
     .avatar
       float: left
       padding: 0 5px
@@ -72,21 +66,67 @@ table.users
       word-wrap:  break-word
 
     .info
-      margin-left: 50px
+      margin-left: 40px
+      padding: 0 10px
+
+    .username
+      color: #363636
+      font-weight: bold
 
     .time
-      color: #999
+      color: #888888
+      float: right
       font-size: 12px
 
-    @for $i from 1 through length($usercolours)
-      $value: nth($usercolours, $i)
-      &.user#{$i}
-        @include box-shadow(0px 2px 5px rgba($value, 0.1))
-        border-top: 1px solid rgba($value, 0.1)
+  &.archive
+    li
+      margin-bottom: 20px
+      background: #FFFFFF
+      padding-top: 10px
+      border-top: 1px solid rgba(0,0,0,0.15)
+      @include box-shadow(0px 2px 5px rgba(0,0,0,0.2))
+
+      @for $i from 1 through length($usercolours)
+        $value: nth($usercolours, $i)
+        &.user#{$i}
+          @include box-shadow(0px 2px 5px rgba($value, 0.2))
+          border-top: 1px solid rgba($value, 0.15)
+
+  &.bb
+    li
+      border-top: 1px solid #EEEEEE
+      position: relative
+
+      .avatar
+        background: #EEEEEE
+
+        &:after
+          content: ""
+          position: absolute
+          top: 0
+          left: 40px
+          border-color: transparent
+          border-style: solid
+          border-width: 10px 10px 10px 0
+          border-right-color: #FFFFFF
+
+      .contents
+        background: #FFFFFF
+
+      .info
+        background: #FFFFFF
+
+      @for $i from 1 through length($usercolours)
+        $value: nth($usercolours, $i)
+        &.user#{$i}
+          border-top-color: lighten($value, 40%)
 
 body.bb
+  padding-top: 0
+
   .messages
-    padding-bottom: 100px
+    padding-top: 50px
+    padding-bottom: 80px
 
 .send-message
   position: fixed
