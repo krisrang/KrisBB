@@ -19,6 +19,7 @@ body
 
 .avatar
   display: inline-block
+  text-align: center
 
   &.small
     @include avatar(35px)
@@ -93,6 +94,8 @@ table.users
           border-top: 1px solid rgba($value, 0.15)
 
   &.bb
+    padding-bottom: 80px
+
     li
       border-top: 1px solid #EEEEEE
       position: relative
@@ -121,13 +124,6 @@ table.users
         &.user#{$i}
           border-top-color: lighten($value, 40%)
 
-body.bb
-  padding-top: 0
-
-  .messages
-    padding-top: 50px
-    padding-bottom: 80px
-
 .send-message
   position: fixed
   bottom: 0
@@ -148,6 +144,8 @@ body.bb
       padding: 3px 0 0 3px
 
       label
+        cursor: hand
+        cursor: pointer
         display: inline
 
   .message-box

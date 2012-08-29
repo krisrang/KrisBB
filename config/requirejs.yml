@@ -2,6 +2,7 @@ modules:
   - name: 'app'
   - name: 'static'
 paths:
+  tpl: "lib/tpl"
   bootstrap: "twitter/bootstrap"
   backbone: "lib/backbone"
   marionette: "lib/backbone.marionette"

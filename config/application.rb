@@ -53,5 +53,7 @@ module Kreubb
     config.assets.version = '1.2'
 
     config.action_mailer.delivery_method = :amazon_ses
+
+    config.requirejs.logical_asset_filter += [/\.tmpl$/]
   end
 end

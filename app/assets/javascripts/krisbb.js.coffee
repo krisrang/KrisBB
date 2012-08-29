@@ -1,12 +1,17 @@
-define ["marionette", "modules/vent"], (Marionette, vent) ->
+define ["backbone", "marionette", "vent", "views/send"], (Backbone, Marionette, vent, Send) ->
   # set up the app instance
-  KrisBB = new Marionette.Application()
+  app = new Marionette.Application()
+
+  app.addRegions
+    messages : '#bb-messages',
+    sendbox  : '#bb-sendbox'
 
   # configuration, setting up regions, etc ...
-  KrisBB.bind "initialize:after", (options) ->
-  if Backbone.history
-    Backbone.history.start()
+  app.addInitializer () ->
+    app.sendbox.show(new Send())
 
-  vent.trigger("test")
+  app.on "initialize:after", (options) ->
+    if (Backbone.history)
+      Backbone.history.start pushState: true
 
-  return KrisBB
+  return app

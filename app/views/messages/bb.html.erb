@@ -4,7 +4,7 @@
     <%= avatar message.user, :small %>
     <div class="info">
       <span class="username">
-        <%= message.user.username %>
+        <%= link_to message.user.username, user_path(message.user) %>
         <%= online_bit(message.user) %>
       </span>
       <span class="time">
@@ -20,17 +20,4 @@
   <% end %>
 </ul>
 
-<div class="send-message span12">
-  <div class="message-controls">
-    <button type="submit" class="message-submit btn btn-large">
-      <i class="icon-comment icon-white"></i>
-    </button>
-    <div class="enter-toggle" rel="tooltip" title="Press Enter to send">
-      <input id="send-message-enter" type="checkbox"></input>
-      <label for="send-message-enter"><i class="pixels-return"></i></label>
-    </div>
-  </div>
-  <div class="message-box">
-    <textarea id="message_text" name="message[text]"></textarea>
-  </div>
-</div>
+<div id="bb-sendbox" class="send-message span12"></div>

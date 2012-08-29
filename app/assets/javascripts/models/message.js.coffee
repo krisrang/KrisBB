@@ -1,11 +1,11 @@
-class Message extends Backbone.Model
-  #defaults:
-  #  loaded: 0
-  #  created_at: new Date().getTime()
+define ["backbone"], (Backbone) ->
+  'use strict';
 
-  url: =>
-    return "/messages/" + (if @isNew() then '' else @id)
+  return Backbone.Model.extend
+    idAttribute: 'uuid'
+    #defaults:
+    #  loaded: 0
+    #  created_at: new Date().getTime()
 
-class Messages extends Backbone.Collection
-  url: '/messages'
-  model: Message
+    url: ->
+      return "/messages/" + (if @isNew() then '' else @id)

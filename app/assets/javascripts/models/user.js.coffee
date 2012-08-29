@@ -1,11 +1,10 @@
-class User extends Backbone.Model
-  idAttribute: 'uuid'
-  defaults:
-    data: {}
+define ["backbone"], (Backbone) ->
+  'use strict';
 
-  url: =>
-    return "/users/" + (if @isNew() then '' else @id)
+  return Backbone.Model.extend
+    idAttribute: 'uuid'
+    defaults:
+      data: {}
 
-class Users extends Backbone.Collection
-  url: '/users'
-  model: User
+    url: ->
+      return "/users/" + (if @isNew() then '' else @id)

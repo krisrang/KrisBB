@@ -1,15 +1,11 @@
-require ['jquery', 'marionette', 'krisbb', 'common'],
-  ($, Marionette, KrisBB) ->
-    Backbone.Marionette.TemplateCache.prototype.loadTemplate = (templateId) ->
-      template = templateId
+require ['marionette', 'krisbb', 'routers/bb', 'controllers/bb', 'common'],
+  (Marionette, KrisBB, Router, Controller) ->
+    "use strict";
 
-      if (!template || template.length == 0)
-          msg = "Could not find template: '" + templateId + "'"
-          err = new Error(msg)
-          err.name = "NoTemplateError"
-          throw err
+    Backbone.Marionette.Renderer.render = (template, data) ->
+      return template(data)
 
-      return template
+    new Router
+      controller: Controller
 
-    $ ->
-      KrisBB.start window.settings, window.user
+    KrisBB.start window.settings, window.user
