@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     end
 
     def login_api
-      if request.format.json?
+      if request.format.json? && !logged_in?
         # Authorization: Token token="abc", nonce="def"
         authenticate_or_request_with_http_token do |token, options|
           # TODO: implement nonce-based token check

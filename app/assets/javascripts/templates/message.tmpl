@@ -1,10 +1,19 @@
-<li class="user<%= message.user.colour %>">
-  <div class="username">
-    <img src="<%= message.user.avatar.thumb.url %>" />
-    <%= message.user.username %>
+<li id="message-<%= _id %>" class="user<%= user.colour %>">
+  <i class="avatar small">
+    <img src="<%= user.avatar.small.url %>" />
+  </i>
+  <div class="info">
+    <span class="username">
+      <a href="<%= routes.user_path(user) %>"><%= user.username %></a>
+      <i class="online-bit" data-user="<%= user.id %>"></i>
+    </span>
+    <span class="time">
+      <time class="timeago" datetime="<%= created_at %>">
+        <%= created_at %>
+      </time>
+    </span>
   </div>
-  <div class="message"><%= message.contents %></div>
-  <div class="time">
-    <time class="timeago" datetime="<%= message.created_at %>"><%= message.created_at %></time>
+  <div class="contents">
+    <%= html %>
   </div>
 </li>

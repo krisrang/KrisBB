@@ -42,6 +42,7 @@ group :assets do
   gem 'compass-rails'
   gem 'oily_png'
   gem 'asset_sync'
+  gem 'js-routes'
 end
 
 group :development do

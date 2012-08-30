@@ -32,10 +32,7 @@ class Message
 
   def as_json(options = nil)
     serializable_hash(options).tap do |hash|
-      hash["id"] = self.id
-      hash["username"] = self.user.username
-      hash["avatar"] = self.user.avatar.thumb.url
-      hash["created_at_human"] = self.created_at.to_s :long_ordinal
+      hash[:user] = self.user
     end
   end
 

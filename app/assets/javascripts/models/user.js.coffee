@@ -2,7 +2,7 @@ define ["backbone"], (Backbone) ->
   'use strict';
 
   return Backbone.Model.extend
-    idAttribute: 'uuid'
+    idAttribute: '_id'
     defaults:
       data: {}
 

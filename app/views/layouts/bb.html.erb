@@ -9,7 +9,7 @@
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body data-spy="scroll" class="bb">
+<body class="bb">
   <%= render partial: "layouts/nav" %>
 
   <div class="container">
@@ -21,10 +21,15 @@
     </div>
   </div>
 
-  <script>
-    window.settings = <%= raw Settings.public.to_json %>;
-    window.user = <%= raw current_user.to_json %>;
-  </script>
   <%= requirejs_include_tag "app" %>
+  <script>
+    define("setup", [], function() {
+      return {
+        messages: <%= raw @messages.to_json %>,
+        settings: <%= raw Settings.public.to_json %>,
+        user: <%= raw current_user.to_json %>
+      };
+    });
+  </script>
 </body>
 </html>

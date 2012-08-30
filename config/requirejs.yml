@@ -16,3 +16,6 @@ shim:
   placeholder: ['jquery']
   timeago: ['jquery']
   bootstrap: ['jquery']
+  js-routes:
+    deps: ['jquery']
+    exports: 'Routes'

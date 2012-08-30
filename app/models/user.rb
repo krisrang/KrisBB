@@ -26,7 +26,6 @@ class User
 
   def as_json(options = nil)
     serializable_hash(options).tap do |hash|
-      hash["id"] = self.id
       hash.delete "password"
       hash.delete "crypted_password"
       hash.delete "salt"

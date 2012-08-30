@@ -3,5 +3,5 @@ define ['vent'], (vent) ->
 
   return {
     index: (param) ->
-      console.log('action:index')
+      #console.log('action:index')
     }
