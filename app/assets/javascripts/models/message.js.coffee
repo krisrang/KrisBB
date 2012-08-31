@@ -4,7 +4,7 @@ define ["backbone"], (Backbone) ->
   return Backbone.Model.extend
     idAttribute: '_id'
     defaults:
-      created_at: new Date().getTime()
+      created_at: new Date().toISOString()
 
     url: ->
       return "/messages/" + (if @isNew() then '' else @id)

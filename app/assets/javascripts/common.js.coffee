@@ -1,4 +1,4 @@
-define ['jquery', 'modernizr', 'placeholder', 'jquery_ujs', 'bootstrap', 'timeago'],
+define ['jquery', 'jquery_ujs', 'bootstrap', 'lib/modernizr', 'lib/shims', 'lib/timeago'],
   ($) ->
     # Avoid `console` errors in browsers that lack a console
     if !(window.console && console.log)
@@ -22,3 +22,5 @@ define ['jquery', 'modernizr', 'placeholder', 'jquery_ujs', 'bootstrap', 'timeag
         .on('click.dropdown touchstart.dropdown.data-api', '.dropdown form', (e) -> e.stopPropagation())
       $('[rel=tooltip]').tooltip()
       $("time.timeago").timeago()
+
+    return

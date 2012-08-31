@@ -7,13 +7,11 @@ paths:
   backbone: "lib/backbone"
   marionette: "lib/backbone.marionette"
   underscore: "lib/lodash"
-  modernizr: "lib/modernizr"
-  placeholder: "lib/placeholder.shim"
-  timeago: "lib/timeago"
+  shims: "lib/shims"
   io: "http://krisbb-node.dev/socket.io/socket.io.js"
 shim:
   jquery_ujs: ['jquery']
-  placeholder: ['jquery']
+  shims: ['jquery']
   timeago: ['jquery']
   bootstrap: ['jquery']
   js-routes:

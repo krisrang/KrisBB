@@ -3,7 +3,6 @@ require ['marionette', 'krisbb', 'routes', 'routers/bb', 'controllers/bb', 'comm
     "use strict";
 
     Backbone.Marionette.Renderer.render = (template, data) ->
-      console.log(data.user)
       data.routes = Routes
       return template(data)
 

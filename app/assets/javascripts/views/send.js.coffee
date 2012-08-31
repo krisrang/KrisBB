@@ -3,6 +3,7 @@ define ['marionette', 'templates'], (Marionette, templates) ->
 
   return Marionette.ItemView.extend
     template: templates.send
+    className: 'send-message span12'
 
     ui:
       input   : '#message_text'
