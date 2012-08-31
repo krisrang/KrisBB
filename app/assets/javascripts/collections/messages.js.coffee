@@ -1,15 +1,16 @@
-define ["backbone", "models/message"], (Backbone, Message) ->
+define ["backbone", "models/message", "setup"], (Backbone, Message, setup) ->
   'use strict';
 
-  collection = Backbone.Collection.extend
+  MessagesCollection = Backbone.Collection.extend
     url: '/messages'
     model: Message
 
     comparator: (message) ->
       message.get('created_at')
 
-  model = new collection()
-  #model.fetch()
-  model.reset(window.KrisBBsetup.messages)
+  collection = new MessagesCollection()
+  #collection.fetch()
+  if setup? && setup.messages?
+    collection.reset(setup.messages)
 
-  return model
+  return collection

@@ -9,6 +9,7 @@ paths:
   underscore: "lib/lodash"
   shims: "lib/shims"
   io: "http://krisbb-node.dev/socket.io/socket.io.js"
+  setup: "empty:"
 shim:
   jquery_ujs: ['jquery']
   shims: ['jquery']

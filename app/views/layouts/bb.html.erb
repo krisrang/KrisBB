@@ -21,13 +21,15 @@
     </div>
   </div>
 
-  <script>
-    window.KrisBBsetup = {
-      messages: <%= j @messages.to_json.html_safe %>,
-      settings: <%= j Settings.public.to_json.html_safe %>,
-      user: <%= j current_user.to_json.html_safe %>
-    };
-  </script>
   <%= requirejs_include_tag "app" %>
+  <script>
+    define("setup", [], function() {
+      return {
+        messages: <%= j @messages.to_json.html_safe %>,
+        settings: <%= j Settings.public.to_json.html_safe %>,
+        user: <%= j current_user.to_json.html_safe %>
+      };
+    });
+  </script>
 </body>
 </html>
