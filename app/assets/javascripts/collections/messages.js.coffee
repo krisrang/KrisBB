@@ -1,4 +1,4 @@
-define ["backbone", "models/message", "setup"], (Backbone, Message, setup) ->
+define ["backbone", "models/message"], (Backbone, Message) ->
   'use strict';
 
   collection = Backbone.Collection.extend
@@ -9,6 +9,7 @@ define ["backbone", "models/message", "setup"], (Backbone, Message, setup) ->
       message.get('created_at')
 
   model = new collection()
-  model.reset(setup.messages)
+  #model.fetch()
+  model.reset(window.KrisBBsetup.messages)
 
   return model

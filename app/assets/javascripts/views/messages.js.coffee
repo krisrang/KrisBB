@@ -5,6 +5,7 @@ define ['jquery', 'marionette', 'templates', 'views/message', 'collections/messa
     emptyView = MessageView.extend
       template: templates.messages_empty
       className: 'user1'
+      attributes: {}
 
     Marionette.CollectionView.extend
       itemView: MessageView
