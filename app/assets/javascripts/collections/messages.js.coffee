@@ -11,7 +11,7 @@ define ["backbone", "models/message"], (Backbone, Message) ->
   collection = new MessagesCollection()
 
   if window.KrisBBsetup? && window.KrisBBsetup.messages?
-    collection.reset(setup.messages)
+    collection.reset(window.KrisBBsetup.messages)
   else
     collection.fetch()
 
