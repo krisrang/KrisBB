@@ -5,6 +5,7 @@ gem 'rails', '3.2.8'
 gem 'foreman'
 gem 'puma'
 
+# Persistence & caching
 gem 'mongoid'
 gem 'memcachier'
 gem 'dalli'
@@ -16,11 +17,12 @@ gem 'kaminari'
 gem 'requirejs-rails'
 gem 'twitter-bootstrap-rails'
 
-# Auth
+# Auth & auth
 gem 'bcrypt-ruby'
 gem 'sorcery'
 gem 'cancan'
 
+# Misc frameworks, libs
 gem 'rails_config'
 gem 'aws-sdk'
 gem 'heroku'
@@ -30,8 +32,6 @@ gem 'carrierwave'
 gem 'carrierwave-mongoid', git: 'git://github.com/jnicklas/carrierwave-mongoid.git', branch: 'mongoid-3.0'
 gem 'fog'
 
-# Gems used only for assets and not required
-# in production environments by default.
 group :assets do
   gem 'ejs'
   gem 'execjs'
@@ -48,3 +48,24 @@ end
 group :development do
   gem 'pry-remote'
 end
+
+group :test, :development do
+  gem 'rb-fsevent'
+
+  gem 'rspec-rails'
+  gem 'cucumber-rails', require: false
+  gem 'factory_girl_rails'
+
+  gem 'email_spec'
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'database_cleaner'
+  gem 'launchy'
+
+  gem 'spork'
+  gem 'guard-bundler'
+  gem 'guard-spork'
+  gem 'guard-rspec'
+  gem 'guard-cucumber'
+end
+

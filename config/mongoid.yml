@@ -59,6 +59,16 @@ development:
     # Ensure all times are UTC in the app side. (default: false)
     # use_utc: false
 
+test:
+  sessions:
+    default:
+      database: krisbb_test
+      hosts:
+        - localhost:27017
+      options:
+        consistency: :strong
+        identity_map_enabled: true
+
 <% uri = URI.parse(ENV['MONGOLAB_URI'] || 'mongodb://localhost:27017/krisbb_dev') %>
 production:
   sessions:
