@@ -1,7 +1,7 @@
-Feature: BB layout
-  In order to communicate with users
-  A user
-  Should be able to see and leave messages
+Feature: BB main app
+  In order to communicate with other users
+  As a user
+  I should be able to see and leave messages
 
   @javascript
   Scenario: BB has messages
