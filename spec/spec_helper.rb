@@ -3,12 +3,16 @@ require 'spork'
 #require 'spork/ext/ruby-debug'
 
 Spork.prefork do
+  require 'simplecov'
+  SimpleCov.start
+
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'rspec/autorun'
   require 'email_spec'
   require 'capybara/rspec'
+  require 'capybara/poltergeist'
 
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
@@ -38,10 +42,11 @@ Spork.prefork do
     config.order = "random"
   end
 
-  Capybara.javascript_driver = :webkit
-
+  Capybara.default_selector = :css
+  Capybara.javascript_driver = :poltergeist
+  Capybara.default_wait_time = 5
 end
 
 Spork.each_run do
-  # This code will be run each time you run your specs.
+  FactoryGirl.reload
 end

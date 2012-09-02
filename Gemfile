@@ -49,16 +49,22 @@ group :development do
   gem 'pry-remote'
 end
 
+group :test do
+  gem 'simplecov', :require => false
+  gem 'faker'
+end
+
 group :test, :development do
   gem 'rb-fsevent'
 
   gem 'rspec-rails'
   gem 'cucumber-rails', require: false
   gem 'factory_girl_rails'
+  gem 'mongoid-rspec'
 
   gem 'email_spec'
   gem 'capybara'
-  gem 'capybara-webkit'
+  gem 'poltergeist'
   gem 'database_cleaner'
   gem 'launchy'
 

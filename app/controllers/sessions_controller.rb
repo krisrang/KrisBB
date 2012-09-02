@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   def new
     @user = User.new
   end
-  
+
   def create
     user = login(params[:user][:username], params[:user][:password], params[:user][:remember_me])
 
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       render :new
     end
   end
-  
+
   def destroy
     logout
     redirect_to root_url, notice: "Logged out!"

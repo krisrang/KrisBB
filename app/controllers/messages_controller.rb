@@ -1,12 +1,14 @@
 class MessagesController < ApplicationController
   layout 'bb', only: ['bb']
   load_and_authorize_resource
-  respond_to :html, :json
+  respond_to :json
 
   # Main app
   def bb
     @messages = @messages.includes(:user).desc(:created_at).limit(30)
-    respond_with @messages
+    respond_with @messages do |format|
+      format.html { render }
+    end
   end
 
   # Archive
@@ -14,21 +16,14 @@ class MessagesController < ApplicationController
     @messages = @messages.includes(:user).desc(:created_at)
     @messages = @messages.page(params[:page] || 1)
 
-    respond_with @messages
+    respond_with @messages do |format|
+      format.html { render }
+    end
   end
 
   def show
     #@message = Message.find(params[:id])
     respond_with @message
-  end
-
-  def new
-    #@message = Message.new
-    respond_with @message
-  end
-
-  def edit
-    #@message = Message.find(params[:id])
   end
 
   def create

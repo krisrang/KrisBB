@@ -19,8 +19,9 @@
   background-image: none;
 }
 
-// Font Awesome
-@import "fontawesome";
+<% unless Rails.env.test? %>
+@import "font-awesome"
+<% end %>
 
 @bodyBackground:    #F5F4F2;
 @inputBorderRadius: 2px;

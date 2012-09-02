@@ -3,7 +3,7 @@ Kreubb::Application.routes.draw do
   get "login"         => "sessions#new",            as: "login"
   get "signup"        => "users#new",               as: "signup"
 
-  resources :messages do
+  resources :messages, except: [:new, :edit] do
     get 'page/:page', :action => :index, :on => :collection
   end
 
