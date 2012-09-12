@@ -47,6 +47,7 @@ end
 
 group :development do
   gem 'pry-remote'
+  gem 'terminal-notifier-guard'
 end
 
 group :test do

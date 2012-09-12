@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     user = login(params[:user][:username], params[:user][:password], params[:user][:remember_me])
 
     if user
-      redirect_back_or_to root_url, notice: "Logged in!"
+      redirect_back_or_to root_url
     else
       @user = User.new(params[:user])
       flash.now.alert = "Username or password was invalid"
@@ -19,6 +19,6 @@ class SessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to root_url, notice: "Logged out!"
+    redirect_to root_url
   end
 end
