@@ -1,0 +1,19 @@
+id: 0506d6d0-e0bc-012f-6313-123138194932
+setup:
+  commands:
+  - bundle install --without production
+  - bundle exec rake db:migrate --trace
+test:
+  commands:
+  - spork &
+  - sleep 2
+  - bundle exec rake
+deploy:
+  heroku:
+    staging:
+      name: krisbb-staging
+    production:
+      name: krisbb
+      backup: false
+ruby_versions:
+- 1.9.3
