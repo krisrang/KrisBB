@@ -8,6 +8,11 @@ require 'rubygems'
 require 'spork'
 
 Spork.prefork do
+  unless ENV['DRB']
+    require 'simplecov'
+    SimpleCov.start 'rails'
+  end
+
   require 'cucumber/rails'
   require 'capybara/poltergeist'
 
@@ -17,6 +22,11 @@ Spork.prefork do
 end
 
 Spork.each_run do
+  if ENV['DRB']
+    require 'simplecov'
+    SimpleCov.start 'rails'
+  end
+
   # By default, any exception happening in your Rails application will bubble up
   # to Cucumber so that your scenario will fail. This is a different from how
   # your application behaves in the production environment, where an error page will

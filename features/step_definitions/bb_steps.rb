@@ -1,14 +1,3 @@
-def create_user
-  @user = create(:user)
-end
-
-def sign_in
-  visit login_path
-  fill_in "Username", :with => @user[:username]
-  fill_in "Password", :with => "secret"
-  click_button "Sign In"
-end
-
 def create_messages(times)
   times.times do
     create(:message)
@@ -16,11 +5,6 @@ def create_messages(times)
 end
 
 # Given
-
-Given /^I am logged in$/ do
-  create_user
-  sign_in
-end
 
 Given /^There are (.+) messages$/ do |count|
   unless count == "no"

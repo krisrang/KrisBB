@@ -1,24 +1,18 @@
 class MessagesController < ApplicationController
   layout 'bb', only: ['bb']
   load_and_authorize_resource
+
+  respond_to :json, :html, only: [:bb, :index]
   respond_to :json
 
   # Main app
   def bb
-    @messages = @messages.includes(:user).desc(:created_at).limit(30)
-    respond_with @messages do |format|
-      format.html { render }
-    end
+    @messages = @messages.index.limit(30)
   end
 
   # Archive
   def index
-    @messages = @messages.includes(:user).desc(:created_at)
-    @messages = @messages.page(params[:page] || 1)
-
-    respond_with @messages do |format|
-      format.html { render }
-    end
+    @messages = @messages.index.page(params[:page] || 1)
   end
 
   def show

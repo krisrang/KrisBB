@@ -16,6 +16,7 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem 'kaminari'
 gem 'requirejs-rails'
+gem 'spine-rails'
 gem 'twitter-bootstrap-rails'
 
 # Auth & auth

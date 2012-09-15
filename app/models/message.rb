@@ -25,6 +25,9 @@ class Message
   field :text
   field :html
 
+  attr_protected :html
+
+  scope :index, includes(:user).desc(:created_at)
   scope :recent, desc(:created_at).limit(5)
 
   before_save :process_text
@@ -53,7 +56,7 @@ class Message
     end
 
     def smilie_parse(text)
-      @@smilies.each do |k, v|
+      Message.smilies.each do |k, v|
         text.gsub! k, "<i class=\"smilie smilies-#{v}\"></i>"
       end
 
