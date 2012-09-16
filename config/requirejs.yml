@@ -12,6 +12,7 @@ paths:
   shims: "lib/shims"
   store: "lib/store"
   pusher: "http://js.pusher.com/1.12/pusher.min.js"
+  jquery: 'lib/jquery'
 shim:
   jquery_ujs: ['jquery']
   shims: ['jquery']
