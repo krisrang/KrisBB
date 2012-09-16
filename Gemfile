@@ -35,7 +35,6 @@ gem 'carrierwave-mongoid', git: 'git://github.com/jnicklas/carrierwave-mongoid.g
 gem 'fog'
 
 group :assets do
-  gem 'ejs'
   gem 'execjs'
   gem 'therubyracer'
   gem 'sass-rails'
