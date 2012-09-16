@@ -1,6 +1,5 @@
 define ["backbone", "marionette", "vent", "views/send", "views/messages"],
   (Backbone, Marionette, vent, Send, MessagesView) ->
-    # set up the app instance
     app = new Marionette.Application()
 
     app.addRegions
@@ -15,5 +14,7 @@ define ["backbone", "marionette", "vent", "views/send", "views/messages"],
     app.on "initialize:after", (options) ->
       if (Backbone.history)
         Backbone.history.start pushState: true
+
+      vent.trigger('app:loaded')
 
     return app

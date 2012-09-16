@@ -1,26 +1,40 @@
-define ['marionette', 'templates'], (Marionette, templates) ->
-  "use strict";
+define ['marionette', 'templates', 'collections/messages', 'store', 'channel'],
+  (Marionette, templates, Messages, Store, Pusher) ->
+    "use strict";
 
-  return Marionette.ItemView.extend
-    template: templates.send
-    className: 'send-message span12'
+    return class SendView extends Marionette.ItemView
+      template: templates.send
+      className: 'send-message span12'
+      sendOnEnter: false
+      ENTER_KEY: 13
 
-    ui:
-      input   : '#message_text'
-      toggle  : '#send-message-enter'
+      ui:
+        input   : '#message_text'
+        toggle  : '#send-message-enter'
 
-    events:
-      'keypress #message_text'    : 'onInputKeypress'
-      'change #send-message-enter': 'onToggleChange'
+      events:
+        'keypress #message_text'    : 'onInputKeypress'
+        'change #send-message-enter': 'onToggleChange'
+        'click .message-submit'     : 'onClickSend'
 
-    onToggleChange: (e) ->
-      console.log(this.ui.toggle.prop('checked'))
+      onShow: ->
+        @sendOnEnter = Store.get('sendOnEnter')
+        @ui.toggle.prop('checked', @sendOnEnter)
 
-    onInputKeypress: (e) ->
-      ENTER_KEY = 13
-      text = this.ui.input.val().trim()
+      onToggleChange: (e) ->
+        @sendOnEnter = @ui.toggle.prop('checked')
+        Store.set('sendOnEnter', @sendOnEnter)
 
-      if e.which == ENTER_KEY && text
-        console.log(text)
+      onInputKeypress: (e) ->
+        if @sendOnEnter && e.which == @ENTER_KEY && !e.shiftKey
+          @sendMessage()
 
-        this.ui.input.val('')
+      onClickSend: (e) ->
+        @sendMessage()
+
+      sendMessage: ->
+        if text = @ui.input.val().trim()
+          Messages.create text: text, socketid: Pusher.connection.socket_id,
+            wait: true,
+            success: (col, response) =>
+              @ui.input.val('')

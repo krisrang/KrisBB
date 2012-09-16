@@ -9,6 +9,8 @@ paths:
   marionette: "lib/backbone.marionette"
   underscore: "lib/lodash"
   shims: "lib/shims"
+  store: "lib/store"
+  pusher: "http://js.pusher.com/1.12/pusher.min.js"
 shim:
   jquery_ujs: ['jquery']
   shims: ['jquery']

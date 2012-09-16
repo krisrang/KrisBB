@@ -25,6 +25,12 @@ class MessagesController < ApplicationController
     @message.user = current_user
     @message.save
 
+    begin
+      Pusher['main'].trigger_async('message', {message: @message.to_json}, params[:socketid])
+    rescue
+      Pusher['main'].trigger('message', {message: @message.to_json}, params[:socketid])
+    end
+
     respond_with @message
   end
 

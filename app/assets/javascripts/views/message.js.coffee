@@ -5,14 +5,14 @@ define ['jquery', 'marionette', 'templates'], ($, Marionette, templates) ->
     template: templates.message
     tagName: 'li'
 
-    initialize: () ->
+    initialize: ->
       @bindTo @model, 'change', @render
 
-    attributes: () ->
+    attributes: ->
       {
         id: 'message-' + @model.id
         class: 'user' + @model.get('user').colour
       }
 
-    onRender: () ->
+    onRender: ->
       $('time.timeago', @$el).timeago()
