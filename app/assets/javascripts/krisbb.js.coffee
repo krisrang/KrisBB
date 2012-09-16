@@ -15,6 +15,12 @@ define ["backbone", "marionette", "vent", "views/send", "views/messages"],
       if (Backbone.history)
         Backbone.history.start pushState: true
 
-      vent.trigger('app:loaded')
+    pusher = new Pusher(KrisBBsetup.settings.pusher.key)
+    pusher.connection.bind 'connected', ->
+      vent.trigger 'pusher:connected', pusher
+
+    channel = pusher.subscribe('main')
+    channel.bind 'message', (data) ->
+      vent.trigger 'pusher:message', JSON.parse(data.message)
 
     return app

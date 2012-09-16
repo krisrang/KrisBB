@@ -1,5 +1,5 @@
-define ['marionette', 'templates', 'collections/messages', 'store', 'channel'],
-  (Marionette, templates, Messages, Store, Pusher) ->
+define ['marionette', 'templates', 'collections/messages', 'store', 'vent'],
+  (Marionette, templates, Messages, store, vent) ->
     "use strict";
 
     return class SendView extends Marionette.ItemView
@@ -7,6 +7,7 @@ define ['marionette', 'templates', 'collections/messages', 'store', 'channel'],
       className: 'send-message span12'
       sendOnEnter: false
       ENTER_KEY: 13
+      socket: 0
 
       ui:
         input   : '#message_text'
@@ -17,13 +18,17 @@ define ['marionette', 'templates', 'collections/messages', 'store', 'channel'],
         'change #send-message-enter': 'onToggleChange'
         'click .message-submit'     : 'onClickSend'
 
+      initialize: ->
+        vent.bind 'pusher:connected', (pusher) ->
+          @socket = pusher.connection.socket_id
+
       onShow: ->
-        @sendOnEnter = Store.get('sendOnEnter')
+        @sendOnEnter = store.get('sendOnEnter')
         @ui.toggle.prop('checked', @sendOnEnter)
 
       onToggleChange: (e) ->
         @sendOnEnter = @ui.toggle.prop('checked')
-        Store.set('sendOnEnter', @sendOnEnter)
+        store.set('sendOnEnter', @sendOnEnter)
 
       onInputKeypress: (e) ->
         if @sendOnEnter && e.which == @ENTER_KEY && !e.shiftKey
@@ -34,7 +39,7 @@ define ['marionette', 'templates', 'collections/messages', 'store', 'channel'],
 
       sendMessage: ->
         if text = @ui.input.val().trim()
-          Messages.create text: text, socketid: Pusher.connection.socket_id,
+          Messages.create text: text, socketid: @socket,
             wait: true,
             success: (col, response) =>
               @ui.input.val('')

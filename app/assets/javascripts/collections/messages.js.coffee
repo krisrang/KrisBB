@@ -1,4 +1,4 @@
-define ["backbone", "models/message"], (Backbone, Message) ->
+define ["backbone", "models/message", 'vent'], (Backbone, Message, vent) ->
   'use strict';
 
   MessagesCollection = Backbone.Collection.extend
@@ -14,5 +14,8 @@ define ["backbone", "models/message"], (Backbone, Message) ->
     collection.reset(window.KrisBBsetup.messages)
   else
     collection.fetch()
+
+  vent.bind 'pusher:message', (message) ->
+    collection.add([message])
 
   return collection
