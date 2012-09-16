@@ -69,17 +69,11 @@ test:
         consistency: :strong
         identity_map_enabled: true
 
-<% uri = URI.parse(ENV['MONGOLAB_URI'] || 'mongodb://localhost:27017/krisbb_dev') %>
+<% uri = ENV['MONGOLAB_URI'] || 'mongodb://localhost:27017/krisbb_dev' %>
 production:
   sessions:
     default:
-      database: <%= uri.path.sub('/','') %>
-      <% if uri.user %>
-      username: <%= uri.user %>
-      password: <%= uri.password %>
-      <% end %>
-      hosts:
-        - <%= uri.host %>:<%= uri.port %>
+      uri: <%= uri %>
       options:
         consistency: :strong
         identity_map_enabled: true
