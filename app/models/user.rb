@@ -22,7 +22,8 @@ class User
 
   authenticates_with_sorcery!
 
-  before_create :enable_signup, :generate_token, :generate_colour
+  before_create :enable_signup
+  before_save :generate_token, :generate_colour
 
   def as_json(options = nil)
     serializable_hash(options).tap do |hash|
@@ -35,13 +36,12 @@ class User
       hash.delete "failed_logins_count"
       hash.delete "remember_me_token"
       hash.delete "remember_me_token_expires_at"
+      hash[:deleted] = true if self.new_record?
     end
   end
 
-  def upgrade_user
-    generate_token if self.token.nil?
-    generate_colour if self.colour.nil?
-    save
+  def self.deleted_user
+    self.new(colour: 1, username: "Deleted")
   end
 
   protected
@@ -50,11 +50,11 @@ class User
     end
 
     def generate_token
-      self.token = SecureRandom.base64(15).tr('+/=lIO0', 'pqrsxyz')
+      self.token = SecureRandom.base64(15).tr('+/=lIO0', 'pqrsxyz') if self.token.nil?
     end
 
     def generate_colour
-      self.colour = rand 1..5
+      self.colour = rand 1..5 if self.colour.nil?
 
       #self.colour = "%06x" % (rand * 0xffffff)
     end

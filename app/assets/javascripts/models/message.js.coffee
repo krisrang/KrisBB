@@ -1,7 +1,14 @@
-define ["backbone"], (Backbone) ->
+define ["backbone", "relational", "models/user"], (Backbone, Relational, User) ->
   'use strict';
 
-  return Backbone.Model.extend
+  return Backbone.RelationalModel.extend
+    relations: [{
+        type: Backbone.HasOne,
+        key: 'user',
+        relatedModel: User,
+        collectionType: 'UserCollection'
+    }]
+
     idAttribute: '_id'
     defaults:
       created_at: new Date().toISOString()

@@ -8,11 +8,13 @@ class MessagesController < ApplicationController
   # Main app
   def bb
     @messages = @messages.index.limit(30)
+    respond_with @messages
   end
 
   # Archive
   def index
     @messages = @messages.index.page(params[:page] || 1)
+    respond_with @messages
   end
 
   def show
@@ -25,11 +27,7 @@ class MessagesController < ApplicationController
     @message.user = current_user
     @message.save
 
-    begin
-      Pusher['main'].trigger_async('message', {message: @message.to_json}, params[:socketid])
-    rescue
-      Pusher['main'].trigger('message', {message: @message.to_json}, params[:socketid])
-    end
+    Notifier.new_message(@message, params)
 
     respond_with @message
   end

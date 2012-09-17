@@ -1,10 +1,11 @@
-define ["backbone"], (Backbone) ->
+define ["backbone", "relational"], (Backbone) ->
   'use strict';
 
-  return Backbone.Model.extend
+  return Backbone.RelationalModel.extend
     idAttribute: '_id'
-    defaults:
-      data: {}
+
+    deleted: ->
+      @get('deleted')
 
     url: ->
       return "/users/" + (if @isNew() then '' else @id)

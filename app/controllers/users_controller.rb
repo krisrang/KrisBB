@@ -60,7 +60,6 @@ class UsersController < ApplicationController
   def destroy
     #@user = User.find(params[:id])
     @user.destroy
-
-    render json: @user, status: :ok
+    respond_with @user
   end
 end

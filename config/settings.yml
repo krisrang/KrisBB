@@ -1,2 +1,6 @@
 enable_signup: false
-public: {}
+public:
+  pusher:
+    app_id: 27770
+    key: bb6ee2e971248c187d7c
+

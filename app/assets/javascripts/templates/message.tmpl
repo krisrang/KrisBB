@@ -3,7 +3,11 @@
 </i>
 <div class="info">
   <span class="username">
+    <% if (user.deleted) { %>
+    <%= user.username %>
+    <% } else { %>
     <a href="<%= routes.user_path(user._id) %>"><%= user.username %></a>
+    <% } %>
     <i class="online-bit" data-user="<%= user.id %>"></i>
   </span>
   <span class="time">

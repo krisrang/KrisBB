@@ -10,15 +10,10 @@ class ApplicationController < ActionController::Base
       redirect_to login_url, alert: "This page requires logging in."
     end
 
-    def require_admin
-      !!current_user && current_user.admin
-    end
-
     def login_api
       if request.format.json? && !logged_in?
         # Authorization: Token token="abc", nonce="def"
         authenticate_or_request_with_http_token do |token, options|
-          # TODO: implement nonce-based token check
           begin
             @current_user = User.find_by(token: token)
             auto_login(@current_user) if @current_user

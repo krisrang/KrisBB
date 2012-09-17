@@ -11,7 +11,7 @@ define ['jquery', 'marionette', 'templates'], ($, Marionette, templates) ->
     attributes: ->
       {
         id: 'message-' + @model.id
-        class: 'user' + @model.get('user').colour
+        class: 'user' + @model.get('user')
       }
 
     onRender: ->

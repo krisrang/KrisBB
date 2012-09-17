@@ -22,8 +22,15 @@ describe Message do
   describe ".as_json" do
     it "includes the user record" do
       message = create(:message)
-      json = JSON.parse(message.to_json)
-      json["user"]["_id"].should eq(message.user.id.to_s)
+      json = message.as_json
+      json[:user].id.should eq(message.user.id)
+    end
+
+    it "includes fake user when user deleted" do
+      message = create(:message)
+      message.user = nil
+      json = message.as_json
+      json[:user].id.should eq(message.user.id)
     end
   end
 

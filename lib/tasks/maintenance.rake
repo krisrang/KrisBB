@@ -16,7 +16,7 @@ namespace :users do
   task :upgrade => :environment do
     Mongoid.unit_of_work(disable: :all) do
       User.all.each do |user|
-        user.upgrade_user
+        user.save
       end
     end
   end

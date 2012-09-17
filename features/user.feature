@@ -57,3 +57,18 @@ Feature: User management
     Given I am logged in
     When I log out
     Then I should be logged out
+
+  Scenario: Admin edits another user
+    Given I am logged in as admin
+    When I edit another user
+    Then I should be able to update the user
+
+  Scenario: Admin deletes user
+    Given I am logged in as admin
+    When I delete another user
+    Then I should not see the user
+
+  Scenario: User tries to edit another user
+    Given I am logged in
+    When I edit another user
+    Then I should see authorization error

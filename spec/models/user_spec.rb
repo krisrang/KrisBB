@@ -26,13 +26,11 @@ describe User do
     end
   end
 
-  describe ".upgrade_user" do
+  describe "before_save" do
     it "makes certain all users have generated fields" do
       user = create(:user)
       user.token = user.colour = nil
-      user.token.should eq(nil)
-      user.colour.should eq(nil)
-      user.upgrade_user
+      user.save
       user.token.should_not eq(nil)
       user.colour.should_not eq(nil)
     end

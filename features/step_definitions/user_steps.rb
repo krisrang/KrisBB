@@ -2,9 +2,9 @@ def create_user
   @user = create(:user)
 end
 
-def log_in
+def log_in(user = @user)
   visit login_path
-  fill_in "Username", with: @user[:username]
+  fill_in "Username", with: user[:username]
   fill_in "Password", with: "secret"
   click_button "Sign In"
 end
@@ -20,11 +20,28 @@ Given /^I am logged in$/ do
   log_in
 end
 
+Given /^I am logged in as admin$/ do
+  @admin = create(:user, admin: true)
+  log_in(@admin)
+end
+
 Given /^I am registered$/ do
   create_user
 end
 
 # When
+
+When /^I edit another user$/ do
+  @user = create(:user)
+  visit edit_user_path(@user)
+end
+
+When /^I delete another user$/ do
+  @user = create(:user)
+  visit user_path(@user)
+  click_link "Delete User"
+  #page.driver.browser.switch_to.alert.accept
+end
 
 When /^I sign up$/ do
   visit signup_path
@@ -126,4 +143,20 @@ end
 
 Then /^I should see my profile$/ do
   page.find('h2').should have_content(@user.username)
+end
+
+Then /^I should be able to update the user$/ do
+  newemail = "test@test.com"
+  fill_in "Email", with: newemail
+  click_button "Save"
+  user = User.find(@user.id)
+  user.email.should eq(newemail)
+end
+
+Then /^I should see authorization error$/ do
+  page.find(".alert").should have_content("Cannot access specified resource")
+end
+
+Then /^I should not see the user$/ do
+  page.should_not have_content(@user.username)
 end

@@ -35,7 +35,11 @@ class Message
 
   def as_json(options = nil)
     serializable_hash(options).tap do |hash|
-      hash[:user] = self.user
+      unless self.user.nil?
+        hash[:user] = self.user
+      else
+        hash[:user] = User.deleted_user
+      end
     end
   end
 

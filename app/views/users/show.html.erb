@@ -2,9 +2,15 @@
   <div class="user-controls clearfix">
     <h2><%= @user.username %> <%= online_bit @user %></h2>
     <p><%= avatar @user, :big %></p>
-    <% if can? :edit, @user %>
-    <p><a class="btn" href="<%= edit_user_path @user %>">User Settings</a></p>
-    <% end %>
+    <p>
+      <% if can? :edit, @user %>
+      <%= link_to "User Settings", edit_user_path(@user), class: "btn" %>
+      <% end %>
+      <% if can? :delete, @user %>
+      <%= link_to "Delete User", user_path(@user), method: :delete,
+        confirm: "Are you sure?", class: "btn" %>
+      <% end %>
+    </p>
   </div>
 
   <div class="user-messages">
