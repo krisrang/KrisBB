@@ -4,15 +4,13 @@ define ['jquery', 'marionette', 'templates', 'views/message',
   ($, Marionette, templates, MessageView, Messages, Users, User, vent) ->
     "use strict";
 
-    messagesCollection = new Messages()
-
     if window.KrisBBsetup?.messages?
-      messagesCollection.reset(window.KrisBBsetup.messages)
+      Messages.reset(window.KrisBBsetup.messages)
     else
-      messagesCollection.fetch()
+      Messages.fetch()
 
     vent.bind 'pusher:message', (message) ->
-      messagesCollection.add([message])
+      Messages.add([message])
 
     vent.bind 'pusher:user', (user) ->
       model = User.findOrCreate(user["_id"])
@@ -27,15 +25,13 @@ define ['jquery', 'marionette', 'templates', 'views/message',
     Marionette.CollectionView.extend
       itemView: MessageView
       emptyView: emptyView
-      collection: messagesCollection
+      collection: Messages
       tagName: 'ul'
       className: 'unstyled messages bb'
 
       resizeTimer: null
 
       onRender: () ->
-        window.test = @collection
-        window.test2 = Users
         @scrollToBottom()
 
         $(window).resize () =>

@@ -8,4 +8,4 @@ define ["backbone", "models/message"], (Backbone, Message) ->
     comparator: (message) ->
       message.get('created_at')
 
-  return MessagesCollection
+  return new MessagesCollection()

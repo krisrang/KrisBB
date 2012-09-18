@@ -25,9 +25,10 @@ class MessagesController < ApplicationController
   def create
     #@message = Message.new(params[:message])
     @message.user = current_user
-    @message.save
-
-    Notifier.new_message(@message, params)
+    
+    if @message.save
+      notifier.new_message(@message, params)
+    end
 
     respond_with @message
   end

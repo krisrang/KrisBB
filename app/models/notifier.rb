@@ -1,17 +1,18 @@
 class Notifier
-  def self.new_message(message, params)
-    begin
-      Pusher['main'].trigger_async('message', {message: message.to_json}, params[:socketid])
-    rescue
-      Pusher['main'].trigger('message', {message: message.to_json}, params[:socketid])
-    end
+  def new_message(message, params)
+    send('message', {message: message.to_json}, params[:socketid])
   end
 
-  def self.update_user(user)
-    begin
-      Pusher['main'].trigger_async('user', {user: user.to_json})
-    rescue
-      Pusher['main'].trigger('user', {user: user.to_json})
-    end
+  def update_user(user)
+    send('user', {user: user.to_json})
   end
+
+  protected
+    def send(type, message, socket = nil)
+      begin
+        Pusher['main'].trigger_async(type, message, socket)
+      rescue
+        Pusher['main'].trigger(type, message, socket)
+      end
+    end
 end

@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   private
+    def notifier
+      @notifier ||= Notifier.new
+    end
+
     def not_authenticated
       redirect_to login_url, alert: "This page requires logging in."
     end
