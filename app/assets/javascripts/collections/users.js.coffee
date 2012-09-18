@@ -1,6 +1,8 @@
 define ["backbone", "models/user"], (Backbone, User) ->
   'use strict';
 
-  return Backbone.Collection.extend
+  class Users extends Backbone.Collection
     url: '/users'
     model: User
+
+  return Users

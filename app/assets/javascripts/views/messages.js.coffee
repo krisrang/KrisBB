@@ -1,9 +1,11 @@
-define ['jquery', 'marionette', 'templates', 'views/message', 'collections/messages', 'vent'],
-  ($, Marionette, templates, MessageView, Messages, vent) ->
+define ['jquery', 'marionette', 'templates', 'views/message',
+        'collections/messages', 'collections/users', 'models/user',
+        'vent',],
+  ($, Marionette, templates, MessageView, Messages, Users, User, vent) ->
     "use strict";
 
     messagesCollection = new Messages()
-    
+
     if window.KrisBBsetup?.messages?
       messagesCollection.reset(window.KrisBBsetup.messages)
     else
@@ -11,6 +13,11 @@ define ['jquery', 'marionette', 'templates', 'views/message', 'collections/messa
 
     vent.bind 'pusher:message', (message) ->
       messagesCollection.add([message])
+
+    vent.bind 'pusher:user', (user) ->
+      model = User.findOrCreate(user["_id"])
+      if model?
+        model.set user
 
     emptyView = MessageView.extend
       template: templates.messages_empty
@@ -28,6 +35,7 @@ define ['jquery', 'marionette', 'templates', 'views/message', 'collections/messa
 
       onRender: () ->
         window.test = @collection
+        window.test2 = Users
         @scrollToBottom()
 
         $(window).resize () =>

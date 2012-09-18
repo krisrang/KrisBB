@@ -22,5 +22,7 @@ define ["backbone", "marionette", "vent", "views/send", "views/messages"],
     channel = pusher.subscribe('main')
     channel.bind 'message', (data) ->
       vent.trigger 'pusher:message', JSON.parse(data.message)
+    channel.bind 'user', (data) ->
+      vent.trigger 'pusher:user', JSON.parse(data.user)
 
     return app

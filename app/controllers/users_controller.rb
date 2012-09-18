@@ -48,6 +48,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
+        Notifier.update_user(@user)
         format.html { redirect_to root_url, notice: "Settings updated!" }
         format.json { render json: @user, status: :ok }
       else
