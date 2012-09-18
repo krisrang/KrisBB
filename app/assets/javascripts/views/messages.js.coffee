@@ -1,6 +1,16 @@
-define ['jquery', 'marionette', 'templates', 'views/message', 'collections/messages'],
-  ($, Marionette, templates, MessageView, Messages) ->
+define ['jquery', 'marionette', 'templates', 'views/message', 'collections/messages', 'vent'],
+  ($, Marionette, templates, MessageView, Messages, vent) ->
     "use strict";
+
+    messagesCollection = new Messages()
+    
+    if window.KrisBBsetup?.messages?
+      messagesCollection.reset(window.KrisBBsetup.messages)
+    else
+      messagesCollection.fetch()
+
+    vent.bind 'pusher:message', (message) ->
+      messagesCollection.add([message])
 
     emptyView = MessageView.extend
       template: templates.messages_empty
@@ -10,13 +20,14 @@ define ['jquery', 'marionette', 'templates', 'views/message', 'collections/messa
     Marionette.CollectionView.extend
       itemView: MessageView
       emptyView: emptyView
-      collection: Messages
+      collection: messagesCollection
       tagName: 'ul'
       className: 'unstyled messages bb'
 
       resizeTimer: null
 
       onRender: () ->
+        window.test = @collection
         @scrollToBottom()
 
         $(window).resize () =>

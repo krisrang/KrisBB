@@ -1,5 +1,5 @@
 class Notifier
-  def new_message(message, params)
+  def self.new_message(message, params)
     begin
       Pusher['main'].trigger_async('message', {message: message.to_json}, params[:socketid])
     rescue

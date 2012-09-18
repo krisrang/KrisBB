@@ -2,7 +2,7 @@ define ['marionette', 'templates', 'collections/messages', 'store', 'vent'],
   (Marionette, templates, Messages, store, vent) ->
     "use strict";
 
-    return class SendView extends Marionette.ItemView
+    Marionette.ItemView.extend
       template: templates.send
       className: 'send-message span12'
       sendOnEnter: false
