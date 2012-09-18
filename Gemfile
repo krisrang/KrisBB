@@ -16,7 +16,6 @@ gem 'dalli'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'kaminari'
-gem 'requirejs-rails'
 gem 'twitter-bootstrap-rails'
 
 # Auth & auth
@@ -35,6 +34,7 @@ gem 'carrierwave-mongoid', git: 'git://github.com/jnicklas/carrierwave-mongoid.g
 gem 'fog'
 
 group :assets do
+  gem 'eco'
   gem 'execjs'
   gem 'therubyracer'
   gem 'sass-rails'

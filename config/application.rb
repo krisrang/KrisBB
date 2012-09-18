@@ -50,10 +50,8 @@ module Kreubb
     config.assets.enabled = true
 
     # Version of your assets, change this if you want to expire all your assets
-    config.assets.version = '1.2'
+    config.assets.version = '2.0'
 
     config.action_mailer.delivery_method = :amazon_ses
-
-    config.requirejs.logical_asset_filter += [/\.tmpl$/]
   end
 end

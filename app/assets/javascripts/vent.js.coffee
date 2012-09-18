@@ -1,2 +1,1 @@
-define ["marionette"], (Marionette) ->
-  return new Marionette.EventAggregator()
+window.KrisBB.vent = new Backbone.Marionette.EventAggregator()

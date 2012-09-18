@@ -1,6 +1,5 @@
-define ['marionette'], (marionette) ->
-  'use strict';
+"use strict";
 
-  return marionette.AppRouter.extend
-    appRoutes:
-      '': 'index'
+window.KrisBB.routers.Router = Backbone.Marionette.AppRouter.extend
+  appRoutes:
+    '': 'index'

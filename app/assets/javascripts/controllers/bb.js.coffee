@@ -1,7 +1,6 @@
-define ['vent'], (vent) ->
-  "use strict";
+"use strict";
 
-  return {
-    index: (param) ->
-      #console.log('action:index')
-    }
+window.KrisBB.controllers.Controller = {
+  index: (param) ->
+    #console.log('action:index')
+}

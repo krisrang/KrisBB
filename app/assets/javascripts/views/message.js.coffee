@@ -1,18 +1,22 @@
-define ['jquery', 'marionette', 'templates'], ($, Marionette, templates) ->
-  "use strict";
+"use strict";
 
-  return Marionette.ItemView.extend
-    template: templates.message
-    tagName: 'li'
+window.KrisBB.views.message = Backbone.Marionette.ItemView.extend
+  template: JST["templates/message"]
+  tagName: 'li'
 
-    initialize: ->
-      @bindTo @model, 'change', @render
+  initialize: ->
+    @bindTo @model, 'change', @render
 
-    attributes: ->
-      {
-        id: 'message-' + @model.id
-        class: 'user' + @model.get('user')
-      }
+  attributes: ->
+    {
+      id: 'message-' + @model.id
+      class: 'user' + @model.get('user')
+    }
 
-    onRender: ->
-      $('time.timeago', @$el).timeago()
+  onRender: ->
+    $('time.timeago', @$el).timeago()
+
+window.KrisBB.views.emptyMessage = KrisBB.views.message.extend
+  template: JST["messages_empty"]
+  className: 'user1'
+  attributes: {}

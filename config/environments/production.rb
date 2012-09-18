@@ -46,7 +46,7 @@ Kreubb::Application.configure do
   config.action_controller.asset_host = "//krisbb-assets.s3.amazonaws.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  # config.assets.precompile += %w( static.css )
+  config.assets.precompile += %w( common.js )
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
@@ -62,5 +62,4 @@ Kreubb::Application.configure do
   config.active_support.deprecation = :notify
 
   config.action_mailer.default_url_options = { :host => 'forum.kristjanrang.eu' }
-  config.requirejs.run_config['baseUrl'] = '//krisbb-assets.s3.amazonaws.com/assets'
 end
