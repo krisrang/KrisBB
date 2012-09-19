@@ -22,10 +22,10 @@
   </div>
 
   <script>
-    window.KrisBBsetup = {
-      messages: <%= j @messages.to_json.html_safe %>,
-      settings: <%= j Settings.public.to_json.html_safe %>,
-      user: <%= j current_user.to_json.html_safe %>
+    window.KrisBB = {
+      bootstrap: <%= j @messages.to_json.html_safe %>,
+      Settings: <%= j Settings.public.to_json.html_safe %>,
+      User: <%= j current_user.to_json.html_safe %>
     };
   </script>
   <script src="http://js.pusher.com/1.12/pusher.min.js"></script>

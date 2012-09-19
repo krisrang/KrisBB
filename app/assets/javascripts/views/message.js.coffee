@@ -1,6 +1,6 @@
 "use strict";
 
-window.KrisBB.views.message = Backbone.Marionette.ItemView.extend
+window.KrisBB.Views.Message = Backbone.Marionette.ItemView.extend
   template: JST["templates/message"]
   tagName: 'li'
 
@@ -16,7 +16,7 @@ window.KrisBB.views.message = Backbone.Marionette.ItemView.extend
   onRender: ->
     $('time.timeago', @$el).timeago()
 
-window.KrisBB.views.emptyMessage = KrisBB.views.message.extend
-  template: JST["messages_empty"]
+window.KrisBB.Views.EmptyMessage = KrisBB.Views.Message.extend
+  template: JST["templates/messages_empty"]
   className: 'user1'
   attributes: {}

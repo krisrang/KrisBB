@@ -18,4 +18,4 @@ class User extends  Backbone.RelationalModel
     return "/users/" + (if @isNew() then '' else @id)
 
 User.setup()
-window.KrisBB.models.User = User
+window.KrisBB.Models.User = User

@@ -1,6 +1,6 @@
 "use strict";
 
-window.KrisBB.controllers.Controller = {
+window.KrisBB.Controllers.Controller = {
   index: (param) ->
     #console.log('action:index')
 }

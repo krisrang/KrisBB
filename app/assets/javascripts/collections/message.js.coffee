@@ -2,9 +2,9 @@
 
 class Messages extends Backbone.Collection
   url: '/messages'
-  model: KrisBB.models.Message
+  model: KrisBB.Models.Message
 
   comparator: (message) ->
     message.get('created_at')
 
-window.KrisBB.collections.Messages = new Messages()
+window.KrisBB.Collections.Messages = new Messages()

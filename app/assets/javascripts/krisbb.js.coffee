@@ -1,34 +1,39 @@
 "use strict";
 
-KrisBB.app = new Backbone.Marionette.Application()
+KrisBB.App = new Backbone.Marionette.Application()
 
-KrisBB.app.addRegions
+# Regions
+KrisBB.App.addRegions
   messages : '#bb-messages',
   sendbox  : '#bb-sendbox'
 
-KrisBB.app.addInitializer () ->
-  KrisBB.app.sendbox.show(new KrisBB.views.send())
-  KrisBB.app.messages.show(new KrisBB.views.messages())
+# Initializers for views and history
+KrisBB.App.addInitializer () ->
+  KrisBB.App.sendbox.show(new KrisBB.Views.Send())
+  KrisBB.App.messages.show(new KrisBB.Views.Messages())
 
-KrisBB.app.on "initialize:after", (options) ->
+KrisBB.App.on "initialize:after", (options) ->
   if (Backbone.history)
     Backbone.history.start pushState: true
 
-pusher = new Pusher(KrisBBsetup.settings.pusher.key)
+# Pusher setup
+pusher = new Pusher(KrisBB.Settings.pusher.key)
 pusher.connection.bind 'connected', ->
-  KrisBB.vent.trigger 'pusher:connected', pusher
+  KrisBB.Vent.trigger 'pusher:connected', pusher
 
 channel = pusher.subscribe('main')
 channel.bind 'message', (data) ->
-  KrisBB.vent.trigger 'pusher:message', JSON.parse(data.message)
+  KrisBB.Vent.trigger 'pusher:message', JSON.parse(data.message)
 channel.bind 'user', (data) ->
-  KrisBB.vent.trigger 'pusher:user', JSON.parse(data.user)
+  KrisBB.Vent.trigger 'pusher:user', JSON.parse(data.user)
 
+# Render eco templates
 Backbone.Marionette.Renderer.render = (template, data) ->
   data.routes = Routes
   return template(data)
 
-new KrisBB.routers.Router
-  controller: KrisBB.controllers.Controller
+# Start app
+new KrisBB.Routers.Router
+  controller: KrisBB.Controllers.Controller
 
-KrisBB.app.start()
+KrisBB.App.start()

@@ -4,8 +4,8 @@ class Message extends Backbone.RelationalModel
   relations: [{
     type: Backbone.HasOne,
     key: 'user',
-    relatedModel: KrisBB.models.User,
-    collectionType: KrisBB.collections.Users,
+    relatedModel: KrisBB.Models.User,
+    collectionType: KrisBB.Collections.Users,
     reverseRelation: {
         key: 'messages',
         includeInJSON: false
@@ -13,11 +13,9 @@ class Message extends Backbone.RelationalModel
   }]
 
   idAttribute: '_id'
-  defaults:
-    created_at: new Date().toISOString()
 
   url: ->
     return "/messages/" + (if @isNew() then '' else @id)
 
 Message.setup()
-window.KrisBB.models.Message = Message
+window.KrisBB.Models.Message = Message

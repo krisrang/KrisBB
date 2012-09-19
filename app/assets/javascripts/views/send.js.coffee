@@ -1,6 +1,6 @@
 "use strict";
 
-window.KrisBB.views.send = Backbone.Marionette.ItemView.extend
+window.KrisBB.Views.Send = Backbone.Marionette.ItemView.extend
   template: JST["templates/send"]
   className: 'send-message span12'
   sendOnEnter: false
@@ -17,12 +17,13 @@ window.KrisBB.views.send = Backbone.Marionette.ItemView.extend
     'click .message-submit'     : 'onClickSend'
 
   initialize: ->
-    KrisBB.vent.bind 'pusher:connected', (pusher) =>
+    KrisBB.Vent.bind 'pusher:connected', (pusher) =>
       @socket = pusher.connection.socket_id
 
   onShow: ->
     @sendOnEnter = store.get('sendOnEnter')
     @ui.toggle.prop('checked', @sendOnEnter)
+    @ui.input.focus()
 
   onToggleChange: (e) ->
     @sendOnEnter = @ui.toggle.prop('checked')
@@ -41,7 +42,7 @@ window.KrisBB.views.send = Backbone.Marionette.ItemView.extend
     if text = @ui.input.val().trim()
       @ui.input.val('')
       @$el.addClass('sending')
-      KrisBB.collections.Messages.create text: text, socketid: @socket,
+      KrisBB.Collections.Messages.create text: text, socketid: @socket,
         wait: true,
         error: (messages, response) =>
           console.log(response)

@@ -1,1 +1,1 @@
-window.KrisBB.vent = new Backbone.Marionette.EventAggregator()
+window.KrisBB.Vent = new Backbone.Marionette.EventAggregator()

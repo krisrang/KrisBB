@@ -1,26 +1,22 @@
 "use strict";
 
-if window.KrisBBsetup?.messages?
-  KrisBB.collections.Messages.reset(window.KrisBBsetup.messages)
-else
-  KrisBB.collections.Messages.fetch()
-
-KrisBB.vent.bind 'pusher:message', (message) ->
-  KrisBB.collections.Messages.add([message])
-
-KrisBB.vent.bind 'pusher:user', (user) ->
-  model = KrisBB.models.User.findOrCreate(user["_id"])
-  if model?
-    model.set user
-
-window.KrisBB.views.messages = Backbone.Marionette.CollectionView.extend
-  itemView: KrisBB.views.message
-  emptyView: KrisBB.views.emptyMessage
-  collection: KrisBB.collections.Messages
+window.KrisBB.Views.Messages = Backbone.Marionette.CollectionView.extend
+  itemView: KrisBB.Views.Message
+  emptyView: KrisBB.Views.EmptyMessage
+  collection: KrisBB.Collections.Messages
   tagName: 'ul'
   className: 'unstyled messages bb'
 
   resizeTimer: null
+
+  initialize: ->
+    KrisBB.Vent.bind 'pusher:message', (message) =>
+      @collection.add([message])
+
+    if KrisBB.bootstrap?
+      @collection.reset(KrisBB.bootstrap)
+    else
+      @collection.fetch()
 
   onRender: () ->
     @scrollToBottom()

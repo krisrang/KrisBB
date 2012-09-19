@@ -2,6 +2,12 @@
 
 class Users extends Backbone.Collection
   url: '/users'
-  model: KrisBB.models.User
+  model: KrisBB.Models.User
 
-window.KrisBB.collections.Users = new Users()
+  initialize: ->
+    KrisBB.Vent.bind 'pusher:user', (user) =>
+      record = @findOrCreate(user["_id"])
+      if record?
+        record.set user
+
+window.KrisBB.Collections.Users = new Users()
