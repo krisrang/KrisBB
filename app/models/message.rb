@@ -27,7 +27,7 @@ class Message
 
   attr_protected :html
 
-  scope :index, includes(:user).desc(:created_at)
+  scope :list, includes(:user).desc(:created_at)
   scope :recent, desc(:created_at).limit(5)
 
   before_save :process_text

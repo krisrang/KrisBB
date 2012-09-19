@@ -99,6 +99,7 @@ table.users
     li
       border-top: 1px solid #EEEEEE
       position: relative
+      min-height: 60px
 
       .avatar
         background: #EEEEEE
@@ -134,11 +135,24 @@ table.users
   background: #F5F4F2
   border-top: 1px solid #99CC00
 
+  &.sending
+    .message-controls
+      .message-submit
+        i.icon-comment
+          display: none
+
+        i.pending
+          display: inline-block 
+
+
   .message-controls
     float: right
 
     .message-submit
       width: 60px
+
+      i.pending
+        display: none
 
     .enter-toggle
       padding: 3px 0 0 3px

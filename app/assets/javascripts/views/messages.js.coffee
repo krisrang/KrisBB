@@ -29,10 +29,11 @@ window.KrisBB.views.messages = Backbone.Marionette.CollectionView.extend
       @scrollToBottom()
 
   onItemAdded: () ->
-    @scrollToBottom()
+    setTimeout(@doScrollBottom, 0) # No idea why this is necessary
 
   scrollToBottom: () ->
     clearTimeout(@resizeTimer)
-    @resizeTimer = setTimeout(() ->
-      $(window).scrollTop $('body')[0].scrollHeight
-    , 100)
+    @resizeTimer = setTimeout(@doScrollBottom, 100)
+
+  doScrollBottom: ->
+    $(window).scrollTop $('body')[0].scrollHeight

@@ -7,13 +7,13 @@ class MessagesController < ApplicationController
 
   # Main app
   def bb
-    @messages = @messages.index.limit(30)
+    @messages = @messages.list.limit(30)
     respond_with @messages
   end
 
   # Archive
   def index
-    @messages = @messages.index.page(params[:page] || 1)
+    @messages = @messages.list.page(params[:page] || 1)
     respond_with @messages
   end
 
@@ -23,6 +23,8 @@ class MessagesController < ApplicationController
   end
 
   def create
+    params[:message].delete(["html", "user", "created_at"])
+    
     #@message = Message.new(params[:message])
     @message.user = current_user
     

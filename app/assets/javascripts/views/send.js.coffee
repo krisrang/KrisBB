@@ -17,7 +17,7 @@ window.KrisBB.views.send = Backbone.Marionette.ItemView.extend
     'click .message-submit'     : 'onClickSend'
 
   initialize: ->
-    KrisBB.vent.bind 'pusher:connected', (pusher) ->
+    KrisBB.vent.bind 'pusher:connected', (pusher) =>
       @socket = pusher.connection.socket_id
 
   onShow: ->
@@ -30,14 +30,20 @@ window.KrisBB.views.send = Backbone.Marionette.ItemView.extend
 
   onInputKeypress: (e) ->
     if @sendOnEnter && e.which == @ENTER_KEY && !e.shiftKey
+      e.preventDefault()
       @sendMessage()
 
   onClickSend: (e) ->
+    e.preventDefault()
     @sendMessage()
 
   sendMessage: ->
     if text = @ui.input.val().trim()
+      @ui.input.val('')
+      @$el.addClass('sending')
       KrisBB.collections.Messages.create text: text, socketid: @socket,
         wait: true,
-        success: (col, response) =>
-          @ui.input.val('')
+        error: (messages, response) =>
+          console.log(response)
+        success: (messages, response) =>
+          @$el.removeClass('sending')

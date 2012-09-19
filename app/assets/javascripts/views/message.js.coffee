@@ -9,8 +9,8 @@ window.KrisBB.views.message = Backbone.Marionette.ItemView.extend
 
   attributes: ->
     {
-      id: 'message-' + @model.id
-      class: 'user' + @model.get('user')
+      id: 'message-' + @model.cid
+      class: 'message user' + @model.get('user').get('colour')
     }
 
   onRender: ->

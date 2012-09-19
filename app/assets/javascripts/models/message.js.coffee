@@ -5,9 +5,10 @@ class Message extends Backbone.RelationalModel
     type: Backbone.HasOne,
     key: 'user',
     relatedModel: KrisBB.models.User,
-    collectionType: KrisBB.collections.Users
+    collectionType: KrisBB.collections.Users,
     reverseRelation: {
-        key: 'messages'
+        key: 'messages',
+        includeInJSON: false
     }
   }]
 
