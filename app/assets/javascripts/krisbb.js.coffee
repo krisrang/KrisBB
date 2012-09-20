@@ -25,7 +25,6 @@ channel = pusher.subscribe('main')
 channel.bind 'message', (data) ->
   KrisBB.Vent.trigger 'pusher:message', JSON.parse(data.message)
 channel.bind 'delete', (data) ->
-  console.log data
   KrisBB.Vent.trigger 'pusher:delete', data.id
 channel.bind 'user', (data) ->
   KrisBB.Vent.trigger 'pusher:user', JSON.parse(data.user)
