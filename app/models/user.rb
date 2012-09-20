@@ -13,7 +13,7 @@ class User
   field :admin, type: Boolean,  default: false
   field :colour, type: Integer
 
-  attr_accessor :remember_me, :password_confirmation
+  attr_accessor :remember_me, :password_confirmation, :deleted
   attr_protected :admin
 
   validates_presence_of :username
@@ -41,7 +41,7 @@ class User
   end
 
   def self.deleted_user
-    self.new(colour: 1, username: "Deleted")
+    self.new(colour: 1, username: "Deleted", deleted: true)
   end
 
   protected

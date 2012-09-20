@@ -1,0 +1,27 @@
+<li id="message-<%= message.id %>" class="user<%= message.user.colour %>">
+  <%= avatar message.user, :small %>
+  <div class="info">
+    <span class="username">
+      <% if message.user.deleted %>
+        <%= message.user.username %>
+      <% else %>
+        <%= link_to message.user.username, user_path(message.user) %>
+      <% end %>
+    </span>
+    <span class="right">
+      <% if can? :delete, message %>
+      <%= link_to "Delete", message_path(message), 
+        method: :delete, confirm: "Are you sure?" %>
+      <% end %>
+      Posted
+      <time datetime="<%= message.created_at %>">
+        <%= message.created_at.to_s :long_ordinal %>
+      </time>
+    </span>
+  </div>
+  <div class="contents">
+    <% cache "message-#{message.id}" do %>
+    <%= raw message.html %>
+    <% end %>
+  </div>
+</li>
