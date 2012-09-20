@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         auto_login(@user, params[:user][:remember_me])
-        format.html { redirect_to root_url, notice: "Signed up!" }
+        format.html { redirect_to root_path, notice: "Signed up!" }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render :new }
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update_attributes(params[:user])
         notifier.update_user(@user)
-        format.html { redirect_to root_url, notice: "Settings updated!" }
+        format.html { redirect_to root_path, notice: "Settings updated!" }
         format.json { render json: @user, status: :ok }
       else
         format.html { render :edit }

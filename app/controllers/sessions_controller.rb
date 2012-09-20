@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     user = login(params[:user][:username], params[:user][:password], params[:user][:remember_me])
 
     if user
-      redirect_back_or_to root_url
+      redirect_back_or_to root_path
     else
       @user = User.new(params[:user])
       render :new, alert: "Username or password was invalid"
@@ -31,6 +31,6 @@ class SessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to root_url
+    redirect_to root_path
   end
 end

@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     end
 
     def not_authenticated
-      redirect_to login_url, alert: "This page requires logging in."
+      redirect_to login_path, alert: "This page requires logging in."
     end
 
     def login_api
@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
       respond_to do |format|
         format.html do
           if logged_in?
-            redirect_to root_url, alert: "Cannot access specified resource"
+            redirect_to root_path, alert: "Cannot access specified resource"
           else
             require_login
           end
