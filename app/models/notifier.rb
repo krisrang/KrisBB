@@ -3,6 +3,10 @@ class Notifier
     send('message', {message: message.to_json}, params[:socketid])
   end
 
+  def delete_message(message)
+    send('delete', {id: message.id})
+  end
+
   def update_user(user)
     send('user', {user: user.to_json})
   end

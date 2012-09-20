@@ -18,14 +18,11 @@ class MessagesController < ApplicationController
   end
 
   def show
-    #@message = Message.find(params[:id])
     respond_with @message
   end
 
   def create
     params[:message].delete(["html", "user", "created_at"])
-    
-    #@message = Message.new(params[:message])
     @message.user = current_user
     
     if @message.save
@@ -36,15 +33,17 @@ class MessagesController < ApplicationController
   end
 
   def update
-    #@message = Message.find(params[:id])
     @message.update_attributes(params[:message])
     respond_with @message
   end
 
   def destroy
-    #@message = Message.find(params[:id])
     @message.destroy
-    #head :ok
-    respond_with @message
+
+    notifier.delete_message(@message)
+    respond_to do |format|
+      format.html { redirect_to messages_path }
+      format.json { respond_with @message }
+    end
   end
 end

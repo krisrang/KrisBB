@@ -10,7 +10,10 @@
     <% end %>
     <i class="online-bit" data-user="<%= @user.id %>"></i>
   </span>
-  <span class="time">
+  <span class="right">
+    <% if @user._id == @currentUser._id || @currentUser.admin: %>
+      <a href="<%= @routes.message_path(@_id) %>" class="delete-message">Delete</a>
+    <% end %>
     <time class="timeago" datetime="<%= @created_at %>">
       <%= @created_at %>
     </time>

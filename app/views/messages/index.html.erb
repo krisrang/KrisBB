@@ -6,7 +6,11 @@
     <%= avatar message.user, :small %>
     <div class="info">
       <span class="username"><%= link_to message.user.username, user_path(message.user) %></span>
-      <span class="time">
+      <span class="right">
+        <% if can? :delete, message %>
+        <%= link_to "Delete", message_path(message), 
+          method: :delete, confirm: "Are you sure?" %>
+        <% end %>
         Posted
         <time datetime="<%= message.created_at %>">
           <%= message.created_at.to_s :long_ordinal %>

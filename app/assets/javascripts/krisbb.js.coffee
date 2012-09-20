@@ -24,12 +24,16 @@ pusher.connection.bind 'connected', ->
 channel = pusher.subscribe('main')
 channel.bind 'message', (data) ->
   KrisBB.Vent.trigger 'pusher:message', JSON.parse(data.message)
+channel.bind 'delete', (data) ->
+  console.log data
+  KrisBB.Vent.trigger 'pusher:delete', data.id
 channel.bind 'user', (data) ->
   KrisBB.Vent.trigger 'pusher:user', JSON.parse(data.user)
 
 # Render eco templates
 Backbone.Marionette.Renderer.render = (template, data) ->
   data.routes = Routes
+  data.currentUser = KrisBB.User
   return template(data)
 
 # Start app

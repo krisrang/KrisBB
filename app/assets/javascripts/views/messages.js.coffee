@@ -13,6 +13,11 @@ window.KrisBB.Views.Messages = Backbone.Marionette.CollectionView.extend
     KrisBB.Vent.bind 'pusher:message', (message) =>
       @collection.add([message])
 
+    KrisBB.Vent.bind 'pusher:delete', (id) =>
+      model = @collection.get(id)
+      if model?
+        @collection.remove(model)
+
     if KrisBB.bootstrap?
       @collection.reset(KrisBB.bootstrap)
     else
