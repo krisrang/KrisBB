@@ -46,5 +46,6 @@ window.KrisBB.Views.Send = Backbone.Marionette.ItemView.extend
         wait: true,
         error: (messages, response) =>
           console.log(response)
+          @$el.removeClass('sending')
         success: (messages, response) =>
           @$el.removeClass('sending')

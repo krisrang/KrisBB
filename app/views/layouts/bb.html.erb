@@ -24,7 +24,9 @@
 
   <script>
     window.KrisBB = {
+      <% cache 'bootstrap' do %>
       bootstrap: <%= j @messages.to_json.html_safe %>,
+      <% end %>
       Settings: <%= j Settings.public.to_json.html_safe %>,
       User: <%= j current_user.to_json.html_safe %>
     };

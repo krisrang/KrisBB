@@ -24,6 +24,7 @@ module Kreubb
 
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += Dir["#{config.root}/lib/**/"] # include all subdirectories
+    config.autoload_paths += %W(#{config.root}/app/observers)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -53,5 +54,7 @@ module Kreubb
     config.assets.version = '2.0'
 
     config.action_mailer.delivery_method = :amazon_ses
+
+    config.mongoid.observers = :message_observer
   end
 end

@@ -34,13 +34,11 @@ class MessagesController < ApplicationController
 
   def update
     @message.update_attributes(params[:message])
-    expire_fragment("message-#{@message.id}")
     respond_with @message
   end
 
   def destroy
     @message.destroy
-    expire_fragment("message-#{@message.id}")
     
     notifier.delete_message(@message)
     respond_to do |format|
