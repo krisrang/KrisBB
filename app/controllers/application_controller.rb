@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def render_unauthorized e
+    def render_unauthorized(e=nil)
       respond_to do |format|
         format.html do
           if logged_in?

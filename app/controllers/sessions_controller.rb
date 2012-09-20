@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
   layout 'form'
 
+  protect_from_forgery except: [:create_token]
+  skip_before_filter :login_api, only: [:create_token]
+
   def new
     @user = User.new
   end
@@ -12,8 +15,17 @@ class SessionsController < ApplicationController
       redirect_back_or_to root_url
     else
       @user = User.new(params[:user])
-      flash.now.alert = "Username or password was invalid"
-      render :new
+      render :new, alert: "Username or password was invalid"
+    end
+  end
+
+  def create_token
+    user = User.authenticate(params[:login] || "", params[:password] || "")
+
+    if user
+      render json: user.to_json(include: [:token])
+    else
+      render_unauthorized
     end
   end
 

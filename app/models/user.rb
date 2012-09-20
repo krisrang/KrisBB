@@ -25,12 +25,13 @@ class User
   before_create :enable_signup
   before_save :generate_token, :generate_colour
 
-  def as_json(options = nil)
+  def as_json(options = {})
+    included = options[:include] || []
     serializable_hash(options).tap do |hash|
       hash.delete "password"
       hash.delete "crypted_password"
       hash.delete "salt"
-      hash.delete "token"
+      hash.delete "token" unless included.include?(:token)
       hash.delete "unlock_token"
       hash.delete "lock_expires_at"
       hash.delete "failed_logins_count"
@@ -55,7 +56,6 @@ class User
 
     def generate_colour
       self.colour = rand 1..5 if self.colour.nil?
-
       #self.colour = "%06x" % (rand * 0xffffff)
     end
 end
