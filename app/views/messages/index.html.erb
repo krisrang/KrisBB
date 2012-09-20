@@ -18,7 +18,9 @@
       </span>
     </div>
     <div class="contents">
+      <% cache "message-#{message.id}" do %>
       <%= raw message.html %>
+      <% end %>
     </div>
   </li>
   <% end %>
