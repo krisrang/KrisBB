@@ -31,7 +31,7 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'carrierwave-mongoid', git: 'git://github.com/jnicklas/carrierwave-mongoid.git', branch: 'mongoid-3.0'
 gem 'fog'
-gem 'airbrake'
+gem 'airbrake_user_attributes'
 gem 'heroku'
 
 group :assets do
