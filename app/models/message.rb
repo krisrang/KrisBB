@@ -21,6 +21,7 @@ class Message
   }
 
   belongs_to :user
+  delegate :username, :colour, to: :user, prefix: true
 
   field :text
   field :html

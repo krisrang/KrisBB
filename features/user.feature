@@ -21,7 +21,7 @@ Feature: User management
   Scenario: User fails logging in
     Given I am registered
     When I fail to log in
-    Then I should see "Username or password was invalid"
+    Then I should see "Sign In"
 
   Scenario: User lists users
     Given I am logged in

@@ -26,6 +26,14 @@ describe User do
     end
   end
 
+  describe "self.deleted_user" do
+    it "should return a stub user" do
+      user = User.deleted_user
+      user.deleted.should eq(true)
+      user.username.should eq("Deleted")
+    end
+  end
+
   describe "before_save" do
     it "makes certain all users have generated fields" do
       user = create(:user)

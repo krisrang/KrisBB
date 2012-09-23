@@ -45,6 +45,10 @@ class User
     self.new(colour: 1, username: "Deleted", deleted: true)
   end
 
+  def online?
+    self.last_activity_at > 15.minutes.ago
+  end
+
   protected
     def enable_signup
       Settings.enable_signup

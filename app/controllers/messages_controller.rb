@@ -24,7 +24,7 @@ class MessagesController < ApplicationController
   def create
     params[:message].delete(["html", "user", "created_at"])
     @message.user = current_user
-    
+
     if @message.save
       notifier.new_message(@message, params)
     end
@@ -39,7 +39,7 @@ class MessagesController < ApplicationController
 
   def destroy
     @message.destroy
-    
+
     notifier.delete_message(@message)
     respond_to do |format|
       format.html { redirect_to messages_path }

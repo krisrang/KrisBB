@@ -33,13 +33,7 @@ class ApplicationController < ActionController::Base
 
     def render_unauthorized(e=nil)
       respond_to do |format|
-        format.html do
-          if logged_in?
-            redirect_to root_path, alert: "Cannot access specified resource"
-          else
-            require_login
-          end
-        end
+        format.html { logged_in? ? not_authenticated : require_login }
         format.json { render json: { error: "Unauthorized" }, status: 401 }
       end
     end

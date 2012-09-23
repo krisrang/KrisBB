@@ -29,8 +29,8 @@ describe Message do
     it "includes fake user when user deleted" do
       message = create(:message)
       message.user = nil
-      json = message.as_json
-      json[:user].id.should eq(message.user.id)
+      model = Message.new(message.as_json)
+      model.user.username.should eq(User.deleted_user.username)
     end
   end
 

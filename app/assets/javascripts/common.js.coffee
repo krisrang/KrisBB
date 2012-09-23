@@ -28,6 +28,6 @@ $ ->
     .off('click.dropdown touchstart.dropdown.data-api', '.dropdown')
     .on('click.dropdown touchstart.dropdown.data-api', '.dropdown form', (e) -> e.stopPropagation())
   $('[rel=tooltip]').tooltip()
-  $("time.timeago").timeago()
+  $('.timeago').timeago()
 
   return
