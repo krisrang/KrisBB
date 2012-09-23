@@ -29,7 +29,7 @@ class Message
   attr_protected :html
 
   scope :list, includes(:user).desc(:created_at)
-  scope :recent, desc(:created_at).limit(5)
+  scope :recent, desc(:created_at).limit(10)
 
   before_save :process_text
   validates_presence_of :text

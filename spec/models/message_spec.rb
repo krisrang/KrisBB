@@ -12,9 +12,9 @@ describe Message do
   end
 
   describe ".recent" do
-    it "includes only 5 recent messages" do
+    it "includes only 10 recent messages" do
       messages = []
-      5.times { messages << create(:message) }
+      10.times { messages << create(:message) }
       expect(Message.recent.reverse).to eq(messages)
     end
   end

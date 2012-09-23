@@ -154,7 +154,7 @@ Then /^I should be able to update the user$/ do
 end
 
 Then /^I should see authorization error$/ do
-  page.find(".alert").should have_content("Cannot access specified resource")
+  page.find(".alert").should have_content("This page requires logging in")
 end
 
 Then /^I should not see the user$/ do

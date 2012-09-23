@@ -1,7 +1,7 @@
 module ApplicationHelper
   def online_bit(user)
     klass = user.online? ? "pixels-online" : "pixels-offline"
-    content_tag :i, class: "avatar #{klass}", rel: "tooltip"
+    raw "<i class=\"avatar #{klass}\" rel=\"tooltip\"></i>"
   end
 
   def avatar(user, type)
