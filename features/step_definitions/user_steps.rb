@@ -29,6 +29,12 @@ Given /^I am registered$/ do
   create_user
 end
 
+Given /^I request to get email notifications$/ do
+  visit edit_user_path(@user)
+  check "Notify me"
+  click_button "Save"
+end
+
 # When
 
 When /^I edit another user$/ do
@@ -108,6 +114,15 @@ When /^I visit user list$/ do
   visit users_path
 end
 
+When /^another user posts a message$/ do
+  second_user = create(:user)
+  log_in(second_user)
+  @message = attributes_for(:message)
+  visit root_path
+  fill_in "message_text", with: @message[:text]
+  click_button "send_message"
+end
+
 # Then
 
 Then /^I should see a list of users$/ do
@@ -159,4 +174,9 @@ end
 
 Then /^I should not see the user$/ do
   page.should_not have_content(@user.username)
+end
+
+Then /^I should receive a notification email$/ do
+  mail = ActionMailer::Base.deliveries.first
+  mail.should bcc_to(@user)
 end

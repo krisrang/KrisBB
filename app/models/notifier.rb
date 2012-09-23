@@ -1,18 +1,19 @@
 class Notifier
   def new_message(message, params)
-    send('message', {message: message.to_json}, params[:socketid])
+    pusher('message', {message: message.to_json}, params[:socketid])
+    Notifications.new_message(message).deliver
   end
 
   def delete_message(message)
-    send('delete', {id: message.id})
+    pusher('delete', {id: message.id})
   end
 
   def update_user(user)
-    send('user', {user: user.to_json})
+    pusher('user', {user: user.to_json})
   end
 
   protected
-    def send(type, message, socket = nil)
+    def pusher(type, message, socket = nil)
       begin
         Pusher['main'].trigger_async(type, message, socket)
       rescue

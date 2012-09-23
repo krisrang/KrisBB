@@ -1,5 +1,5 @@
 <div class="message-controls">
-  <button type="submit" class="message-submit btn btn-large">
+  <button id="send_message" type="submit" class="message-submit btn btn-large">
     <i class="icon-comment icon-white"></i>
     <i class="pending"></i>
   </button>

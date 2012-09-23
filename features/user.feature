@@ -72,3 +72,9 @@ Feature: User management
     Given I am logged in
     When I edit another user
     Then I should see authorization error
+
+  @javascript
+  Scenario: User receives email notification
+    Given I am registered
+    When another user posts a message
+    Then I should receive a notification email

@@ -12,6 +12,7 @@ class User
   field :token
   field :admin, type: Boolean,  default: false
   field :colour, type: Integer
+  field :notify_me, type: Boolean, default: false
 
   attr_accessor :remember_me, :password_confirmation, :deleted
   attr_protected :admin

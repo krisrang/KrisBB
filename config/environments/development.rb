@@ -33,7 +33,3 @@ Kreubb::Application.configure do
   config.action_mailer.default_url_options = { :host => 'kreubb.dev' }
   config.mongoid.preload_models = true
 end
-
-Pusher.app_id = '27770'
-Pusher.key    = 'bb6ee2e971248c187d7c'
-Pusher.secret = 'a33c19e597ab7d5eba67'
