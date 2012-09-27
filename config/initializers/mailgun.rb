@@ -6,4 +6,5 @@ ActionMailer::Base.smtp_settings = {
   :domain         => 'forum.kristjanrang.eu',
   :authentication => :plain,
 }
-ActionMailer::Base.delivery_method = :smtp
+
+ActionMailer::Base.delivery_method = :smtp unless Rails.env.test?

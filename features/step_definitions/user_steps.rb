@@ -179,5 +179,5 @@ end
 Then /^I should receive a notification email$/ do
   sleep 2
   mail = ActionMailer::Base.deliveries.last
-  mail.should bcc_to(@user)
+  mail.should deliver_to(@user)
 end
