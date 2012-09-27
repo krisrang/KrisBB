@@ -8,8 +8,10 @@ class Notifications < ActionMailer::Base
     if users
       recipients = users.map(&:email)
       recipients.each do |rec|
-        mail subject: "New message", to: rec,
-              reply_to: "#{message.id}.reply-message@krisbb.mailgun.org"
+        mail from: "krisbb@kristjanrang.eu",
+             subject: "New message",
+             to: rec,
+             reply_to: "#{message.id}.reply-message@krisbb.mailgun.org"
       end
     end
   end
