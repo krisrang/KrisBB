@@ -21,6 +21,11 @@ class MessagesController < ApplicationController
     respond_with @message
   end
 
+  def from_email
+    logger.info params.inspect
+    render text: "OK"
+  end
+
   def create
     params[:message].delete(["html", "user", "created_at"])
     @message.user = current_user

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby "1.9.3"
 
-gem 'rails', '3.2.8'
+gem 'rails', '~> 3.2.8'
 gem 'foreman'
 gem 'thin'
 gem 'pusher'
@@ -33,6 +33,11 @@ gem 'carrierwave-mongoid', git: 'git://github.com/jnicklas/carrierwave-mongoid.g
 gem 'fog'
 gem 'airbrake_user_attributes'
 gem 'heroku'
+
+# Mailer
+gem 'premailer-rails3'
+gem 'hpricot'
+gem 'mail_view'
 
 group :assets do
   gem 'eco'

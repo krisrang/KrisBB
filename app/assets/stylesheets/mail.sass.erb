@@ -1,0 +1,107 @@
+@import "compass"
+
+$usercolours: #0099CC, #562573, #FF8800, #669900, #99CC00
+
+@mixin avatar($max)
+  width: $max
+  height: $max
+
+  img
+    max-height: $max
+    max-width: $max
+
+body
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+  font-size: 14px
+  line-height: 20px
+  color: #333
+  background-color: #F5F4F2
+
+h1
+  display: block
+  padding: 0
+  margin-bottom: 20px
+  font-size: 21px
+  line-height: 40px
+  color: #333
+  border: 0
+
+a
+  color: #08C
+  text-decoration: none
+
+  &:hover
+    color: #005580
+    text-decoration: underline
+
+  &:hover, &:active
+    outline: 0
+
+.clear
+  clear: both
+
+.avatar
+  display: inline-block
+  text-align: center
+
+  &.small
+    @include avatar(35px)
+
+  &.big
+    @include avatar(140px)
+
+  &.thumb
+    @include avatar(20px)
+
+.footnote
+  float: right
+  font-size: 12px
+
+.container
+  width: 95%
+  margin: 5px auto
+
+  .message
+    position: relative
+    min-height: 60px
+    @include box-shadow(0 3px 5px rgba(0, 0, 0, 0.1))
+
+    .contents
+      padding: 5px
+      overflow: hidden
+      word-wrap:  break-word
+      background: #FFFFFF
+
+    .info
+      margin-left: 40px
+      padding: 0 10px
+      background: #FFFFFF
+
+    .username
+      color: #363636
+      font-weight: bold
+
+    .right
+      float: right
+      color: #888888
+      font-size: 12px
+
+    .avatar
+      background: #EEEEEE
+      float: left
+      padding: 0 5px
+
+      &:after
+        content: ""
+        position: absolute
+        top: 0
+        left: 40px
+        border-color: transparent
+        border-style: solid
+        border-width: 10px 10px 10px 0
+        border-right-color: #FFFFFF
+
+    @for $i from 1 through length($usercolours)
+      $value: nth($usercolours, $i)
+      &.user#{$i}
+        border-top: 2px solid rgba($value, 0.15)

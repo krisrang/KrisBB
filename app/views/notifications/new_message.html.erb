@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= stylesheet_link_tag "mail", :media => "all" %>
+</head>
+<body>
+
+<div class="container">
+  <h1>New message</h1>
+  <% @message.user = User.deleted_user if @message.user.nil? %>
+  <div class="message user<%= @message.user_colour %>">
+    <%= avatar @message.user, :small %>
+    <div class="info">
+      <span class="username">
+        <% if @message.user.deleted %>
+          <%= @message.user_username %>
+        <% else %>
+          <%= link_to @message.user_username, user_path(@message.user) %>
+        <% end %>
+      </span>
+      <span class="right">
+        Posted
+        <time datetime="<%= @message.created_at %>">
+          <%= @message.created_at.to_s :long_ordinal %>
+        </time>
+      </span>
+    </div>
+    <div class="contents">
+      <%= raw @message.html %>
+    </div>
+  </div>
+
+  <p class="footnote">Brought to you by <a href="http://forum.kristjanrang.eu">KrisBB</a></p>
+  <div class="clear">&nbsp;</div>
+</div>
+
+</body>
+</html>
