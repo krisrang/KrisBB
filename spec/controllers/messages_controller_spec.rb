@@ -39,7 +39,8 @@ describe MessagesController do
 
   describe "POST #from_email" do
     before do
-      @token = create(:reply_token, user: @user)
+      @message = create(:message)
+      @token = create(:reply_token, message: @message, user: @user)
     end
 
     it "validates replytoken and creates message" do

@@ -18,6 +18,7 @@ class User
   attr_accessor :remember_me, :password_confirmation, :deleted
   attr_protected :admin
 
+  validates_presence_of :email, if: :notify_me, message: "cannot be blank if you have notification checked"
   validates_presence_of :username
   validates_confirmation_of :password, if: :password
   validates_length_of :password, minimum: 6, maximum: 16, if: :password
