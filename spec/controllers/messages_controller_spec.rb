@@ -39,7 +39,6 @@ describe MessagesController do
 
   describe "POST #from_email" do
     before do
-      login_user @user
       @token = create(:reply_token, user: @user)
     end
 

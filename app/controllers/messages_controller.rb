@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   layout 'bb', only: ['bb']
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:from_email]
 
   skip_before_filter :verify_authenticity_token, only: [:from_email]
 
