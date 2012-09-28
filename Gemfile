@@ -33,6 +33,7 @@ gem 'carrierwave-mongoid', git: 'git://github.com/jnicklas/carrierwave-mongoid.g
 gem 'fog'
 gem 'airbrake_user_attributes'
 gem 'heroku'
+gem 'oj'
 
 # Mailer
 gem 'premailer-rails3'
