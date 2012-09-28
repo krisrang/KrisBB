@@ -55,6 +55,6 @@ module Kreubb
 
     #config.action_mailer.delivery_method = :amazon_ses
 
-    config.mongoid.observers = :message_observer
+    config.mongoid.observers = :message_observer, :user_observer
   end
 end

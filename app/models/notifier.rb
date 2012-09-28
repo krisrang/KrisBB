@@ -2,7 +2,7 @@ class Notifier
   def new_message(message, params)
     pusher('message', {message: message.to_json}, params[:socketid])
 
-    users = User.where(notify_me: true).ne(id: message.user.id, email: nil) || []
+    users = User.where(notify_me: true).ne(id: message.user.id, email: nil)
     users.each do |recipient|
       token = ReplyToken.create(message: message, user: recipient)
       Notifications.new_message(message, recipient.email, token.token).deliver
