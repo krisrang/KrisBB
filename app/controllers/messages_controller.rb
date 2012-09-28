@@ -2,6 +2,8 @@ class MessagesController < ApplicationController
   layout 'bb', only: ['bb']
   load_and_authorize_resource
 
+  skip_before_filter :verify_authenticity_token, only: [:from_email]
+
   respond_to :json, :html, only: [:bb, :index]
   respond_to :json
 
