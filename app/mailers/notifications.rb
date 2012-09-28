@@ -13,6 +13,8 @@ class Notifications < ActionMailer::Base
              to: rec,
              reply_to: "#{message.id}.reply-message@krisbb.mailgun.org"
       end
+    else
+      self.message.perform_deliveries = false
     end
   end
 
