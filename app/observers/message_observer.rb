@@ -17,7 +17,6 @@ class MessageObserver < Mongoid::Observer
   private
   def expire_cache_for(message)
     @cont ||= ActionController::Base.new
-    @cont.expire_fragment("message-#{message.id}")
     @cont.expire_fragment("bootstrap")
   end
 end
