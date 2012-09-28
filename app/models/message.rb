@@ -21,6 +21,7 @@ class Message
   }
 
   belongs_to :user
+  has_many :reply_tokens
   delegate :username, :colour, to: :user, prefix: true
 
   field :text

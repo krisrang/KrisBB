@@ -1,0 +1,74 @@
+--- 
+Content-Type: "multipart/alternative; boundary=\"e89a8fb202e2a95b1e04cac9d493\""
+Date: "Sat, 29 Sep 2012 00:35:11 +0300"
+Dkim-Signature: "v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113; h=mime-version:reply-to:sender:in-reply-to:references:date :x-google-sender-auth:message-id:subject:from:to:content-type; bh=OYrh8V0iNHJpYUJfC1yg8Uc9wGWS07hzDx49cb+70Lo=; b=zehNT82DvolEgryAefmOmfZ8lV4TAQQpcwnFCSFT49XaP/6JO/K51a8TbqPymZG9Rc 8Fo3/F910baN8SjqIhHgYMy1TGQU0jT10sDC8gLvFfFmZCi/N73kbOuwzwuedT0S/3E0 2oUkiLxfBzSzWft1d3T7x4WbcAAf4qkW0veoF4Ab5m2xmfGWvBOEsuYpy7PgmskTyOu5 715yOpd0xY8TAQRDhEB3Avtu0uJ1l8c25RqvEgQBcSZSeDw/V5wm8WGhC0pZ2fr7GZbt v2eoxNfeHD0psCfXhlNSIGDeLDN/Au1JGr12k89rnc33ikGVcsmK9gEVO5uRTxaW0Wah 6KOw=="
+From: "Kristjan Rang <mail@kristjanrang.eu>"
+In-Reply-To: <5064c0ef37597_130713ffefe035ad829075@Thor.mail>
+Message-Id: <CAEdQp51owvdxYZVQaf0jzfSSMEW-eX37iyfBO-aTVoPbPYPLUw@mail.gmail.com>
+Mime-Version: "1.0"
+Received: "by 10.182.212.68 with HTTP; Fri, 28 Sep 2012 14:35:11 -0700 (PDT)"
+References: <5064c0ef37597_130713ffefe035ad829075@Thor.mail>
+Reply-To: mail@kristjanrang.eu
+Sender: kristjanrang@gmail.com
+Subject: "Re: New message"
+To: 5064c0e8a92da87130000001.reply-message@krisbb.mailgun.org
+X-Envelope-From: <kristjanrang@gmail.com>
+X-Google-Sender-Auth: 3liNJTJetjdc3kPWlM9D0gYemco
+body-html: "test<div>multi</div><div><br></div><div>haha :p<br><br><div class=\"gmail_quote\">On Fri, Sep 28, 2012 at 12:11 AM,  <span dir=\"ltr\"><<a href=\"mailto:5064c0e8a92da87130000001.reply-message@krisbb.mailgun.org\" target=\"_blank\">5064c0e8a92da87130000001.reply-message@krisbb.mailgun.org</a>></span> wrote:<br>\n\
+    <blockquote class=\"gmail_quote\" style=\"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex\"><u></u>\n\n\n\
+    \x20 \n\n\n\n\n\
+    <div style=\"font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;line-height:20px;color:#cccccc;padding-left:20px;padding-right:20px;padding-top:0;background-color:#f5f4f2;margin:0\" bgcolor=\"#f5f4f2\">\n\n\n\
+    <div style=\"color:#cccccc;width:auto;margin:10px auto 0\">\n\
+    \x20 <div style=\"width:auto;margin-right:auto;margin-left:auto;color:#cccccc\">\n\
+    \x20   <ul style=\"color:#cccccc;list-style-type:none;margin:0 0 10px;padding:0\">\n\
+    \x20 <li style=\"line-height:20px;color:#cccccc;margin-bottom:20px;padding-top:10px;border-top-width:1px;border-top-style:solid;border-top-color:rgba(0,153,204,0.15);background-color:white\">\n\
+    \x20         <i style=\"color:#cccccc;display:inline-block;text-align:center;width:35px;min-height:35px;float:left;padding:0 5px\"><img alt=\"Small_datatng\" style=\"max-width:35px;min-height:auto;vertical-align:middle;color:#cccccc;max-height:35px;border:0\"></i>\n\
+    \x20         <div style=\"color:#cccccc;margin-left:40px;padding:0 10px\">\n\
+    \x20           <span style=\"color:#cccccc;font-weight:bold\">\n\
+    \x20               <a href=\"http://users/4ef7c0d86e06eb0004000001\" style=\"color:#cccccc;text-decoration:none\" target=\"_blank\">DVSBSTD</a>\n\
+    \x20           </span>\n\
+    \x20           <span style=\"color:#cccccc;float:right;font-size:12px\">\n\
+    \x20             Posted\n\
+    \x20             <u></u>\n\
+    \x20               September 28th, 2012 00:11\n\
+    \x20             <u></u>\n\
+    \x20           </span>\n\
+    \x20         </div>\n\
+    \x20         <div style=\"color:#cccccc;overflow:hidden;word-wrap:break-word;padding:5px\">\n\
+    \x20           <p style=\"color:#cccccc;margin:0 0 10px\">blalba</p>\n\n\
+    \x20         </div>\n\
+    \x20       </li>\n\
+    \x20   </ul>\n\
+    \x20 </div>\n\
+    </div>\n\n\n\n\
+    </div>\n\n\n\
+    </blockquote></div><br></div>\n"
+body-plain: "test\n\
+    multi\n\n\
+    haha :p\n\n\
+    On Fri, Sep 28, 2012 at 12:11 AM, <\n\
+    5064c0e8a92da87130000001.reply-message@krisbb.mailgun.org> wrote:\n\n\
+    > **\n\
+    >\n\
+    >    - *[image: Small_datatng]*\n\
+    >     DVSBSTD <http://users/4ef7c0d86e06eb0004000001>  Posted ** September\n\
+    >    28th, 2012 00:11 **\n\
+    >\n\
+    >    blalba\n\
+    >\n\
+    >\n"
+from: "Kristjan Rang <mail@kristjanrang.eu>"
+message-headers: "[[\"Received\", \"by luna.mailgun.net with SMTP mgrt 5362925; Fri, 28 Sep 2012 21:35:13 +0000\"], [\"X-Envelope-From\", \"<kristjanrang@gmail.com>\"], [\"Received\", \"from mail-oa0-f41.google.com (mail-oa0-f41.google.com [209.85.219.41]) by mxa.mailgun.org with ESMTP id 50661810.59d92f0-luna3; Fri, 28 Sep 2012 21:35:12 -0000 (UTC)\"], [\"Received\", \"by oagk14 with SMTP id k14so3415139oag.28 for <5064c0e8a92da87130000001.reply-message@krisbb.mailgun.org>; Fri, 28 Sep 2012 14:35:12 -0700 (PDT)\"], [\"Dkim-Signature\", \"v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113; h=mime-version:reply-to:sender:in-reply-to:references:date :x-google-sender-auth:message-id:subject:from:to:content-type; bh=OYrh8V0iNHJpYUJfC1yg8Uc9wGWS07hzDx49cb+70Lo=; b=zehNT82DvolEgryAefmOmfZ8lV4TAQQpcwnFCSFT49XaP/6JO/K51a8TbqPymZG9Rc 8Fo3/F910baN8SjqIhHgYMy1TGQU0jT10sDC8gLvFfFmZCi/N73kbOuwzwuedT0S/3E0 2oUkiLxfBzSzWft1d3T7x4WbcAAf4qkW0veoF4Ab5m2xmfGWvBOEsuYpy7PgmskTyOu5 715yOpd0xY8TAQRDhEB3Avtu0uJ1l8c25RqvEgQBcSZSeDw/V5wm8WGhC0pZ2fr7GZbt v2eoxNfeHD0psCfXhlNSIGDeLDN/Au1JGr12k89rnc33ikGVcsmK9gEVO5uRTxaW0Wah 6KOw==\"], [\"Mime-Version\", \"1.0\"], [\"Received\", \"by 10.60.14.5 with SMTP id l5mr7039229oec.39.1348868111948; Fri, 28 Sep 2012 14:35:11 -0700 (PDT)\"], [\"Reply-To\", \"mail@kristjanrang.eu\"], [\"Sender\", \"kristjanrang@gmail.com\"], [\"Received\", \"by 10.182.212.68 with HTTP; Fri, 28 Sep 2012 14:35:11 -0700 (PDT)\"], [\"In-Reply-To\", \"<5064c0ef37597_130713ffefe035ad829075@Thor.mail>\"], [\"References\", \"<5064c0ef37597_130713ffefe035ad829075@Thor.mail>\"], [\"Date\", \"Sat, 29 Sep 2012 00:35:11 +0300\"], [\"X-Google-Sender-Auth\", \"3liNJTJetjdc3kPWlM9D0gYemco\"], [\"Message-Id\", \"<CAEdQp51owvdxYZVQaf0jzfSSMEW-eX37iyfBO-aTVoPbPYPLUw@mail.gmail.com>\"], [\"Subject\", \"Re: New message\"], [\"From\", \"Kristjan Rang <mail@kristjanrang.eu>\"], [\"To\", \"5064c0e8a92da87130000001.reply-message@krisbb.mailgun.org\"], [\"Content-Type\", \"multipart/alternative; boundary=\\\"e89a8fb202e2a95b1e04cac9d493\\\"\"]]"
+recipient: 5064c0e8a92da87130000001.reply-message@krisbb.mailgun.org
+sender: kristjanrang@gmail.com
+signature: 31be7390dabee068d74f538f2ee79693b0cd3a2b320e8e14c22fc3c251861331
+stripped-html: "<html><body><p>test</p><div>multi</div><div><br></div><div>haha :p<br><br><br></div></body></html>"
+stripped-signature: ""
+stripped-text: |-
+    test
+    multi
+    
+    haha :p
+subject: "Re: New message"
+timestamp: "1348868113"
+token: 50fjhbtc07ob21jm6ncego2gqbtg8qx0342zghpvh2rszf0r79

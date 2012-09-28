@@ -5,6 +5,7 @@ class User
   include Mongoid::Timestamps
 
   has_many :messages
+  has_many :reply_tokens
 
   mount_uploader :avatar, AvatarUploader
 

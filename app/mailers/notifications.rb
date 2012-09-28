@@ -2,12 +2,12 @@ class Notifications < ActionMailer::Base
   helper :application
   default from: "krisbb@kristjanrang.eu"
 
-  def new_message(message, to)
+  def new_message(message, to, token)
     @message = message
     mail from: "krisbb@kristjanrang.eu",
          subject: "New message",
          to: to,
-         reply_to: "#{message.id}.reply-message@krisbb.mailgun.org"
+         reply_to: "#{token}.reply-message@krisbb.mailgun.org"
   end
 
   class Preview < MailView

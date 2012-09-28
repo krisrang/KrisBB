@@ -4,8 +4,7 @@ class MessagesController < ApplicationController
 
   skip_before_filter :verify_authenticity_token, only: [:from_email]
 
-  respond_to :json, :html, only: [:bb, :index]
-  respond_to :json
+  respond_to :json, :html
 
   # Main app
   def bb
@@ -24,7 +23,18 @@ class MessagesController < ApplicationController
   end
 
   def from_email
-    logger.info params.inspect
+    unless params["recipient"].blank? || params["stripped-text"].blank?
+      token = params["recipient"].gsub(".reply-message@krisbb.mailgun.org", "")
+      text = params["stripped-text"]
+
+      begin
+        replytoken = ReplyToken.find_by(token: token)
+        message = Message.new(user: replytoken.user, text: text)
+        notifier.new_message(message, params) if message.save
+      rescue Mongoid::Errors::DocumentNotFound
+      end
+    end
+
     render text: "OK"
   end
 
