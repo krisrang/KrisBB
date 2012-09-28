@@ -1,7 +1,14 @@
 class Notifier
   def new_message(message, params)
     pusher('message', {message: message.to_json}, params[:socketid])
-    Notifications.new_message(message).deliver
+
+    users = User.where(notify_me: true).ne(id: message.user.id)
+    if users
+      recipients = users.map(&:email)
+      recipients.each do |rec|
+        Notifications.new_message(message, rec).deliver
+      end
+    end
   end
 
   def delete_message(message)
