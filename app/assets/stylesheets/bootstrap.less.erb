@@ -68,7 +68,16 @@
           border-radius: 0 2px 2px 2px;
 }
 
+.dropdown-menu.autotype {
+  position: fixed;
+  top: auto;
+}
+
 @media (max-width: 480px) {
+  .dropdown-menu.autotype {
+    display: none !important;
+  }
+  
   .form-horizontal .controls {
     margin-left: 0;
   }

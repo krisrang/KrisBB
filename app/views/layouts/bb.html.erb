@@ -28,7 +28,8 @@
       bootstrap: <%= Oj.dump(@messages.as_json, mode: :compat).html_safe %>,
       <% end %>
       Settings: <%= Oj.dump(Settings.public, mode: :compat).html_safe %>,
-      User: <%= Oj.dump(current_user, mode: :compat).html_safe %>
+      User: <%= Oj.dump(current_user, mode: :compat).html_safe %>,
+      Smilies: <%= Oj.dump(Message.smilies.keys, mode: :compat).html_safe %>
     };
   </script>
   <script src="//js.pusher.com/1.12/pusher.min.js"></script>

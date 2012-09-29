@@ -1,6 +1,8 @@
 #= require jquery
 #= require jquery_ujs
 #= require twitter/bootstrap
+#= require ./lib/jquery.caret
+#= require ./lib/autotype
 #= require ./lib/modernizr
 #= require ./lib/shims
 #= require ./lib/timeago
