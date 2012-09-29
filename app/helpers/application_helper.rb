@@ -9,4 +9,12 @@ module ApplicationHelper
       image_tag user.avatar.versions[type]
     end
   end
+
+  def nav_li(title, link)
+    active = request.path.start_with? link
+    klass = active ? "active" : ""
+    content_tag :li, class: klass do
+      link_to title, link 
+    end
+  end
 end
