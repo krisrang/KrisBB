@@ -26,8 +26,9 @@ class Message
 
   field :text
   field :html
+  field :email_html
 
-  attr_protected :html
+  attr_protected :html, :email_html
 
   scope :list, includes(:user).desc(:created_at)
   scope :recent, desc(:created_at).limit(10)
@@ -56,16 +57,19 @@ class Message
       value.gsub!(/\r\n?/u, "\n")
       value.gsub!(/([^\n]\n)(?=[^\n])/u, '\1<br />')
 
-      value = smilie_parse(value)
-
-      self.html = value
+      self.email_html = smilie_parse(value, false)
+      self.html = smilie_parse(value)
     end
 
-    def smilie_parse(text)
-      Message.smilies.each do |k, v|
-        text.gsub! k, "<i class=\"smilie smilies-#{v}\"></i>"
+    def smilie_parse(text, i=true)
+      text.tap do |txt|
+        Message.smilies.each do |k, v|
+          if i
+            txt.gsub! k, "<i class=\"smilie smilies-#{v}\"></i>"
+          else
+            txt.gsub! k, "<img src=\"#{Settings.assethost.email}/smilies/#{v}.png\" />"
+          end
+        end
       end
-
-      text
     end
 end

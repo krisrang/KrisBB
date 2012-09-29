@@ -13,7 +13,9 @@ class Notifications < ActionMailer::Base
   class Preview < MailView
     def new_message
       message = Message.last
-      Notifications.new_message(message)
+      user = User.last
+      token = ReplyToken.create(message: message, user: user)
+      Notifications.new_message(message, user.email, token.token)
       # ::Notifier.invitation(inviter, invitee)  # May need to call with '::'
     end
   end

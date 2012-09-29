@@ -6,31 +6,32 @@
 <body>
 
 <div class="container">
-  <h1>New message</h1>
   <% @message.user = User.deleted_user if @message.user.nil? %>
   <div class="message user<%= @message.user_colour %>">
     <%= avatar @message.user, :small %>
     <div class="info">
-      <span class="username">
+      <div class="username">
         <% if @message.user.deleted %>
           <%= @message.user_username %>
         <% else %>
           <%= link_to @message.user_username, user_path(@message.user) %>
         <% end %>
-      </span>
-      <span class="right">
-        Posted
+      </div>
+      <div class="time">
         <time datetime="<%= @message.created_at %>">
           <%= @message.created_at.to_s :long_ordinal %>
         </time>
-      </span>
+      </div>
     </div>
     <div class="contents">
-      <%= raw @message.html %>
+      <%= raw @message.email_html %>
     </div>
   </div>
 
-  <p class="footnote">Brought to you by <a href="http://forum.kristjanrang.eu">KrisBB</a></p>
+  <p class="footnote">
+    Reply to this email to post a reply message<br />
+    Brought to you by <a href="http://forum.kristjanrang.eu">KrisBB</a>
+  </p>
   <div class="clear">&nbsp;</div>
 </div>
 
