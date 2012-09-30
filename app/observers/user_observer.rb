@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 class UserObserver < Mongoid::Observer
   observe :user
 
@@ -18,5 +17,8 @@ class UserObserver < Mongoid::Observer
   def expire_cache_for(user)
     @cont ||= ActionController::Base.new
     @cont.expire_fragment("bootstrap")
+    user.messages.only(:id).map(&:id).each do |id|
+      @cont.expire_fragment("message-#{id}")
+    end
   end
 end
