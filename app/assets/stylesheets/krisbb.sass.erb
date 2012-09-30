@@ -275,6 +275,8 @@ table.users
     .message
       border-bottom: 1px solid #DDD
       padding: 10px 5px
+      overflow: hidden
+      word-wrap:  break-word
 
       .label
         float: right
@@ -288,6 +290,11 @@ table.users
     margin: 10px auto 0
 
 @media (max-width: 767px)
+  .user-show
+    .user-controls
+      float: none
+      margin-bottom: 10px
+
   .send-message
     left: 0
     right: 0

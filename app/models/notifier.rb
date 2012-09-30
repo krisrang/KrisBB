@@ -19,9 +19,11 @@ class Notifier
 
   protected
     def pusher(type, message, socket = nil)
-      begin
+      if defined?(EventMachine) && EventMachine.reactor_running?
+        Rails.logger.info "Pusher async trigger"
         Pusher['main'].trigger_async(type, message, socket)
-      rescue
+      else
+        Rails.logger.info "Pusher blocking trigger"
         Pusher['main'].trigger(type, message, socket)
       end
     end
