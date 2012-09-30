@@ -35,6 +35,7 @@ gem 'airbrake_user_attributes'
 gem 'heroku'
 gem 'oj'
 gem 'newrelic_rpm'
+gem 'newrelic_moped'
 gem 'girl_friday'
 
 # Mailer
