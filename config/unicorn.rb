@@ -31,14 +31,7 @@ after_fork do |server, worker|
     Rails.logger.info('Connected to Redis')
   end
 
-  if defined?(EventMachine) && EventMachine.reactor_running?
-    EM.stop
+  if defined?(EventMachine)
+    Thread.new { EM.stop; EM.run }
   end
-  Thread.new { EM.run }
-  die_gracefully_on_signal
-end
-
-def die_gracefully_on_signal
-  Signal.trap("INT")  { EM.stop }
-  Signal.trap("TERM") { EM.stop }
 end

@@ -1,4 +1,3 @@
-
 require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
@@ -56,5 +55,7 @@ module Kreubb
     #config.action_mailer.delivery_method = :amazon_ses
 
     config.mongoid.observers = :message_observer, :user_observer
+
+    config.threadsafe! # enable threadsafe for girl_friday
   end
 end

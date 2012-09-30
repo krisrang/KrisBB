@@ -35,6 +35,7 @@ gem 'airbrake_user_attributes'
 gem 'heroku'
 gem 'oj'
 gem 'newrelic_rpm'
+gem 'girl_friday'
 
 # Mailer
 gem 'premailer-rails3'
