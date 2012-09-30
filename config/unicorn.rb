@@ -1,6 +1,8 @@
 worker_processes 3
 timeout 30
 preload_app true
+port = ENV["PORT"].to_i
+listen port#, tcp_nopush: false
 
 before_fork do |server, worker|
   # Replace with MongoDB or whatever
@@ -29,6 +31,16 @@ after_fork do |server, worker|
   if defined?(Resque)
     Resque.redis = ENV['REDIS_URI']
     Rails.logger.info('Connected to Redis')
+  end
+
+  if defined?(ActiveSupport::Cache::DalliStore) && Rails.cache.is_a?(ActiveSupport::Cache::DalliStore)
+    # Reset Rails's object cache
+    # Only works with DalliStore
+    Rails.cache.reset
+
+    # Reset Rails's session store
+    # If you know a cleaner way to find the session store instance, please let me know
+    ObjectSpace.each_object(ActionDispatch::Session::DalliStore) { |obj| obj.reset }
   end
 
   if defined?(EventMachine)
