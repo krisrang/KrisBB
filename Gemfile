@@ -34,6 +34,7 @@ gem 'fog'
 gem 'airbrake_user_attributes'
 gem 'heroku'
 gem 'oj'
+gem 'newrelic_rpm'
 
 # Mailer
 gem 'premailer-rails3'

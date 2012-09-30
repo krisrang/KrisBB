@@ -238,6 +238,7 @@ GEM
     net-ssh (2.6.0)
       jruby-pageant (>= 1.1.1)
     netrc (0.7.7)
+    newrelic_rpm (3.4.2.1)
     nokogiri (1.5.5)
     oauth (0.4.7)
     oauth2 (0.6.1)
@@ -413,6 +414,7 @@ DEPENDENCIES
   mini_magick
   mongoid
   mongoid-rspec
+  newrelic_rpm
   oily_png
   oj
   poltergeist
