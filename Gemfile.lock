@@ -48,7 +48,7 @@ GEM
     asset_sync (0.5.0)
       activemodel
       fog
-    aws-sdk (1.6.6)
+    aws-sdk (1.6.8)
       httparty (~> 0.7)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
@@ -164,8 +164,8 @@ GEM
     guard-rspec (2.0.0)
       guard (>= 1.1)
       rspec (~> 2.11)
-    guard-spork (1.2.0)
-      childprocess
+    guard-spork (1.2.1)
+      childprocess (>= 0.2.3)
       guard (>= 1.1)
       spork (>= 0.8.4)
       sys-proctable
@@ -208,7 +208,7 @@ GEM
     libv8 (3.3.10.4)
     libwebsocket (0.1.5)
       addressable
-    listen (0.5.2)
+    listen (0.5.3)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)

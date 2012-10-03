@@ -1,30 +1,7 @@
-/* =============================================================
- * bootstrap-typeahead.js v2.1.1
- * http://twitter.github.com/bootstrap/javascript.html#typeahead
- * =============================================================
- * Copyright 2012 Twitter, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * ============================================================ */
-
+/* Largely based on bootstrap-typeahead.js. Same license applies */
 
 !function($){
-
-  "use strict"; // jshint ;_;
-
-
- /* TYPEAHEAD PUBLIC CLASS DEFINITION
-  * ================================= */
+  "use strict";
 
   var Autotype = function (element, options) {
     this.$element = $(element)
@@ -133,7 +110,8 @@
 
   , matcher: function (item) {
       if (this.shown) {
-        return ~item.toLowerCase().indexOf(this.query.toLowerCase())
+        return ~item.indexOf(this.query)
+        // return ~item.toLowerCase().indexOf(this.query.toLowerCase())
       } else {
         return item[0] == this.query[0]
       }
@@ -293,10 +271,6 @@
 
   }
 
-
-  /* TYPEAHEAD PLUGIN DEFINITION
-   * =========================== */
-
   $.fn.autotype = function (option) {
     return this.each(function () {
       var $this = $(this)
@@ -317,17 +291,13 @@
 
   $.fn.autotype.Constructor = Autotype
 
-
- /*   TYPEAHEAD DATA-API
-  * ================== */
-
-  $(function () {
-    $('body').on('focus.autotype.data-api', '[data-provide="autotype"]', function (e) {
-      var $this = $(this)
-      if ($this.data('autotype')) return
-      e.preventDefault()
-      $this.autotype($this.data())
-    })
-  })
+  // $(function () {
+  //   $('body').on('focus.autotype.data-api', '[data-provide="autotype"]', function (e) {
+  //     var $this = $(this)
+  //     if ($this.data('autotype')) return
+  //     e.preventDefault()
+  //     $this.autotype($this.data())
+  //   })
+  // })
 
 }(window.jQuery);
