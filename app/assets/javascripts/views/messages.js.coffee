@@ -42,13 +42,13 @@ window.KrisBB.Views.Messages = Backbone.Marionette.CollectionView.extend
 
   notify: (message) ->
     if !!window.webkitNotifications && 
-      window.webkitNotifications.checkPermission() == 0 &&
+      webkitNotifications.checkPermission() == 0 &&
       !document.hasFocus()
       
         icon = message.user.avatar.thumb.url
         title = "New message"
         body = $('<div>'+message.text+'</div>').text()
-        popup = window.webkitNotifications.createNotification(icon, title, body);
+        popup = webkitNotifications.createNotification(icon, title, body)
         popup.show()
         
         popup.onclick = () ->

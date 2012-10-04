@@ -17,4 +17,8 @@ module ApplicationHelper
       link_to title, link 
     end
   end
+
+  def render_stats_bar
+    render partial: 'shared/stats'
+  end
 end

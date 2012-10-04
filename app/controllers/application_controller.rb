@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied, with: :render_unauthorized
 
+  prepend_before_filter :set_start_time
   before_filter :login_api
 
   protect_from_forgery
@@ -8,6 +9,10 @@ class ApplicationController < ActionController::Base
   private
     def notifier
       @notifier ||= Notifier.new
+    end
+
+    def set_start_time
+      @start_time = Time.now.usec
     end
 
     def not_authenticated
