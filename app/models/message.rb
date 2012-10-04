@@ -58,13 +58,13 @@ class Message
       value.gsub!(/([^\n]\n)(?=[^\n])/u, '\1<br />')
 
       self.email_html = smilie_parse(value, false)
-      self.html = smilie_parse(value)
+      self.html = smilie_parse(value, true)
     end
 
-    def smilie_parse(text, i=true)
-      text.tap do |txt|
+    def smilie_parse(text, css=true)
+      text.clone.tap do |txt|
         Message.smilies.each do |k, v|
-          if i
+          if css
             txt.gsub! k, "<i class=\"smilie smilies-#{v}\"></i>"
           else
             txt.gsub! k, "<img src=\"#{Settings.assethost.email}/smilies/#{v}.png\" />"

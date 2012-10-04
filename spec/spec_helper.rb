@@ -4,40 +4,43 @@ require 'spork'
 
 Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
-  require File.expand_path("../../config/environment", __FILE__)
+
+  # Mongoid models reload
+  require 'rails/mongoid'
+  Spork.trap_class_method(Rails::Mongoid, :load_models)
+
+  # Routes and app/ classes reload
+  require 'rails/application'
+  Spork.trap_method(Rails::Application::RoutesReloader, :reload!)
+  Spork.trap_method(Rails::Application, :eager_load!)
+
+  # Load railties
+  require File.expand_path('../../config/environment', __FILE__)
+  Rails.application.railties.all { |r| r.eager_load! }
+
   require 'rspec/rails'
   require 'rspec/autorun'
   require 'email_spec'
   require 'capybara/rspec'
   require 'capybara/poltergeist'
 
-  # Requires supporting ruby files with custom matchers and macros, etc,
-  # in spec/support/ and its subdirectories.
-  Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
-
   RSpec.configure do |config|
     config.include(EmailSpec::Helpers)
     config.include(EmailSpec::Matchers)
 
-    # ## Mock Framework
-    #
-    # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
-    #
-    # config.mock_with :mocha
-    # config.mock_with :flexmock
-    # config.mock_with :rr
+    config.mock_with :rspec
 
-    # If true, the base class of anonymous controllers will be inferred
-    # automatically. This will be the default behavior in future versions of
-    # rspec-rails.
+    # Clean up the database
+    config.before(:suite) { DatabaseCleaner.strategy = :truncation }
+    config.before(:suite) { DatabaseCleaner.orm      = :mongoid }
+    config.before(:each)  { DatabaseCleaner.clean }
+
     config.infer_base_class_for_anonymous_controllers = false
-
-    # Run specs in random order to surface order dependencies. If you find an
-    # order dependency and want to debug it, you can fix the order by providing
-    # the seed, which is printed after each run.
-    #     --seed 1234
     config.order = "random"
   end
+
+  ActiveSupport::DescendantsTracker.clear
+  ActiveSupport::Dependencies.clear
 
   Capybara.default_selector = :css
   Capybara.javascript_driver = :poltergeist
@@ -46,4 +49,8 @@ end
 
 Spork.each_run do
   FactoryGirl.reload
+
+  I18n.backend.reload!
+  Dir[Rails.root.join('spec/support/**/*.rb')].each {|f| require f}
+  Dir[Rails.root.join('spec/views/**/*.rb')].each   {|f| require f}
 end

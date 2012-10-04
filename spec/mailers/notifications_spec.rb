@@ -16,7 +16,7 @@ describe Notifications do
     end
 
     it "renders the body" do
-      mail.should have_body_text("New message")
+      mail.should have_body_text(message.email_html)
     end
   end
 end

@@ -56,8 +56,11 @@ group :assets do
   gem 'js-routes'
 end
 
-group :development do
+group :tddium_ignore do
   gem 'pry-remote'
+end
+
+group :development do
   gem 'terminal-notifier-guard'
 end
 
@@ -75,10 +78,8 @@ group :test, :development do
   gem 'mongoid-rspec'
 
   gem 'email_spec'
-  gem 'capybara'
-  gem 'poltergeist'
+  gem "poltergeist"
   gem 'database_cleaner'
-  gem 'launchy'
 
   gem 'spork'
   gem 'guard-bundler'

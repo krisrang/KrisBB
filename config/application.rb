@@ -56,6 +56,6 @@ module Kreubb
 
     config.mongoid.observers = :message_observer, :user_observer
 
-    config.threadsafe! # enable threadsafe for girl_friday
+    config.threadsafe! if ENV["RAILS_ENV"] != 'test' # enable threadsafe for girl_friday
   end
 end

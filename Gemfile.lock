@@ -387,7 +387,6 @@ DEPENDENCIES
   aws-sdk
   bcrypt-ruby
   cancan
-  capybara
   carrierwave
   carrierwave-mongoid!
   coffee-rails
@@ -413,7 +412,6 @@ DEPENDENCIES
   jquery-rails
   js-routes
   kaminari
-  launchy
   mail_view
   memcachier
   mini_magick
