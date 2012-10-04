@@ -1,5 +1,4 @@
 require "spec_helper"
-require 'pry'
 
 describe Notifications do
   describe "new_message" do

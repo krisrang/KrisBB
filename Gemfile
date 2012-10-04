@@ -56,10 +56,6 @@ group :assets do
   gem 'js-routes'
 end
 
-group :tddium_ignore do
-  gem 'pry-remote'
-end
-
 group :development do
   gem 'terminal-notifier-guard'
 end
