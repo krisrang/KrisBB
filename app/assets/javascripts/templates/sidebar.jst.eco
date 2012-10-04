@@ -1,0 +1,6 @@
+<button class="btn allow-notifications" type="button">Allow notifications</button>
+
+<div class="user-presence">
+  <h5>Online</h5>
+  <ul class="unstyled"></ul>
+</div>

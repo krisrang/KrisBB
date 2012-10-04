@@ -3,10 +3,11 @@ Kreubb::Application.routes.draw do
     mount Notifications::Preview => 'mail_view'
   end
 
-  delete "logout"     => "sessions#destroy",        as: "logout"
-  get "login"         => "sessions#new",            as: "login"
-  post "login_token"  => "sessions#create_token",   as: "login_token"
-  get "signup"        => "users#new",               as: "signup"
+  get     "login"       => "sessions#new",            as: "login"
+  get     "signup"      => "users#new",               as: "signup"
+  post    "login_token" => "sessions#create_token",   as: "login_token"
+  post    "pusher/auth" => "sessions#pusher",         as: "pusher_auth"
+  delete  "logout"      => "sessions#destroy",        as: "logout"
 
   resources :messages, except: [:new, :edit] do
     collection do

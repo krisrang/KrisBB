@@ -1,13 +1,15 @@
 class SessionsController < ApplicationController
   layout 'form'
 
-  protect_from_forgery except: [:create_token]
+  protect_from_forgery except: [:create_token, :pusher]
   skip_before_filter :login_api, only: [:create_token]
 
+  # GET /login
   def new
     @user = User.new
   end
 
+  # POST /sessions
   def create
     user = login(params[:user][:username], params[:user][:password], params[:user][:remember_me])
 
@@ -19,6 +21,7 @@ class SessionsController < ApplicationController
     end
   end
 
+  # POST /login_token
   def create_token
     user = User.authenticate(params[:login] || "", params[:password] || "")
 
@@ -29,6 +32,20 @@ class SessionsController < ApplicationController
     end
   end
 
+  # POST /pusher/auth
+  def pusher
+    if current_user
+      response = Pusher[params[:channel_name]].authenticate(params[:socket_id], {
+        user_id: current_user.id, # => required
+        user_info: current_user.as_json
+      })
+      render json: response
+    else
+      render text: "Forbidden", status:'403'
+    end
+  end
+
+  # DELETE /logout
   def destroy
     logout
     redirect_to root_path

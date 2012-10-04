@@ -18,4 +18,10 @@ class User extends  Backbone.RelationalModel
     return "/users/" + (if @isNew() then '' else @id)
 
 User.setup()
+
+KrisBB.Vent.bind 'pusher:user', (user) =>
+  record = User.findOrCreate(user["_id"])
+  if record?
+    record.set user
+
 window.KrisBB.Models.User = User
