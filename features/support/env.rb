@@ -2,7 +2,7 @@ require 'rubygems'
 require 'spork'
 
 Spork.prefork do
-  unless ENV['DRB']
+  unless ENV['DRB'] || ENV['TDDIUM']
     require 'simplecov'
     SimpleCov.start 'rails'
   end
@@ -16,7 +16,7 @@ Spork.prefork do
 end
 
 Spork.each_run do
-  if ENV['DRB']
+  if ENV['DRB'] && !ENV['TDDIUM']
     require 'simplecov'
     SimpleCov.start 'rails'
   end
