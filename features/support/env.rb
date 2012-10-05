@@ -31,4 +31,5 @@ Spork.each_run do
 
   Cucumber::Rails::Database.javascript_strategy = :truncation
   FactoryGirl.reload
+  ActionMailer::Base.deliveries.clear
 end

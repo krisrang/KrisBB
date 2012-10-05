@@ -6,10 +6,10 @@ class Notifier
     users.each do |recipient|
       token = ReplyToken.create(message: message, user: recipient)
 
-      unless Rails.env.test?
-        EMAIL_QUEUE.push({message: message, email: recipient.email, token: token.token})
-      else
+      if Rails.env.test?
         Notifications.new_message(message, recipient.email, token.token).deliver
+      else
+        EMAIL_QUEUE.push({message: message, email: recipient.email, token: token.token})
       end
     end
   end
