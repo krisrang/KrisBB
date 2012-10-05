@@ -33,7 +33,7 @@ gem 'carrierwave-mongoid', git: 'git://github.com/jnicklas/carrierwave-mongoid.g
 gem 'fog'
 gem 'airbrake_user_attributes'
 gem 'heroku'
-gem 'oj'
+gem 'oj', '1.3.5' # 1.3.6 fails building on tddium
 gem 'newrelic_rpm'
 gem 'newrelic_moped'
 gem 'girl_friday'
