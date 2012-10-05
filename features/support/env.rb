@@ -8,10 +8,10 @@ Spork.prefork do
   end
 
   require 'cucumber/rails'
-  #require 'capybara/poltergeist'
+  require 'capybara/poltergeist'
 
   Capybara.default_selector = :css
-  Capybara.javascript_driver = :webkit
+  Capybara.javascript_driver = :poltergeist
   Capybara.default_wait_time = 5
 end
 

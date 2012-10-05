@@ -75,7 +75,6 @@ group :test, :development do
 
   gem 'email_spec'
   gem 'poltergeist'
-  gem 'capybara-webkit'
   gem 'database_cleaner'
 
   gem 'spork'
