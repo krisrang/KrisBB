@@ -77,7 +77,6 @@ group :test, :development do
   gem "poltergeist"
   gem 'database_cleaner'
 
-  gem 'spork'
   gem 'guard-bundler'
   gem 'guard-spork'
   gem 'guard-rspec'
