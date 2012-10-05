@@ -74,9 +74,11 @@ group :test, :development do
   gem 'mongoid-rspec'
 
   gem 'email_spec'
-  gem "poltergeist"
+  gem 'poltergeist'
+  gem 'capybara-webkit'
   gem 'database_cleaner'
 
+  gem 'spork'
   gem 'guard-bundler'
   gem 'guard-spork'
   gem 'guard-rspec'

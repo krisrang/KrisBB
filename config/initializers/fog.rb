@@ -1,5 +1,6 @@
 CarrierWave.configure do |config|
   if Rails.env.production? || Rails.env.development?
+    config.storage :fog
     config.fog_credentials = {
       :provider               => 'AWS',
       :aws_access_key_id      => ENV['S3_KEY'],
@@ -20,8 +21,8 @@ CarrierWave.configure do |config|
       config.cache_dir = "carrierwave"
     else
       config.storage = :file
-      config.delete_tmp_file_after_storage = false
-      config.enable_processing = false
+      #config.delete_tmp_file_after_storage = false
+      #config.enable_processing = false
     end
   end
 end
