@@ -29,7 +29,7 @@ Kreubb::Application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :cache
   config.action_mailer.cache_settings = { 
-    location: "#{Rails.root}/tmp/cache/action_mailer_cache_delivery#{ENV['TDDIUM_TID']}.cache" 
+    location: File.join(Dir.tmpdir, "action_mailer_cache_delivery.cache")
   }
   config.action_mailer.raise_delivery_errors = true
 

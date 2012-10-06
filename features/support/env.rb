@@ -15,6 +15,13 @@ Spork.prefork do
   Capybara.default_selector = :css
   Capybara.javascript_driver = :poltergeist
   Capybara.default_wait_time = 5
+
+  AfterStep('@javascript') do
+    begin
+      step 'I wait until all Ajax requests are complete'
+    rescue
+    end
+  end
 end
 
 Spork.each_run do
