@@ -31,7 +31,8 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'carrierwave-mongoid', git: 'git://github.com/jnicklas/carrierwave-mongoid.git', branch: 'mongoid-3.0'
 gem 'fog'
-gem 'airbrake_user_attributes'
+gem 'airbrake'
+# gem 'airbrake_user_attributes' depends on old airbrake
 gem 'heroku'
 gem 'oj', '1.3.5' # 1.3.6 fails building on tddium
 gem 'newrelic_rpm'
@@ -61,7 +62,7 @@ group :development do
 end
 
 group :test do
-  gem 'simplecov', :require => false
+  gem 'simplecov', require: false
   gem 'faker'
 end
 
@@ -77,9 +78,8 @@ group :test, :development do
   gem 'poltergeist'
   gem 'database_cleaner'
 
-  gem 'spork'
-  gem 'guard-bundler'
   gem 'guard-spork'
+  gem 'guard-bundler'
   gem 'guard-rspec'
   gem 'guard-cucumber'
 end

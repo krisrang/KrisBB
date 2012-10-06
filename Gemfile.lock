@@ -39,11 +39,9 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.3.2)
-    airbrake (3.0.9)
-      activesupport
+    airbrake (3.1.5)
       builder
-    airbrake_user_attributes (0.1.5)
-      airbrake (= 3.0.9)
+      girl_friday
     arel (3.0.2)
     asset_sync (0.5.0)
       activemodel
@@ -372,7 +370,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  airbrake_user_attributes
+  airbrake
   asset_sync
   aws-sdk
   bcrypt-ruby
@@ -423,7 +421,6 @@ DEPENDENCIES
   simple_form
   simplecov
   sorcery
-  spork
   terminal-notifier-guard
   therubyracer
   twitter-bootstrap-rails

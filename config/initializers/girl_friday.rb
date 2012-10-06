@@ -24,3 +24,13 @@ end
 EMAIL_QUEUE = LazyWorkQueue.define :user_email, size: 3 do |info|
   Notifications.new_message(info[:message], info[:email], info[:token]).deliver
 end
+
+AIRBRAKE_QUEUE = LazyWorkQueue.define :airbrake, size: 3 do |notice|
+  Airbrake.sender.send_to_airbrake(notice)
+end
+
+Airbrake.configure do |config|
+  config.async do |notice|
+    AIRBRAKE_QUEUE.push(notice)
+  end
+end
