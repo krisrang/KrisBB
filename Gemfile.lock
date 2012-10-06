@@ -11,6 +11,8 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    action_mailer_cache_delivery (0.3.2)
+      actionmailer (~> 3.0)
     actionmailer (3.2.8)
       actionpack (= 3.2.8)
       mail (~> 2.4.4)
@@ -370,6 +372,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  action_mailer_cache_delivery
   airbrake
   asset_sync
   aws-sdk

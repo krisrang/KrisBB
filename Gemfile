@@ -43,6 +43,7 @@ gem 'girl_friday'
 gem 'premailer-rails3'
 gem 'hpricot'
 gem 'mail_view'
+gem 'action_mailer_cache_delivery'
 
 group :assets do
   gem 'eco'

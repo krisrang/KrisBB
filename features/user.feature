@@ -77,4 +77,5 @@ Feature: User management
   Scenario: User receives email notification
     Given I am registered
     When another user posts a message
+      And I wait until all Ajax requests are complete
     Then I should receive a notification email

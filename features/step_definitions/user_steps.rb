@@ -177,7 +177,6 @@ Then /^I should not see the user$/ do
 end
 
 Then /^I should receive a notification email$/ do
-  sleep 3
-  mail = ActionMailer::Base.deliveries.last
+  mail = ActionMailer::Base.cached_deliveries.last
   mail.should deliver_to(@user)
 end

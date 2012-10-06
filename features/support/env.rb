@@ -9,6 +9,8 @@ Spork.prefork do
 
   require 'cucumber/rails'
   require 'capybara/poltergeist'
+  require 'email_spec'
+  require 'email_spec/cucumber'
 
   Capybara.default_selector = :css
   Capybara.javascript_driver = :poltergeist
