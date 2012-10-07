@@ -3,8 +3,8 @@
 window.KrisBB.Views.Sidebar = Backbone.Marionette.ItemView.extend
   template: JST["templates/sidebar"]
   presenceTemplate: JST["templates/presence-row"]
-  className: 'sidebar'
   presenceChannel: null
+  className: 'sidebar'
 
   ui:
     presenceList  : '.user-presence ul'

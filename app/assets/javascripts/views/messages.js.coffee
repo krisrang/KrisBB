@@ -6,6 +6,7 @@ window.KrisBB.Views.Messages = Backbone.Marionette.CollectionView.extend
   collection: KrisBB.Collections.Messages
   tagName: 'ul'
   className: 'unstyled messages bb'
+  scrolledToBottom: false
 
   resizeTimer: null
 
@@ -25,20 +26,48 @@ window.KrisBB.Views.Messages = Backbone.Marionette.CollectionView.extend
       @collection.fetch()
 
   onRender: () ->
-    @scrollToBottom()
+    $(window).scroll () =>
+      @onScroll()
 
     $(window).resize () =>
+      @onResize()
+
+    $ =>
       @scrollToBottom()
 
   onItemAdded: (item) ->
-    setTimeout(@doScrollBottom, 0) # No idea why this is necessary
+    setTimeout(() =>
+      @scrollToBottom()
+    , 0)
 
   scrollToBottom: () ->
-    clearTimeout(@resizeTimer)
-    @resizeTimer = setTimeout(@doScrollBottom, 100)
+    @scrollTo(0, @getPageHeight() + @getWindowHeight() + 200)
+    @scrolledToBottom = true
 
-  doScrollBottom: ->
-    $(window).scrollTop $('body')[0].scrollHeight
+  scrollTo: (left, top) ->
+    window.scrollTo(left, top)
+
+  onScroll: (event) ->
+    @scrolledToBottom = @isScrolledToBottom()
+
+  onResize: (event) ->
+    if @scrolledToBottom && !@isScrolledToBottom()
+      @scrollToBottom()
+
+  isScrolledToBottom: () ->
+    return @getScrollOffset() + @getWindowHeight() >=
+      @getPageHeight()
+
+  getPageHeight: () ->
+    return Math.max(document.documentElement.offsetHeight,
+      document.body.scrollHeight)
+
+  getWindowHeight: () ->
+    return window.innerHeight || document.body.clientHeight
+
+  getScrollOffset: () ->
+    return Math.max(document.documentElement.scrollTop,
+      document.body.scrollTop)
 
   notify: (message) ->
     if !!window.webkitNotifications && 
@@ -60,3 +89,4 @@ window.KrisBB.Views.Messages = Backbone.Marionette.CollectionView.extend
         , 10000
 
         return true
+
