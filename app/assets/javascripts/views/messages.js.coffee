@@ -33,7 +33,9 @@ window.KrisBB.Views.Messages = Backbone.Marionette.CollectionView.extend
       @onResize()
 
     $ =>
-      @scrollToBottom()
+      setTimeout(() =>
+        @scrollToBottom()
+      , 50)
 
   onItemAdded: (item) ->
     setTimeout(() =>

@@ -11,7 +11,7 @@ $usercolours: #0099CC, #562573, #FF8800, #669900, #99CC00
     max-width: $max
 
 body
-  padding-top: 60px
+  padding-top: 80px
 
 .form-page
   width: 550px
@@ -155,17 +155,36 @@ table.users
         &.user#{$i}
           border-top-color: lighten($value, 40%)
 
-.sidebar
+#bb-userbar
   position: fixed
+  top: 42px
+  left: 0px
+  right: 0px
+  padding: 5px
+  height: 20px
+  background: #444444
 
   .user-presence
-    .presence-row
-      margin-bottom: 3px
-      overflow: hidden
-      word-wrap:  break-word
+    position: relative
 
-  .allow-notifications
-    display: none
+    .background
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      text-align: center
+      color: #777
+      font-weight: bold
+      font-size: 13px
+
+    ul
+      margin: 0
+
+      li
+        display: inline-block
+
+        i.avatar
+          background: #EEEEEE
 
 .send-message
   position: fixed
@@ -340,8 +359,11 @@ table.users
   body
     padding-top: 0
 
+    #bb-userbar
+      top: 50px
+
     &.bb
-      padding-top: 60px
+      padding-top: 90px
 
       .navbar-fixed-top
         position: fixed

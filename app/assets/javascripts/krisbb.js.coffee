@@ -6,13 +6,13 @@ KrisBB.App = new Backbone.Marionette.Application()
 KrisBB.App.addRegions
   messages : '#bb-messages'
   sendbox  : '#bb-sendbox'
-  sidebar  : '#bb-sidebar'
+  userbar  : '#bb-userbar'
 
 # Initializers for views and history
 KrisBB.App.addInitializer () ->
   KrisBB.App.sendbox.show(new KrisBB.Views.Send())
   KrisBB.App.messages.show(new KrisBB.Views.Messages())
-  KrisBB.App.sidebar.show(new KrisBB.Views.Sidebar())
+  KrisBB.App.userbar.show(new KrisBB.Views.Userbar())
 
 KrisBB.App.on "initialize:after", (options) ->
   if (Backbone.history)

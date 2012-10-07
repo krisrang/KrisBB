@@ -1,10 +1,10 @@
 "use strict";
 
-window.KrisBB.Views.Sidebar = Backbone.Marionette.ItemView.extend
-  template: JST["templates/sidebar"]
+window.KrisBB.Views.Userbar = Backbone.Marionette.ItemView.extend
+  template: JST["templates/userbar"]
   presenceTemplate: JST["templates/presence-row"]
   presenceChannel: null
-  className: 'sidebar'
+  className: 'userbar'
 
   ui:
     presenceList  : '.user-presence ul'
@@ -41,11 +41,18 @@ window.KrisBB.Views.Sidebar = Backbone.Marionette.ItemView.extend
       list += @presenceTemplate(member)
 
     @ui.presenceList.html list
+    @ui.presenceList.find('[rel=tooltip]').tooltip()
 
   onPresenceJoined: (member) ->
     if @ui.presenceList.find('#presence-' + member.id).length == 0
-      $(@presenceTemplate(member)).appendTo(@ui.presenceList)
+      el = $(@presenceTemplate(member))
+      el.appendTo(@ui.presenceList)
+      el.find('[rel=tooltip]').tooltip()
 
   onPresenceLeft: (member) ->
-    @ui.presenceList.find('#presence-' + member.id).remove()
+    el = @ui.presenceList.find('#presence-' + member.id)
+
+    if el.length > 0
+      el.find('[rel=tooltip]').tooltip('destroy')
+      el.remove()
 

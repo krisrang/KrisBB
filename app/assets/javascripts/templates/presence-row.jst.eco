@@ -1,8 +1,7 @@
 <li id="presence-<%= @id %>" class="presence-row">
-  <i class="avatar thumb">
-    <img src="<%= @info.avatar.thumb.url %>" />
-  </i>
-  <a href="<%= Routes.user_path(@id) %>">
-    <%= @info.username %>
+  <a href="<%= Routes.user_path(@id) %>" title="<%= @info.username %>" rel="tooltip" data-placement="bottom">
+    <i class="avatar thumb">
+      <img src="<%= @info.avatar.thumb.url %>" />
+    </i>
   </a>
 </li>
