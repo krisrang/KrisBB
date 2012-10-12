@@ -1,4 +1,5 @@
 <li id="message-<%= message.id %>" class="user<%= message.user_colour %>">
+  <% cache [message, message.user] do %>
   <%= avatar message.user, :small %>
   <div class="info">
     <div class="username">
@@ -7,7 +8,7 @@
       <% else %>
         <%= link_to message.user_username, user_path(message.user) %>
       <% end %>
-     </div>
+    </div>
     <div class="time">
       <time datetime="<%= message.created_at %>">
         <%= message.created_at.to_s :long_ordinal %>
@@ -17,6 +18,7 @@
   <div class="contents">
     <%= raw message.html %>
   </div>
+  <% end %>
   <% if can? :delete, message %>
     <div class="controls">
       <%= link_to "Delete", message_path(message), method: :delete, confirm: "Are you sure?" %>

@@ -26,7 +26,7 @@
   
   <script>
     window.KrisBB = {
-      <% cache 'bootstrap' do %>
+      <% cache ['bootstrap', @messages.last, @messages.last.user] do %>
       bootstrap: <%= Oj.dump(@messages.as_json, mode: :compat).html_safe %>,
       <% end %>
       Settings: <%= Oj.dump(Settings.public, mode: :compat).html_safe %>,

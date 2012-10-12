@@ -54,7 +54,7 @@ module Kreubb
 
     #config.action_mailer.delivery_method = :amazon_ses
 
-    config.mongoid.observers = :message_observer, :user_observer
+    #config.mongoid.observers = :message_observer, :user_observer
 
     config.threadsafe! if ENV["RAILS_ENV"] != 'test' # enable threadsafe for girl_friday
   end
