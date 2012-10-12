@@ -21,4 +21,9 @@ module ApplicationHelper
   def render_stats_bar
     render partial: 'shared/stats'
   end
+
+  def bootstrap_cache_key(messages)
+    key = ["bootstrap"]
+    key << [messages.last, messages.last.user] unless messages.blank?
+  end
 end

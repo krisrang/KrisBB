@@ -12,11 +12,19 @@ Spork.prefork do
   require 'email_spec'
   require 'email_spec/cucumber'
 
+  Capybara.register_driver :poltergeist do |app|
+    if RUBY_PLATFORM.downcase.include?("darwin")
+      Capybara::Poltergeist::Driver.new(app, phantomjs: "#{Rails::root}/spec/support/darwin/phantomjs/bin/phantomjs")
+    # elsif RUBY_PLATFORM.downcase.include?("linux")
+    #   Capybara::Poltergeist::Driver.new(app, phantomjs: "#{Rails::root}/spec/support/linux/phantomjs/bin/phantomjs")
+    end
+  end
+
   Capybara.default_selector = :css
   Capybara.javascript_driver = :poltergeist
   Capybara.default_wait_time = 5
 
-  AfterStep('@javascript') do
+  AfterStep('@wait-ajax') do
     begin
       step 'I wait until all Ajax requests are complete'
     rescue

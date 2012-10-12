@@ -34,7 +34,7 @@ gem 'fog'
 gem 'airbrake'
 # gem 'airbrake_user_attributes' depends on old airbrake
 gem 'heroku'
-gem 'oj', '1.3.5' # 1.3.6 fails building on tddium
+gem 'oj'
 gem 'newrelic_rpm'
 gem 'newrelic_moped'
 gem 'girl_friday'

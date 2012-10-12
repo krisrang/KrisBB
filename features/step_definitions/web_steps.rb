@@ -1,11 +1,13 @@
- When /^I go to (.+)$/ do |page_name|
+Given /^I wait (\d+) seconds?$/ do |sec|
+  sleep(sec.to_i)
+end
+
+When /^I go to (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
 When /^I wait until all Ajax requests are complete$/ do
-  wait_until do
-    page.evaluate_script('$.active') == 0
-  end
+  page.evaluate_script('jQuery.active') == 0
 end
 
 Then /^I should see "(.*?)"$/ do |arg1|
