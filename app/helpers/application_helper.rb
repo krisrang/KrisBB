@@ -23,7 +23,8 @@ module ApplicationHelper
   end
 
   def bootstrap_cache_key(messages)
-    key = ["bootstrap"]
-    key << [messages.last, messages.last.user] unless messages.blank?
+    ["bootstrap"].tap do |key|
+      key.push messages.first, messages.first.user unless messages.blank?
+    end
   end
 end
