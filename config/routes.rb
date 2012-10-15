@@ -3,6 +3,7 @@ Kreubb::Application.routes.draw do
     mount Notifications::Preview => 'mail_view'
   end
 
+  get     "ping"        => "sessions#ping",           as: "ping"
   get     "login"       => "sessions#new",            as: "login"
   get     "signup"      => "users#new",               as: "signup"
   post    "login_token" => "sessions#create_token",   as: "login_token"

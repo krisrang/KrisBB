@@ -2,7 +2,12 @@ class SessionsController < ApplicationController
   layout 'form'
 
   protect_from_forgery except: [:create_token, :pusher]
-  skip_before_filter :login_api, only: [:create_token]
+  skip_before_filter :login_api, only: [:ping, :create_token]
+
+  # GET /ping
+  def ping
+    render status: 200, text: ""
+  end
 
   # GET /login
   def new
