@@ -25,21 +25,21 @@ Pusher.channel_auth_endpoint = KrisBB.Settings.pusher.endpoint;
 pusher.connection.bind 'connected', ->
   KrisBB.Vent.trigger 'pusher:connected', pusher
 
-channel = pusher.subscribe('main')
-channel.bind 'message', (data) ->
-  KrisBB.Vent.trigger 'pusher:message', JSON.parse(data.message)
-channel.bind 'delete', (data) ->
-  KrisBB.Vent.trigger 'pusher:delete', data.id
-channel.bind 'user', (data) ->
-  KrisBB.Vent.trigger 'pusher:user', JSON.parse(data.user)
+  channel = pusher.subscribe('main')
+  channel.bind 'message', (data) ->
+    KrisBB.Vent.trigger 'pusher:message', JSON.parse(data.message)
+  channel.bind 'delete', (data) ->
+    KrisBB.Vent.trigger 'pusher:delete', data.id
+  channel.bind 'user', (data) ->
+    KrisBB.Vent.trigger 'pusher:user', JSON.parse(data.user)
 
-presenceChannel = pusher.subscribe('presence-main')
-presenceChannel.bind 'pusher:subscription_succeeded', () ->
-  KrisBB.Vent.trigger 'pusher:presence_subscribed', presenceChannel
-presenceChannel.bind 'pusher:member_added', (member) ->
-  KrisBB.Vent.trigger 'pusher:joined', member, presenceChannel
-presenceChannel.bind 'pusher:member_removed', (member) ->
-  KrisBB.Vent.trigger 'pusher:left', member, presenceChannel
+  presenceChannel = pusher.subscribe('presence-main')
+  presenceChannel.bind 'pusher:subscription_succeeded', () ->
+    KrisBB.Vent.trigger 'pusher:presence_subscribed', presenceChannel
+  presenceChannel.bind 'pusher:member_added', (member) ->
+    KrisBB.Vent.trigger 'pusher:joined', member, presenceChannel
+  presenceChannel.bind 'pusher:member_removed', (member) ->
+    KrisBB.Vent.trigger 'pusher:left', member, presenceChannel
 
 # Render eco templates
 Backbone.Marionette.Renderer.render = (template, data) ->
