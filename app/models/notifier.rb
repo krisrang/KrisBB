@@ -27,10 +27,10 @@ class Notifier
       unless Rails.env.test?
         if defined?(EventMachine) && EventMachine.reactor_running?
           Rails.logger.info "Pusher async trigger"
-          Pusher['main'].trigger_async(type, message, socket)
+          Pusher['private-main'].trigger_async(type, message, socket)
         else
           Rails.logger.info "Pusher blocking trigger"
-          Pusher['main'].trigger(type, message, socket)
+          Pusher['private-main'].trigger(type, message, socket)
         end
       end
     end

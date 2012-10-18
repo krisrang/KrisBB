@@ -25,7 +25,7 @@ Pusher.channel_auth_endpoint = KrisBB.Settings.pusher.endpoint;
 pusher.connection.bind 'connected', ->
   KrisBB.Vent.trigger 'pusher:connected', pusher
 
-  channel = pusher.subscribe('main')
+  channel = pusher.subscribe('private-main')
   channel.bind 'message', (data) ->
     KrisBB.Vent.trigger 'pusher:message', JSON.parse(data.message)
   channel.bind 'delete', (data) ->
