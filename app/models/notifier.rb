@@ -30,7 +30,7 @@ class Notifier
           Pusher['private-main'].trigger_async(type, message, socket)
         else
           Rails.logger.info "Pusher blocking trigger"
-          Pusher['private-main'].trigger(type, message, socket)
+          PUSHER_QUEUE.push({type: type, message: message, socket: socket})
         end
       end
     end

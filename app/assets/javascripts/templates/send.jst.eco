@@ -1,6 +1,6 @@
 <div class="message-controls">
   <button id="send_message" type="submit" class="message-submit btn btn-large">
-    <i class="icon-comment icon-white"></i>
+    <i class="icon-comment"></i>
     <i class="pending"></i>
   </button>
   <div class="enter-toggle" rel="tooltip" title="Press Enter to send" data-placement="left">
