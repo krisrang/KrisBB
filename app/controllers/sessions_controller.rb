@@ -1,8 +1,8 @@
 class SessionsController < ApplicationController
   layout 'form'
 
-  protect_from_forgery except: [:create_token, :pusher]
-  skip_before_filter :login_api, only: [:ping, :create_token]
+  protect_from_forgery except: [:login_token, :pusher]
+  skip_before_filter :login_api, only: [:ping, :login_token]
 
   # GET /ping
   def ping
@@ -27,13 +27,13 @@ class SessionsController < ApplicationController
   end
 
   # POST /login_token
-  def create_token
+  def login_token
     user = User.authenticate(params[:login] || "", params[:password] || "")
 
     if user
       render json: user.to_json(include: [:token])
     else
-      render_unauthorized
+      render_unauthorized 401
     end
   end
 
@@ -46,7 +46,7 @@ class SessionsController < ApplicationController
       })
       render json: response
     else
-      render text: "Forbidden", status:'403'
+      render_unauthorized 401
     end
   end
 

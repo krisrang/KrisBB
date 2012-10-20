@@ -2,6 +2,11 @@ require 'rubygems'
 require 'spork'
 
 Spork.prefork do
+  unless ENV['DRB'] || ENV['TDDIUM']
+    require 'simplecov'
+    SimpleCov.start 'rails'
+  end
+
   require 'cucumber/rails'
   require 'capybara/poltergeist'
   require 'email_spec'
@@ -24,6 +29,8 @@ Spork.prefork do
 
   GirlFriday::Queue.immediate!
 
+  World(FactoryGirl::Syntax::Methods)
+
   AfterStep('@wait-ajax') do
     begin
       step 'I wait until all Ajax requests are complete'
@@ -33,6 +40,11 @@ Spork.prefork do
 end
 
 Spork.each_run do
+  if ENV['DRB'] && !ENV['TDDIUM']
+    require 'simplecov'
+    SimpleCov.start 'rails'
+  end
+  
   ActionController::Base.allow_rescue = false
 
   begin

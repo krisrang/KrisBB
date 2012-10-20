@@ -6,7 +6,7 @@ Kreubb::Application.routes.draw do
   get     "ping"        => "sessions#ping",           as: "ping"
   get     "login"       => "sessions#new",            as: "login"
   get     "signup"      => "users#new",               as: "signup"
-  post    "login_token" => "sessions#create_token",   as: "login_token"
+  post    "login_token" => "sessions#login_token",    as: "login_token"
   post    "pusher/auth" => "sessions#pusher",         as: "pusher_auth"
   delete  "logout"      => "sessions#destroy",        as: "logout"
 

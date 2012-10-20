@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     end
 
     def not_authenticated
-      redirect_to login_path, alert: "This page requires logging in."
+      redirect_to login_path, alert: "This page requires logging in or you do not have sufficient rights."
     end
 
     def login_api
@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
             auto_login(@current_user) if @current_user
             @current_user
           rescue Mongoid::Errors::DocumentNotFound => e
-            render_unauthorized e
+            render_unauthorized 401
           end
         end
       else
@@ -36,10 +36,10 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def render_unauthorized(e=nil)
+    def render_unauthorized(code=403)
       respond_to do |format|
         format.html { not_authenticated }
-        format.json { render json: { error: "Unauthorized" }, status: 401 }
+        format.json { render json: { error: "Unauthorized" }, status: code }
       end
     end
 end
