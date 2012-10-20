@@ -32,8 +32,6 @@ gem 'carrierwave'
 gem 'carrierwave-mongoid', git: 'git://github.com/jnicklas/carrierwave-mongoid.git', branch: 'mongoid-3.0'
 gem 'fog'
 gem 'airbrake'
-# gem 'airbrake_user_attributes' depends on old airbrake
-gem 'heroku'
 gem 'oj'
 gem 'newrelic_rpm'
 gem 'newrelic_moped'

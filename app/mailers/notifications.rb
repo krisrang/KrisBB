@@ -10,6 +10,7 @@ class Notifications < ActionMailer::Base
          reply_to: "#{token}.reply-message@krisbb.mailgun.org"
   end
 
+  # :nocov:
   class Preview < MailView
     def new_message
       message = Message.last
@@ -19,4 +20,5 @@ class Notifications < ActionMailer::Base
       # ::Notifier.invitation(inviter, invitee)  # May need to call with '::'
     end
   end
+  # :nocov:
 end

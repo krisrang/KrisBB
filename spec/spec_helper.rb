@@ -5,6 +5,11 @@ require 'spork'
 Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
 
+  unless ENV['DRB'] || ENV['TDDIUM']
+    require 'simplecov'
+    SimpleCov.start 'rails'
+  end
+
   # Mongoid models reload
   require 'rails/mongoid'
   Spork.trap_class_method(Rails::Mongoid, :load_models)
@@ -45,9 +50,16 @@ Spork.prefork do
   Capybara.default_selector = :css
   Capybara.javascript_driver = :poltergeist
   Capybara.default_wait_time = 5
+
+  GirlFriday::Queue.immediate!
 end
 
 Spork.each_run do
+  if ENV['DRB'] && !ENV['TDDIUM']
+    require 'simplecov'
+    SimpleCov.start 'rails'
+  end
+  
   FactoryGirl.reload
 
   I18n.backend.reload!

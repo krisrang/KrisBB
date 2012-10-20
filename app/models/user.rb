@@ -45,7 +45,8 @@ class User
   end
 
   def self.deleted_user
-    self.new(colour: 1, username: "Deleted", deleted: true)
+    @@deleted_user ||= self.new(colour: 1, username: "Deleted", deleted: true)
+    return @@deleted_user
   end
 
   def online?
