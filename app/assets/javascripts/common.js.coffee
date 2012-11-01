@@ -6,7 +6,6 @@
 #= require ./lib/modernizr
 #= require ./lib/shims
 #= require ./lib/timeago
-#= require ./lib/dateToISO.shim
 #= require_self
 
 # Avoid `console` errors in browsers that lack a console

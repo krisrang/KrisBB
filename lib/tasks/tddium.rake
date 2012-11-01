@@ -40,6 +40,9 @@ namespace :tddium do
     puts "Pushing to Heroku: #{push_target}..."
     cmd "git push #{push_target} HEAD:master --force" or abort "could not push to #{push_target}"
 
+    puts "Clearing Rails cache"
+    cmd "heroku run rake cache:clear"
+    
     # puts "Running Heroku Migrations..."
     # cmd "heroku run rake db:migrate --app #{app_name}" or abort "aborted migrations"
 
