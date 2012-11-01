@@ -5,6 +5,7 @@ set :repository,      'git@github.com:krisrang/krisbb.git'
 set :domain,          'zeus.kristjanrang.eu'
 set :applicationdir,  '/home/deploy/sites/krisbb'
 set :user,            'deploy'
+set :use_sudo,        false
 
 set :scm, :git
 set :branch, "master"
@@ -30,8 +31,8 @@ after 'deploy:update', 'foreman:restart'
 namespace :foreman do
   desc "Export the Procfile to Ubuntu's upstart scripts"
   task :export, :roles => :app do
-    run "cd #{release_path} && sudo bundle exec foreman export upstart /etc/init " +
-        "-f ./Procfile -a #{application} -u #{user} -l #{shared_path}/log"
+    run "cd #{release_path}; #{sudo} bundle exec foreman export upstart /etc/init " +
+        "-f ./Procfile.production -a #{application} -u #{user} -l #{shared_path}/log"
   end
 
   desc "Start the application services"
@@ -46,7 +47,7 @@ namespace :foreman do
 
   desc "Restart the application services"
   task :restart, :roles => :app do
-    run "sudo start #{application} || sudo restart #{application}"
+    run "#{sudo} start #{application} || #{sudo} restart #{application}"
   end
 
   desc "Display logs for a certain process - arg example: PROCESS=web-1"
