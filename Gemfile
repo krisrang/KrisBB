@@ -55,6 +55,7 @@ group :assets do
   gem 'oily_png'
   gem 'asset_sync'
   gem 'js-routes'
+  gem 'turbo-sprockets-rails3'
 end
 
 group :development do

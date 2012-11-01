@@ -3,7 +3,7 @@ require "bundler/capistrano"
 set :application,     'krisbb'
 set :repository,      'git@github.com:krisrang/krisbb.git'
 set :domain,          'zeus.kristjanrang.eu'
-set :applicationdir,  'sites/krisbb'
+set :applicationdir,  '/home/deploy/sites/krisbb'
 set :user,            'deploy'
 
 set :scm, :git
@@ -19,26 +19,19 @@ set :deploy_via, :remote_cache
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
+set :bundle_flags, "--deployment --quiet --binstubs --shebang ruby-local-exec"
 set :default_environment, {
-  'PATH' => "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH"
+  'PATH' => "/home/deploy/.rbenv/shims:/home/deploy/.rbenv/bin:$PATH"
 }
 
-after 'deploy:update', 'bundle:install'
 after 'deploy:update', 'foreman:export'
 after 'deploy:update', 'foreman:restart'
-
-# namespace :bundle do
-#   desc "Installs the application dependencies"
-#   task :install, :roles => :app do
-#     run "cd #{current_path} && bundle --deployment --without development test"
-#   end
-# end
 
 namespace :foreman do
   desc "Export the Procfile to Ubuntu's upstart scripts"
   task :export, :roles => :app do
-    run "cd #{release_path} && bundle exec foreman export upstart /etc/init " +
-        "-f ./Procfile.production -a #{application} -u #{user} -l #{shared_path}/log"
+    run "cd #{release_path} && sudo bundle exec foreman export upstart /etc/init " +
+        "-f ./Procfile -a #{application} -u #{user} -l #{shared_path}/log"
   end
 
   desc "Start the application services"
@@ -66,4 +59,11 @@ end
 namespace :deploy do
   task :restart do
   end
+  
+  desc "Symlink shared configs and folders on each release."
+  task :symlink_shared do
+    run "ln -nfs #{shared_path}/.rbenv-vars #{release_path}/.rbenv-vars"
+  end
 end
+
+after 'deploy:finalize_update', 'deploy:symlink_shared'

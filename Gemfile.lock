@@ -362,6 +362,9 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
+    turbo-sprockets-rails3 (0.2.12)
+      railties (>= 3.1.0, < 3.2.9)
+      sprockets (>= 2.0.0)
     twitter-bootstrap-rails (2.1.5)
       actionpack (>= 3.1)
       less-rails (~> 2.2.3)
@@ -436,5 +439,6 @@ DEPENDENCIES
   spork-rails
   terminal-notifier-guard
   therubyracer
+  turbo-sprockets-rails3
   twitter-bootstrap-rails
   uglifier
