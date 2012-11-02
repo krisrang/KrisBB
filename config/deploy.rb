@@ -6,7 +6,7 @@ set :repository,          'git@github.com:krisrang/krisbb.git'
 set :domain,              'zeus.kristjanrang.eu'
 set :applicationdir,      '/home/deploy/sites/krisbb'
 set :user,                'deploy'
-set :port,                3000
+set :puma_port,                3000
 set :env,                 'production'
 
 set :scm, :git
@@ -14,7 +14,7 @@ set :branch, "master"
 
 role :web, domain
 role :app, domain
-role :db, domain, :primary => true
+role :db, domain, primary: true
 
 set :deploy_to, applicationdir
 set :deploy_via, :remote_cache
@@ -30,7 +30,7 @@ set :default_environment, {
 namespace :puma do
   desc "Start puma"
   task :start, roles: :app do
-    run "cd #{current_path} && bundle exec puma -d -e #{env} -p #{port} -S #{shared_path}/sockets/puma.state --control 'unix://#{shared_path}/sockets/pumactl.sock'", pty: false
+    run "cd #{current_path} && bundle exec puma -d -e #{env} -p #{puma_port} -S #{shared_path}/sockets/puma.state --control 'unix://#{shared_path}/sockets/pumactl.sock'", pty: false
   end
 
   desc "Stop puma"
