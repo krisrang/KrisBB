@@ -8,13 +8,6 @@ GIT
       mongoid (~> 3.0.0)
       mongoid-grid_fs (~> 1.3.1)
 
-GIT
-  remote: git://github.com/puma/puma.git
-  revision: 2280b68d987bfe17f00bb92c772b971a4f073ca6
-  specs:
-    puma (2.0.0.b1)
-      rack (~> 1.2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -240,7 +233,7 @@ GEM
       rake
       rspec (>= 2.9)
     moped (1.2.7)
-    multi_json (1.3.6)
+    multi_json (1.3.7)
     multi_xml (0.5.1)
     multipart-post (1.1.5)
     net-scp (1.0.4)
@@ -279,6 +272,8 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.3.1)
+    puma (1.6.3)
+      rack (~> 1.2)
     pusher (0.10.0)
       multi_json (~> 1.0)
       signature (~> 0.1.4)
@@ -429,7 +424,7 @@ DEPENDENCIES
   oj
   poltergeist
   premailer-rails3
-  puma!
+  puma
   pusher
   rails (~> 3.2.8)
   rails_config

@@ -1,5 +1,4 @@
 require 'bundler/setup'
-require 'puma/capistrano'
 require "bundler/capistrano"
 
 set :application,     'krisbb'
@@ -30,8 +29,38 @@ set :default_environment, {
 after 'deploy:update', 'foreman:export'
 after 'deploy:update', 'foreman:restart'
 
-# stub out deploy:restart
-namespace :deploy do  
+namespace :foreman do
+  desc "Export the Procfile to Ubuntu's upstart scripts"
+  task :export, :roles => :app do
+    run "cd #{release_path}; #{sudo} bundle exec foreman export upstart /etc/init " +
+        "-f ./Procfile.production -a #{application} -u #{user} -l #{shared_path}/log"
+  end
+
+  desc "Start the application services"
+  task :start, :roles => :app do
+    sudo "start #{application}"
+  end
+
+  desc "Stop the application services"
+  task :stop, :roles => :app do
+    sudo "stop #{application}"
+  end
+
+  desc "Restart the application services"
+  task :restart, :roles => :app do
+    run "#{sudo} start #{application} || #{sudo} restart #{application}"
+  end
+
+  desc "Display logs for a certain process - arg example: PROCESS=web-1"
+  task :logs, :roles => :app do
+    run "cd #{current_path}/log && cat #{ENV["PROCESS"]}.log"
+  end
+end
+
+namespace :deploy do
+  task :restart do
+  end
+  
   desc "Symlink shared configs and folders on each release."
   task :symlink_shared do
     run "ln -nfs #{shared_path}/.rbenv-vars #{release_path}/.rbenv-vars"
