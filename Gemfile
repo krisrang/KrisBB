@@ -60,6 +60,7 @@ end
 
 group :development do
   gem 'terminal-notifier-guard'
+  gem 'capistrano-unicorn', require: false
 end
 
 group :test do
