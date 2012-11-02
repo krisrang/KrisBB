@@ -2,9 +2,9 @@
 app_path = "/home/deploy/sites/krisbb/current"
 
 # Set unicorn options
-worker_processes 1
-preload_app true
+worker_processes 3
 timeout 180
+preload_app true
 listen "127.0.0.1:3000"
 
 # Spawn unicorn master worker for user apps (group: apps)
@@ -24,8 +24,6 @@ stdout_path "log/unicorn.log"
 pid "#{app_path}/tmp/pids/unicorn.pid"
 
 before_fork do |server, worker|
-  ActiveRecord::Base.connection.disconnect!
-
   old_pid = "#{server.config[:pid]}.oldbin"
   if File.exists?(old_pid) && server.pid != old_pid
     begin
@@ -34,8 +32,31 @@ before_fork do |server, worker|
       # someone else did our job for us
     end
   end
+
+  sleep 1
 end
 
+
 after_fork do |server, worker|
-  ActiveRecord::Base.establish_connection
+  require 'action_dispatch/middleware/session/dalli_store'
+
+  # If you are using Redis but not Resque, change this
+  if defined?(Resque)
+    Resque.redis = ENV['REDIS_URI']
+    Rails.logger.info('Connected to Redis')
+  end
+
+  if defined?(ActiveSupport::Cache::DalliStore) && Rails.cache.is_a?(ActiveSupport::Cache::DalliStore)
+    # Reset Rails's object cache
+    # Only works with DalliStore
+    Rails.cache.reset
+
+    # Reset Rails's session store
+    # If you know a cleaner way to find the session store instance, please let me know
+    ObjectSpace.each_object(ActionDispatch::Session::DalliStore) { |obj| obj.reset }
+  end
+
+  if defined?(EventMachine)
+    Thread.new { EM.stop; EM.run }
+  end
 end
