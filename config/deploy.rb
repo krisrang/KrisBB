@@ -1,12 +1,13 @@
 require 'bundler/setup'
-require "bundler/capistrano"
+require 'bundler/capistrano'
 
-set :application,     'krisbb'
-set :repository,      'git@github.com:krisrang/krisbb.git'
-set :domain,          'zeus.kristjanrang.eu'
-set :applicationdir,  '/home/deploy/sites/krisbb'
-set :user,            'deploy'
-set :use_sudo,        false
+set :application,         'krisbb'
+set :repository,          'git@github.com:krisrang/krisbb.git'
+set :domain,              'zeus.kristjanrang.eu'
+set :applicationdir,      '/home/deploy/sites/krisbb'
+set :user,                'deploy'
+set :port,                3000
+set :env,                 'production'
 
 set :scm, :git
 set :branch, "master"
@@ -26,41 +27,27 @@ set :default_environment, {
   'PATH' => "/home/deploy/.rbenv/shims:/home/deploy/.rbenv/bin:$PATH"
 }
 
-after 'deploy:update', 'foreman:export'
-after 'deploy:update', 'foreman:restart'
-
-namespace :foreman do
-  desc "Export the Procfile to Ubuntu's upstart scripts"
-  task :export, :roles => :app do
-    run "cd #{release_path}; #{sudo} bundle exec foreman export upstart /etc/init " +
-        "-f ./Procfile.production -a #{application} -u #{user} -l #{shared_path}/log"
+namespace :puma do
+  desc "Start puma"
+  task :start, roles: :app do
+    run "cd #{current_path} && bundle exec puma -d -e #{env} -p #{port} -S #{shared_path}/sockets/puma.state --control 'unix://#{shared_path}/sockets/pumactl.sock'", pty: false
   end
 
-  desc "Start the application services"
-  task :start, :roles => :app do
-    sudo "start #{application}"
+  desc "Stop puma"
+  task :stop, roles: :app do
+    run "cd #{current_path} && bundle exec pumactl -S #{shared_path}/sockets/puma.state stop"
   end
 
-  desc "Stop the application services"
-  task :stop, :roles => :app do
-    sudo "stop #{application}"
-  end
-
-  desc "Restart the application services"
-  task :restart, :roles => :app do
-    run "#{sudo} start #{application} || #{sudo} restart #{application}"
-  end
-
-  desc "Display logs for a certain process - arg example: PROCESS=web-1"
-  task :logs, :roles => :app do
-    run "cd #{current_path}/log && cat #{ENV["PROCESS"]}.log"
+  desc "Restart puma"
+  task :restart, roles: :app do
+    run "cd #{current_path} && bundle exec pumactl -S #{shared_path}/sockets/puma.state restart"
   end
 end
 
 namespace :deploy do
   task :restart do
   end
-  
+
   desc "Symlink shared configs and folders on each release."
   task :symlink_shared do
     run "ln -nfs #{shared_path}/.rbenv-vars #{release_path}/.rbenv-vars"
@@ -68,3 +55,6 @@ namespace :deploy do
 end
 
 after 'deploy:finalize_update', 'deploy:symlink_shared'
+after "deploy:stop", "puma:stop"
+after "deploy:start", "puma:start"
+after "deploy:restart", "puma:restart"

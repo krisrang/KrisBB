@@ -19,4 +19,4 @@ if FileTest.exist?(".rbenv-vars")
     env.close
   rescue => e
   end
-end if Rails.env.development? || Rails.env.test?
+end if Rails.env.production?
