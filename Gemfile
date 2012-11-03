@@ -15,10 +15,8 @@ gem 'memcachier'
 gem 'dalli'
 
 # Frontend
-gem 'jquery-rails'
 gem 'simple_form'
 gem 'kaminari'
-gem 'twitter-bootstrap-rails'
 
 # Auth & auth
 gem 'bcrypt-ruby'
@@ -56,8 +54,10 @@ group :assets do
   gem 'compass-rails'
   gem 'oily_png'
   gem 'asset_sync'
+  gem 'jquery-rails'
   gem 'js-routes'
   gem 'turbo-sprockets-rails3'
+  gem 'twitter-bootstrap-rails'
 end
 
 group :development do
