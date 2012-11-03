@@ -18,6 +18,7 @@ gem 'dalli'
 gem 'simple_form'
 gem 'kaminari'
 gem 'twitter-bootstrap-rails'
+gem 'less-rails' # twitter-bootstrap-rails demands it here
 
 # Auth & auth
 gem 'bcrypt-ruby'
@@ -49,7 +50,6 @@ group :assets do
   gem 'execjs'
   gem 'therubyracer'
   gem 'sass-rails'
-  gem 'less-rails'
   gem 'coffee-rails'
   gem 'uglifier'
   gem 'compass-rails'
