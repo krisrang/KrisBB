@@ -31,7 +31,10 @@ namespace :deploy do
   task :symlink_shared do
     run "ln -nfs #{shared_path}/.env #{release_path}/.rbenv-vars"
     run "ln -nfs #{shared_path}/.env #{release_path}/.env"
-    #run "ln -nfs #{release_path}/config/god.conf /home/deploy/sites/god/#{application}.conf"
+  end
+
+  # Stub this out
+  task :restart, :roles => :app do
   end
 end
 
@@ -46,11 +49,12 @@ namespace :god do
   end
 end
 
-namespace :deploy do
-  # Stub this out
-  task :restart, :roles => :app do
+namespace :secrets do
+  desc "Upload env file"
+  task :upload, :roles => :app do
+    top.upload(".rbenv-vars", "#{shared_path}/.env")
   end
 end
 
-after 'deploy:finalize_update', 'deploy:symlink_shared'
+after 'deploy:finalize_update', 'secrets:upload', 'deploy:symlink_shared'
 after 'deploy:restart', 'god:reload', 'god:restart'

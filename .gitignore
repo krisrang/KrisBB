@@ -25,6 +25,7 @@ public/assets
 public/avatars
 
 /.powenv
+/.rbenv-vars
 
 /coverage
 .tddium*
