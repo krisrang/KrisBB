@@ -17,6 +17,7 @@ gem 'dalli'
 # Frontend
 gem 'simple_form'
 gem 'kaminari'
+gem 'twitter-bootstrap-rails'
 
 # Auth & auth
 gem 'bcrypt-ruby'
@@ -57,7 +58,6 @@ group :assets do
   gem 'jquery-rails'
   gem 'js-routes'
   gem 'turbo-sprockets-rails3'
-  gem 'twitter-bootstrap-rails'
 end
 
 group :development do
