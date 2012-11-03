@@ -6,6 +6,7 @@ set :repository,          'git@github.com:krisrang/krisbb.git'
 set :domain,              'zeus.kristjanrang.eu'
 set :applicationdir,      '/home/deploy/sites/krisbb'
 set :user,                'deploy'
+set :rbenv,               '/home/deploy/.rbenv/bin/rbenv'
 
 set :scm, :git
 set :branch, "master"
@@ -28,17 +29,27 @@ set :default_environment, {
 namespace :deploy do
   desc "Symlink shared configs and folders on each release."
   task :symlink_shared do
-    run "ln -nfs #{shared_path}/.rbenv-vars #{release_path}/.rbenv-vars"
+    run "ln -nfs #{shared_path}/.env #{release_path}/.env"
+    #run "ln -nfs #{release_path}/config/god.conf /home/deploy/sites/god/#{application}.conf"
   end
 end
 
-set :shared_children, shared_children << 'tmp/sockets'
+namespace :god do
+  desc "Reload god configs, only way how atm until I get rbenv sudo working over cap"
+  task :reload, :roles => :app do
+    sudo "#{rbenv} exec god load #{current_path}/config/god.conf"
+  end
+
+  task :restart, :roles => :app do
+    sudo "#{rbenv} exec god restart krisbb"
+  end
+end
 
 namespace :deploy do
   # Stub this out
   task :restart, :roles => :app do
-    run "cd #{current_path} && touch tmp/restart.txt"
   end
 end
 
 after 'deploy:finalize_update', 'deploy:symlink_shared'
+after 'deploy:restart', 'god:reload', 'god:restart'
