@@ -50,6 +50,7 @@ group :assets do
   gem 'execjs'
   gem 'therubyracer'
   gem 'sass-rails'
+  gem 'less-rails'
   gem 'coffee-rails'
   gem 'uglifier'
   gem 'compass-rails'
