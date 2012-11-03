@@ -8,3 +8,5 @@ assethost:
   email: 'http://krisbb-assets.s3.amazonaws.com/assets'
   fog: 'http://krisbb-assets.s3.amazonaws.com'
   production: '//krisbb-assets.s3.amazonaws.com'
+pusher:
+  secret: <%= ENV['PUSHER_SECRET'] %>
