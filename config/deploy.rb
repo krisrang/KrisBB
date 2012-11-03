@@ -29,6 +29,7 @@ set :default_environment, {
 namespace :deploy do
   desc "Symlink shared configs and folders on each release."
   task :symlink_shared do
+    run "ln -nfs #{shared_path}/.env #{release_path}/.rbenv-vars"
     run "ln -nfs #{shared_path}/.env #{release_path}/.env"
     #run "ln -nfs #{release_path}/config/god.conf /home/deploy/sites/god/#{application}.conf"
   end
