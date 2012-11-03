@@ -1,5 +1,5 @@
-unless ENV['HEROKU']
-  Pusher.app_id = '27770'
-  Pusher.key    = 'bb6ee2e971248c187d7c'
-  Pusher.secret = 'a33c19e597ab7d5eba67'
+if Settings.public.pusher.app_id
+  Pusher.app_id = Settings.public.pusher.app_id
+  Pusher.key    = Settings.public.pusher.key
+  Pusher.secret = Settings.pusher.secret
 end
