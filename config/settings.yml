@@ -10,3 +10,4 @@ assethost:
   production: '//krisbb-assets.s3.amazonaws.com'
 pusher:
   secret: <%= ENV['PUSHER_SECRET'] %>
+gitsha: <%= `git log -1 --format="%H"`[0..6] %>
