@@ -1,7 +1,10 @@
 <div id="stats-bar">
-  <i class="icon-time"></i>
+  <i class="icon">π</i>
 
   <div class="contents">
-    Page Rendered in <%= sprintf('%.3f', (Time.now.usec - @start_time).abs / 1000000.0) %> seconds
+    Rendered by <%= Process.pid %>
+    on <%= `hostname`.strip %>
+    in <%= sprintf('%.3f', (Time.now.usec - @start_time).abs / 1000000.0) %> seconds
+    running <%= `git log -1 --format="%H"`[0..9] %>
   </div>
 </div>

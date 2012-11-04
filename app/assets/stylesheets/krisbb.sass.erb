@@ -308,15 +308,25 @@ table.users
 
 #stats-bar
   position: fixed
-  bottom: 3px
-  right: 3px
+  bottom: 0
+  left: 0
+  right: 0
+  padding: 3px 5px
 
   .contents
     display: none
 
   &:hover
+    z-index: 2000
+    font-size: 12px
+    color: #FFFFFF
+    background: rgba(0,0,0,0.7)
+
     .contents
-      display: inline-block
+      display: block
+
+    .icon
+      display: none
 
 @media (max-width: 600px)
   .form-page
