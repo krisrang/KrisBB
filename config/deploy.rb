@@ -39,7 +39,7 @@ namespace :deploy do
 end
 
 namespace :god do
-  desc "Reload god configs, only way how atm until I get rbenv sudo working over cap"
+  desc "Reload god config"
   task :reload, :roles => :app do
     sudo "#{rbenv} exec god load #{current_path}/config/god.conf"
   end
