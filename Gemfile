@@ -51,7 +51,7 @@ group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
-  gem 'compass'
+  gem 'compass-rails'
   gem 'oily_png'
   gem 'asset_sync'
   gem 'jquery-rails'

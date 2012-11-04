@@ -90,6 +90,8 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
+    compass-rails (1.0.3)
+      compass (>= 0.12.2, < 0.14)
     connection_pool (0.9.2)
     cookiejar (0.3.0)
     css_parser (1.2.6)
@@ -392,7 +394,7 @@ DEPENDENCIES
   carrierwave
   carrierwave-mongoid!
   coffee-rails
-  compass
+  compass-rails
   cucumber-rails
   dalli
   database_cleaner
