@@ -3,7 +3,7 @@ require 'bundler/capistrano'
 
 set :application,         'krisbb'
 set :repository,          'git@github.com:krisrang/krisbb.git'
-set :domain,              'zeus.kristjanrang.eu'
+set :domain,              'forum.kristjanrang.eu'
 set :applicationdir,      '/home/deploy/sites/krisbb'
 set :user,                'deploy'
 set :rbenv,               '/home/deploy/.rbenv/bin/rbenv'
