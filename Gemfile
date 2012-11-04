@@ -16,8 +16,6 @@ gem 'dalli'
 # Frontend
 gem 'simple_form'
 gem 'kaminari'
-gem 'twitter-bootstrap-rails'
-gem 'less-rails' # twitter-bootstrap-rails demands it here
 
 # Auth & auth
 gem 'bcrypt-ruby'
@@ -44,20 +42,21 @@ gem 'hpricot'
 gem 'mail_view'
 gem 'action_mailer_cache_delivery'
 
-group :assets do
-  gem 'eco'
-  gem 'execjs'
-  gem 'therubyracer'
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'uglifier'
-  gem 'compass-rails'
-  gem 'oily_png'
-  gem 'asset_sync'
-  gem 'jquery-rails'
-  gem 'js-routes'
-  gem 'turbo-sprockets-rails3'
-end
+# Assets
+gem 'eco'
+gem 'execjs'
+gem 'therubyracer'
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
+gem 'compass'
+gem 'oily_png'
+gem 'asset_sync'
+gem 'jquery-rails'
+gem 'js-routes'
+gem 'turbo-sprockets-rails3'
+gem 'twitter-bootstrap-rails'
+gem 'less-rails'
 
 group :development do
   gem 'terminal-notifier-guard'
