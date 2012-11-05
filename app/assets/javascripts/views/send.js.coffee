@@ -28,7 +28,7 @@ window.KrisBB.Views.Send = Backbone.Marionette.ItemView.extend
     @ui.toggle.prop('checked', @sendOnEnter)
     @onToggleChange()
 
-    if !!webkitNotifications && webkitNotifications.checkPermission() != 0
+    if !!window.webkitNotifications && window.webkitNotifications.checkPermission() != 0
       @ui.allowButton.show()
 
     @ui.input.focus()
