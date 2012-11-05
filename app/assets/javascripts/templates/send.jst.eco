@@ -1,13 +1,18 @@
+<div class="message-box">
+  <textarea id="message_text" name="message[text]"></textarea>
+</div>
 <div class="message-controls">
-  <button id="send_message" type="submit" class="message-submit btn btn-large">
+  <button class="message-control-bit message-control-bit-left allow-notifications btn btn-small">
+    Enable notifications
+  </button>
+
+  <button id="send_message" type="submit" class="message-control-bit message-submit btn btn-small">
     <i class="icon-comment"></i>
     <i class="pending"></i>
   </button>
-  <div class="enter-toggle" rel="tooltip" title="Press Enter to send" data-placement="left">
+
+  <div class="message-control-bit enter-toggle">
     <input id="send-message-enter" type="checkbox"></input>
-    <label for="send-message-enter"><i class="pixels-return"></i></label>
+    <label for="send-message-enter">Press enter to send</label>
   </div>
-</div>
-<div class="message-box">
-  <textarea id="message_text" name="message[text]"></textarea>
 </div>

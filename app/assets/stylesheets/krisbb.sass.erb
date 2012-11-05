@@ -14,8 +14,8 @@ body
   padding-top: 80px
 
 .form-page
-  width: 550px
   margin: 0 auto
+  width: 550px
 
 .avatar
   display: inline-block
@@ -124,7 +124,7 @@ table.users
           border-top: 1px solid rgba($value, 0.2)
 
   &.bb
-    padding-bottom: 80px
+    padding-bottom: 90px
 
     li
       border-top: 1px solid #EEEEEE
@@ -181,7 +181,7 @@ table.users
   position: fixed
   bottom: 0
   float: none
-  height: 70px
+  height: 80px
   margin: 0 -10px
   padding: 10px
   background: #F5F4F2
@@ -198,7 +198,21 @@ table.users
 
 
   .message-controls
-    float: right
+    height: 20px
+
+    .allow-notifications
+      display: none
+
+    .message-control-bit
+      float: right
+      margin: 3px 5px 0 5px
+
+      &.message-control-bit-left
+        float: left
+        margin: 3px 5px 0 0
+
+      label
+        font-size: 12px
 
     .message-submit
       width: 60px
@@ -215,12 +229,13 @@ table.users
         display: inline
 
   .message-box
-    margin-right: 80px
+    margin-right: 20px
 
     textarea
-      height: 60px
+      height: 45px
       width: 100%
       resize: none
+      margin-bottom: 0
 
 .user-show
   h4
@@ -310,13 +325,13 @@ table.users
   position: fixed
   bottom: 0
   left: 0
-  right: 0
   padding: 3px 5px
 
   .contents
     display: none
 
   &:hover
+    right: 0
     z-index: 2000
     font-size: 12px
     color: #FFFFFF

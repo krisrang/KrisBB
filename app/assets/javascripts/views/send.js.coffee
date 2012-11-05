@@ -8,13 +8,16 @@ window.KrisBB.Views.Send = Backbone.Marionette.ItemView.extend
   socket: 0
 
   ui:
-    input   : '#message_text'
-    toggle  : '#send-message-enter'
+    input         : '#message_text'
+    toggle        : '#send-message-enter'
+    send          : '#send_message'
+    allowButton   : '.allow-notifications'
 
   events:
-    'keypress #message_text'    : 'onInputKeypress'
-    'change #send-message-enter': 'onToggleChange'
-    'click .message-submit'     : 'onClickSend'
+    'keypress #message_text'      : 'onInputKeypress'
+    'change #send-message-enter'  : 'onToggleChange'
+    'click .message-submit'       : 'onClickSend'
+    'click .allow-notifications'  : 'onClickAllow'
 
   initialize: ->
     KrisBB.Vent.bind 'pusher:connected', (pusher) =>
@@ -23,6 +26,11 @@ window.KrisBB.Views.Send = Backbone.Marionette.ItemView.extend
   onShow: ->
     @sendOnEnter = store.get('sendOnEnter')
     @ui.toggle.prop('checked', @sendOnEnter)
+    @onToggleChange()
+
+    if !!webkitNotifications && webkitNotifications.checkPermission() != 0
+      @ui.allowButton.show()
+
     @ui.input.focus()
     @ui.input.autotype
       items: 15
@@ -31,6 +39,15 @@ window.KrisBB.Views.Send = Backbone.Marionette.ItemView.extend
   onToggleChange: (e) ->
     @sendOnEnter = @ui.toggle.prop('checked')
     store.set('sendOnEnter', @sendOnEnter)
+
+    if @sendOnEnter then @ui.send.hide() else @ui.send.show()
+
+  onClickAllow: (e) ->
+    webkitNotifications.requestPermission () =>
+      if webkitNotifications.checkPermission() == 0
+        console.log "Notifications allowed"
+        @ui.allowButton.hide()
+    return
 
   onInputKeypress: (e) ->
     if @sendOnEnter && e.which == @ENTER_KEY && !e.shiftKey

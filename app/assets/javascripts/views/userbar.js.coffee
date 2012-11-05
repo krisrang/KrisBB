@@ -8,10 +8,6 @@ window.KrisBB.Views.Userbar = Backbone.Marionette.ItemView.extend
 
   ui:
     presenceList  : '.user-presence ul'
-    allowButton   : '.allow-notifications'
-
-  events:
-    'click .allow-notifications'  : 'onClickAllow'
 
   initialize: ->
     KrisBB.Vent.bind 'pusher:presence_subscribed', (presence) =>
@@ -23,17 +19,6 @@ window.KrisBB.Views.Userbar = Backbone.Marionette.ItemView.extend
 
     KrisBB.Vent.bind 'pusher:left', (member, presence) =>
       @onPresenceLeft member
-
-  onShow: ->
-    if !!webkitNotifications && webkitNotifications.checkPermission() != 0
-      @ui.allowButton.show()
-
-  onClickAllow: (e) ->
-    webkitNotifications.requestPermission () =>
-      if webkitNotifications.checkPermission() == 0
-        console.log "Notifications allowed"
-        @ui.allowButton.hide()
-    return
 
   renderPresence: (members) ->
     list = ""

@@ -4,6 +4,10 @@ module ApplicationHelper
     raw "<i class=\"avatar #{klass}\" rel=\"tooltip\"></i>"
   end
 
+  def icon_text(icon, text)
+    raw("<i class=\"icon-#{icon}\"></i>") + " #{text}"
+  end
+
   def avatar(user, type)
     content_tag :i, class: "avatar #{type}" do
       image_tag user.avatar.versions[type]
