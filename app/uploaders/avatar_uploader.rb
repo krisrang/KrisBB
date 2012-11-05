@@ -12,6 +12,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # storage :fog
 
   process :set_content_type
+  process quality: 85
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
