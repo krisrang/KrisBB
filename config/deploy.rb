@@ -7,6 +7,7 @@ set :domain,              'forum.kristjanrang.eu'
 set :applicationdir,      '/home/deploy/sites/krisbb'
 set :user,                'deploy'
 set :rbenv,               '/home/deploy/.rbenv/bin/rbenv'
+set :use_sudo,            false
 
 set :scm, :git
 set :branch, "master"
@@ -17,6 +18,8 @@ role :db, domain, primary: true
 
 set :deploy_to, applicationdir
 set :deploy_via, :remote_cache
+
+set :shared_children, shared_children + %w{public/avatars}
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true

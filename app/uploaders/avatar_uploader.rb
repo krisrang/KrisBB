@@ -8,10 +8,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  #storage :file
-  # storage :fog
+  storage :file
 
-  process :set_content_type
   process quality: 85
 
   # Override the directory where uploaded files will be stored.
@@ -22,15 +20,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
-    "//krisbb-assets.s3.amazonaws.com/avatars/" + [version_name, "default.png"].compact.join('_')
+    "/avatars/" + [version_name, "default.png"].compact.join('_')
   end
-
-  # Process files as they are uploaded:
-  # process :scale => [200, 300]
-  #
-  # def scale(width, height)
-  #   # do something
-  # end
 
   version :thumb do
     process resize_to_fit: [20,20]
