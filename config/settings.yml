@@ -5,9 +5,9 @@ public:
     key: bb6ee2e971248c187d7c
     endpoint: /pusher/auth
 assethost:
-  email: 'http://krisbb-assets.s3.amazonaws.com/assets'
+  email: 'http://assets.forum.kristjanrang.eu/assets'
   fog: 'http://krisbb-assets.s3.amazonaws.com'
-  production: '//krisbb-assets.s3.amazonaws.com'
+  production: '//assets.forum.kristjanrang.eu'
 pusher:
   secret: <%= ENV['PUSHER_SECRET'] %>
 gitsha: <%= `git log -1 --format="%H"`[0..6] %>

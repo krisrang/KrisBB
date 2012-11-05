@@ -16,8 +16,6 @@ gem 'dalli'
 # Frontend
 gem 'simple_form'
 gem 'kaminari'
-gem 'twitter-bootstrap-rails'
-gem 'less-rails'
 
 # Auth & auth
 gem 'bcrypt-ruby'
@@ -34,8 +32,6 @@ gem 'carrierwave-mongoid', git: 'git://github.com/jnicklas/carrierwave-mongoid.g
 gem 'fog'
 gem 'airbrake'
 gem 'oj'
-gem 'newrelic_rpm'
-gem 'newrelic_moped'
 gem 'girl_friday'
 
 # Mailer
@@ -53,16 +49,16 @@ group :assets do
   gem 'uglifier'
   gem 'compass-rails'
   gem 'oily_png'
-  gem 'asset_sync'
+  #gem 'asset_sync'
   gem 'jquery-rails'
   gem 'js-routes'
   gem 'turbo-sprockets-rails3'
+  gem 'twitter-bootstrap-rails'
+  gem 'less-rails'
 end
-
 
 group :development do
   gem 'terminal-notifier-guard'
-  gem 'capistrano-unicorn', require: false
 end
 
 group :test do
