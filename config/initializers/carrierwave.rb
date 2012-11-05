@@ -1,11 +1,7 @@
 CarrierWave.configure do |config|
-  if Rails.env.production?
-    config.asset_host = Settings.assethost.production
-  elsif Rails.env.test?
-    if ENV['TDDIUM']
-      config.root = Dir.tmpdir
-      config.cache_dir = "carrierwave"
-    end
+  if Rails.env.test? && ENV['TDDIUM']
+    config.root = Dir.tmpdir
+    config.cache_dir = "carrierwave"
   end
 end
 
