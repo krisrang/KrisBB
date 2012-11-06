@@ -66,7 +66,6 @@ namespace :tail do
   task :production, :roles => :app do
     run "tail -f #{shared_path}/log/production.log" do |channel, stream, data|
       trap("INT") { puts 'Interupted'; exit 0; } 
-      puts  # for an extra line break before the host name
       puts "#{data}" 
       break if stream == :err
     end
@@ -76,7 +75,6 @@ namespace :tail do
   task :god, :roles => :app do
     run "tail -f #{shared_path}/log/god.log" do |channel, stream, data|
       trap("INT") { puts 'Interupted'; exit 0; } 
-      puts  # for an extra line break before the host name
       puts "#{data}" 
       break if stream == :err
     end
