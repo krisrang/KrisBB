@@ -16,7 +16,6 @@ gem 'dalli'
 # Frontend
 gem 'simple_form'
 gem 'kaminari'
-gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 
 # Auth & auth
@@ -26,7 +25,6 @@ gem 'cancan'
 
 # Misc frameworks, libs
 gem 'rails_config'
-gem 'aws-sdk'
 gem 'rdiscount'
 gem 'mini_magick'
 gem 'carrierwave'
@@ -54,6 +52,7 @@ group :assets do
   #gem 'asset_sync'
   gem 'js-routes'
   gem 'less-rails'
+  gem 'jquery-rails'
   gem 'turbo-sprockets-rails3'
 end
 
