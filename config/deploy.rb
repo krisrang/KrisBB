@@ -6,7 +6,7 @@ set :repository,          'git@github.com:krisrang/krisbb.git'
 set :domain,              'meow.kristjanrang.eu'
 set :applicationdir,      '/home/deploy/sites/krisbb'
 set :user,                'deploy'
-set :rbenv,               '/home/deploy/.rbenv/bin/rbenv'
+set :rbenv,               '/home/deploy/.rbenv/bin/rbenv exec'
 set :god_conf_path,       '/home/deploy/sites/god'
 set :use_sudo,            false
 
@@ -40,11 +40,11 @@ namespace :god do
   desc "Reload god config"
   task :reload, :roles => :app do
     run "ln -nfs #{current_path}/config/god.conf #{god_conf_path}/#{application}.conf"
-    sudo "#{rbenv} exec god load #{god_conf_path}/#{application}.conf"
+    sudo "#{rbenv} god load #{god_conf_path}/#{application}.conf"
   end
 
   task :restart, :roles => :app do
-    sudo "#{rbenv} exec god restart #{application}"
+    sudo "#{rbenv} god restart #{application}"
   end
 end
 
