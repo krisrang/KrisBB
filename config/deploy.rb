@@ -31,12 +31,6 @@ set :default_environment, {
 }
 
 namespace :deploy do
-  desc "Symlink shared configs and folders on each release."
-  task :symlink_shared do
-    run "ln -nfs #{shared_path}/.env #{release_path}/.rbenv-vars"
-    run "ln -nfs #{shared_path}/.env #{release_path}/.env"
-  end
-
   # Stub this out
   task :restart, :roles => :app do
   end
@@ -50,7 +44,7 @@ namespace :god do
   end
 
   task :restart, :roles => :app do
-    sudo "#{rbenv} exec god restart krisbb"
+    sudo "#{rbenv} exec god restart #{application}"
   end
 end
 
@@ -58,6 +52,12 @@ namespace :secrets do
   desc "Upload env file"
   task :upload, :roles => :app do
     top.upload(".rbenv-vars", "#{shared_path}/.env")
+  end
+
+  desc "Symlink env file."
+  task :symlink, :roles => :app do
+    run "ln -nfs #{shared_path}/.env #{current_path}/.rbenv-vars"
+    run "ln -nfs #{shared_path}/.env #{current_path}/.env"
   end
 end
 
@@ -81,5 +81,5 @@ namespace :tail do
   end
 end
 
-after 'deploy:finalize_update', 'secrets:upload', 'deploy:symlink_shared'
+after 'deploy:create_symlink', 'secrets:upload', 'secrets:symlink'
 after 'deploy:restart', 'god:reload', 'god:restart'

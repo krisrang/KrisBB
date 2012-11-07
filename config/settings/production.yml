@@ -2,5 +2,5 @@ pusher:
   secret: <%= ENV['PUSHER_SECRET'] %>
 public:
   pusher:
-    app_id: 27769
-    key: 1a0a2f9109e43720b425
+    app_id: 31205
+    key: eb95254a7961cc40c959

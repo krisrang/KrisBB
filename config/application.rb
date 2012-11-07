@@ -10,9 +10,9 @@ require "rails/test_unit/railtie"
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
-  # Bundler.require(*Rails.groups(:assets => %w(development test)))
+  Bundler.require(*Rails.groups(:assets => %w(development test)))
   # If you want your assets lazily compiled in production, use this line
-  Bundler.require(:default, :assets, Rails.env)
+  # Bundler.require(:default, :assets, Rails.env)
 end
 
 module Kreubb
@@ -22,8 +22,8 @@ module Kreubb
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += Dir["#{config.root}/lib/**/"] # include all subdirectories
-    config.autoload_paths += %W(#{config.root}/app/observers)
+    # config.autoload_paths += Dir["#{config.root}/lib/**/"] # include all subdirectories
+    # config.autoload_paths += %W(#{config.root}/app/observers)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -53,8 +53,6 @@ module Kreubb
     config.assets.version = '2.0'
 
     #config.action_mailer.delivery_method = :amazon_ses
-
-    #config.mongoid.observers = :message_observer, :user_observer
 
     config.threadsafe! if ENV["RAILS_ENV"] != 'test' # enable threadsafe for girl_friday
   end

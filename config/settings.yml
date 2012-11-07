@@ -5,9 +5,9 @@ assethost:
   production: '//assets.forum.kristjanrang.eu'
 gitsha: <%= `git log -1 --format="%H"`[0..6] %>
 pusher:
-  secret: a33c19e597ab7d5eba67
+  secret: 591850c3efee7ee4d2ff
 public:
   pusher:
-    app_id: 27770
-    key: bb6ee2e971248c187d7c
+    app_id: 31206
+    key: f134ecf4e059f85f6671
     endpoint: /pusher/auth
