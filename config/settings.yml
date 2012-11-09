@@ -1,7 +1,5 @@
 enable_signup: false
 assethost:
-  email: 'http://assets.forum.kristjanrang.eu/assets'
-  fog: 'http://krisbb-assets.s3.amazonaws.com'
   production: '//assets.forum.kristjanrang.eu'
 gitsha: <%= `git log -1 --format="%H"`[0..6] %>
 pusher:

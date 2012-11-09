@@ -24,6 +24,7 @@ set :shared_children, shared_children + %w{public/avatars}
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
+ssh_options[:port] = 24365
 
 set :bundle_flags, "--deployment --quiet --binstubs --shebang ruby-local-exec"
 set :default_environment, {

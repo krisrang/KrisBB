@@ -67,7 +67,7 @@ class Message
           if css
             txt.gsub! k, "<i class=\"smilie smilies-#{v}\"></i>"
           else
-            txt.gsub! k, "<img src=\"#{Settings.assethost.email}/smilies/#{v}.png\" />"
+            txt.gsub! k, "<img src=\"#{Settings.assethost.production}/assets/smilies/#{v}.png\" />"
           end
         end
       end
