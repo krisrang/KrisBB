@@ -25,5 +25,10 @@ default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 ssh_options[:port] = 24365
 
+set :default_environment, {
+  'PATH' => 
+  "/home/#{user}/.rbenv/shims:/home/#{user}/.rbenv/bin:$PATH"
+}
+
 after 'deploy:create_symlink', 'secrets:upload', 'secrets:symlink'
 after 'deploy:restart', 'god:reload', 'god:restart'
