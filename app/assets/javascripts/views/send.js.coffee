@@ -43,7 +43,7 @@ window.KrisBB.Views.Send = Backbone.Marionette.ItemView.extend
     @sendOnEnter = @ui.toggle.prop('checked')
     store.set('sendOnEnter', @sendOnEnter)
 
-    if @sendOnEnter then @ui.send.hide() else @ui.send.show()
+    if @sendOnEnter then @ui.send.fadeOut() else @ui.send.show()
 
   onClickAllow: (e) ->
     webkitNotifications.requestPermission () =>
