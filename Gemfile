@@ -53,6 +53,7 @@ group :assets do
   gem 'js-routes'
   gem 'less-rails'
   gem 'jquery-rails'
+  gem 'jquery-atwho-rails'
   gem 'turbo-sprockets-rails3'
 end
 

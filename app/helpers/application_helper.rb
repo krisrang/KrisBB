@@ -31,4 +31,14 @@ module ApplicationHelper
       key.push messages.first, messages.first.user unless messages.blank?
     end
   end
+
+  def smilie_autocomplete_source
+    Message.smilies.map do |value|
+      {
+        name: value[0],
+        insert: value[0][1..-1],
+        image: asset_path("smilies/#{value[1]}.png")
+      }
+    end
+  end
 end

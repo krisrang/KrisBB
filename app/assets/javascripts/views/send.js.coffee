@@ -32,9 +32,12 @@ window.KrisBB.Views.Send = Backbone.Marionette.ItemView.extend
       @ui.allowButton.show()
 
     @ui.input.focus()
-    @ui.input.autotype
-      items: 15
-      source: KrisBB.Smilies || []
+    @ui.input.atWho ':',
+      data: KrisBB.Emoji,
+      tpl: KrisBB.EmojiTpl
+    # @ui.input.autotype
+    #   items: 15
+    #   source: KrisBB.Smilies || []
 
   onToggleChange: (e) ->
     @sendOnEnter = @ui.toggle.prop('checked')

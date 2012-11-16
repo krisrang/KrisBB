@@ -31,7 +31,11 @@
       Settings: <%= Oj.dump(Settings.public, mode: :compat).html_safe %>,
       Smilies: <%= Oj.dump(Message.smilies.keys, mode: :compat).html_safe %>,
       <% end %>
-      User: <%= Oj.dump(current_user, mode: :compat).html_safe %>
+      User: <%= Oj.dump(current_user, mode: :compat).html_safe %>,
+      <% cache "instance" do %>
+      Emoji: <%= Oj.dump(smilie_autocomplete_source, mode: :compat).html_safe %>,
+      EmojiTpl: "<li data-value='${insert}'>${name} <img alt='${name}' height='20' src='${image}' width='20' /></li>"
+      <% end %>
     };
   </script>
   <script src="//js.pusher.com/1.12/pusher.min.js"></script>
