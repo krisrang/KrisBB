@@ -3,7 +3,7 @@ require 'bundler/capistrano'
 require 'meow-deploy'
 
 set :application,         'krisbb'
-set :repository,          'git@github.com:krisrang/krisbb.git'
+set :repository,          'ssh://git@git.kristjanrang.eu:24365/krisbb.git'
 set :domain,              'meow.kristjanrang.eu'
 set :applicationdir,      '/home/deploy/sites/krisbb'
 set :user,                'deploy'
@@ -37,4 +37,4 @@ namespace :cache do
 end
 
 after 'deploy:create_symlink', 'secrets:upload', 'secrets:symlink'
-after 'deploy:restart', 'cache:clear' 'god:reload', 'god:restart'
+after 'deploy:restart', 'cache:clear', 'god:reload', 'god:restart'
