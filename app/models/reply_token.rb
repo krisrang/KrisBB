@@ -12,6 +12,8 @@ class ReplyToken
 
   before_create :generate_token
 
+  index({ token: 1 })
+
   protected
     def generate_token
       self.token = SecureRandom.hex 10

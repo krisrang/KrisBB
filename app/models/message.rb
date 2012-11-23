@@ -28,6 +28,8 @@ class Message
   field :html
   field :email_html
 
+  index({ user_id: 1 })
+
   attr_protected :html, :email_html
 
   scope :list, includes(:user).desc(:created_at)
