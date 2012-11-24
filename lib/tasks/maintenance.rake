@@ -25,6 +25,6 @@ end
 namespace :cache do
   desc "Clear Rails cache"
   task clear: :environment do
-    Rails.cache.clear
+    Rails.cache.delete "views/emoji"
   end
 end
