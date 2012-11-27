@@ -7,6 +7,7 @@ gem 'foreman'
 gem 'puma'
 gem 'pusher'
 gem 'em-http-request'
+gem 'meow-logger'
 
 # Persistence & caching
 gem 'mongoid'
