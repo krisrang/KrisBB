@@ -3,8 +3,8 @@ require 'bundler/capistrano'
 require 'meow-deploy'
 
 set :application,         'krisbb'
-set :repository,          'ssh://git@git.kristjanrang.eu:24365/krisbb.git'
-set :domain,              'meow.kristjanrang.eu'
+set :repository,          'git@git.kristjanrang.eu:root/krisbb.git'
+set :domain,              'purr.kristjanrang.eu'
 set :applicationdir,      '/home/deploy/sites/krisbb'
 set :user,                'deploy'
 set :use_sudo,            false
@@ -23,7 +23,6 @@ set :shared_children, shared_children + %w{public/avatars}
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
-ssh_options[:port] = 24365
 
 set :default_environment, {
   'PATH' => 
