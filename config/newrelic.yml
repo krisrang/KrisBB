@@ -165,6 +165,8 @@ common: &default_settings
   # you are running multi-threaded.  Please let us know.
   # multi_threaded = false
 
+  dispatcher: 'puma'
+
 # Application Environments
 # ------------------------------------------
 # Environment-specific settings are in this section.
