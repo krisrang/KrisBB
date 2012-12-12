@@ -32,7 +32,7 @@ set :default_environment, {
 
 namespace :cache do
   task :clear, except: { no_release: true } do
-    run "cd #{release_path}; bundle exec rake cache:clear RAILS_ENV=production"
+    run "cd #{current_path}; bundle exec rake cache:clear RAILS_ENV=production"
   end
 end
 
