@@ -34,6 +34,7 @@ gem 'fog'
 gem 'airbrake'
 gem 'oj'
 gem 'girl_friday'
+gem 'newrelic_moped'
 gem 'newrelic_rpm'
 
 # Mailer
