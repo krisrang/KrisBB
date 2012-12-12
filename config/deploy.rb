@@ -1,6 +1,7 @@
 require 'bundler/setup'
 require 'bundler/capistrano'
 require 'meow-deploy'
+require 'new_relic/recipes'
 
 set :application,         'krisbb'
 set :repository,          'git@git.kristjanrang.eu:root/krisbb.git'
@@ -37,3 +38,4 @@ end
 
 after 'deploy:create_symlink', 'secrets:upload', 'secrets:symlink'
 after 'deploy:restart', 'cache:clear', 'god:reload', 'god:restart'
+after "deploy:update", "newrelic:notice_deployment"
