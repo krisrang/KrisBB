@@ -36,12 +36,6 @@ namespace :cache do
   end
 end
 
-namespace :deploy do
-  task :restart do
-    run "touch #{shared_path}/restart.txt"
-  end
-end
-
 after 'deploy:create_symlink', 'secrets:upload', 'secrets:symlink'
-after 'deploy:restart', 'cache:clear'#, 'god:reload', 'god:restart'
+after 'deploy:restart', 'cache:clear', 'god:restart'
 after "deploy:update", "newrelic:notice_deployment"
