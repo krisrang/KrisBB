@@ -37,5 +37,5 @@ namespace :cache do
 end
 
 after 'deploy:create_symlink', 'secrets:upload', 'secrets:symlink'
-after 'deploy:restart', 'cache:clear', 'god:reload', 'god:restart'
+after 'deploy:restart', 'cache:clear'#, 'god:reload', 'god:restart'
 after "deploy:update", "newrelic:notice_deployment"

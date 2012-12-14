@@ -63,6 +63,8 @@ end
 group :development do
   gem 'terminal-notifier-guard'
   gem 'meow-deploy', require: false
+  gem "binding_of_caller"
+  gem "better_errors"
 end
 
 group :test do
