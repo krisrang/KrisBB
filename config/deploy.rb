@@ -38,7 +38,7 @@ end
 
 namespace :deploy do
   task :restart do
-    run "touch #{current_path}/tmp/restart.txt"
+    run "touch #{shared_path}/restart.txt"
   end
 end
 
