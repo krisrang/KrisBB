@@ -34,8 +34,9 @@ gem 'fog'
 gem 'airbrake'
 gem 'oj'
 gem 'girl_friday'
-gem 'newrelic_rpm'
+gem 'rpm_contrib'
 gem 'newrelic_moped'
+gem 'newrelic_rpm'
 
 # Mailer
 gem 'premailer-rails3'

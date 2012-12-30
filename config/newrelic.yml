@@ -166,6 +166,7 @@ common: &default_settings
   # multi_threaded = false
 
   dispatcher: 'puma'
+  disable_mongoid: true
 
 # Application Environments
 # ------------------------------------------

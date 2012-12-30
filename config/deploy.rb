@@ -4,7 +4,7 @@ require 'meow-deploy'
 require 'new_relic/recipes'
 
 set :application,         'krisbb'
-set :repository,          'git@git.kristjanrang.eu:root/krisbb.git'
+set :repository,          'git@github.com:krisrang/krisbb.git'
 set :domain,              'purr.kristjanrang.eu'
 set :applicationdir,      '/home/deploy/sites/krisbb'
 set :user,                'deploy'
