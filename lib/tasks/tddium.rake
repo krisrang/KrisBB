@@ -9,9 +9,8 @@ namespace :tddium do
     #
     # There are other cases where we'd want to run something after every build,
     # or only after manual builds.
-    yield unless ENV["TDDIUM_MODE"] == "ci"
-    yield unless ENV["TDDIUM_BUILD_STATUS"] == "passed"
-
-    cmd "cap deploy" or abort "couldn't deploy"
+    if ENV["TDDIUM_MODE"] == "ci" && ENV["TDDIUM_BUILD_STATUS"] == "passed"
+      cmd "cap deploy" or abort "couldn't deploy"
+    end
   end
 end
