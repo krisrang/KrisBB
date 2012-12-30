@@ -89,5 +89,7 @@ group :test, :development do
   gem 'guard-bundler'
   gem 'guard-rspec'
   gem 'guard-cucumber'
+
+  gem 'tddium'
 end
 
