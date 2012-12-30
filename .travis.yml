@@ -7,3 +7,5 @@ script:
 services: 
   - mongodb
   - memcached
+env:
+  - KREUBB_TOKEN=blaatest
