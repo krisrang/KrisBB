@@ -24,6 +24,8 @@ set :shared_children, shared_children + %w{public/avatars}
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
+ssh_options[:verbose] = :debug 
+ssh_options[:auth_methods] = "publickey"
 
 set :default_environment, {
   'PATH' => 
