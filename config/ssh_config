@@ -1,2 +1,3 @@
 Host purr.kristjanrang.eu
-  User deploy
+User deploy
+IdentityFile ~/.ssh/id_rsa.tddium
