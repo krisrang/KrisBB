@@ -1,7 +1,6 @@
 enable_signup: false
 assethost:
   production: 'http://assets.forum.kristjanrang.eu'
-gitsha: <%= `git log -1 --format="%H"`[0..6] %>
 pusher:
   secret: 591850c3efee7ee4d2ff
 public:
