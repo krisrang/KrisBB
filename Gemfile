@@ -53,7 +53,7 @@ group :assets do
   gem 'uglifier'
   gem 'compass-rails'
   gem 'oily_png'
-  #gem 'asset_sync'
+  gem 'asset_sync'
   gem 'js-routes'
   gem 'less-rails'
   gem 'jquery-rails'
