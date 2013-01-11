@@ -453,7 +453,7 @@ DEPENDENCIES
   premailer-rails3
   puma
   pusher
-  rails (~> 3.2.8)
+  rails (~> 3.2.11)
   rails_config
   rb-fsevent
   rdiscount
