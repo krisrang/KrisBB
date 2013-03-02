@@ -55,8 +55,8 @@ When /^I sign up$/ do
   password = "secret"
   fill_in "Username", with: @user[:username]
   fill_in "Email", with: @user[:email]
-  fill_in "Password", with: password
-  fill_in "Password confirmation", with: password
+  fill_in "user_password", with: password
+  fill_in "user_password_confirmation", with: password
   click_button "Sign Up"
 end
 
@@ -127,7 +127,7 @@ end
 
 Then /^I should see a list of users$/ do
   page.should(have_content("Users")) &&
-  page.find('.container').should(have_content(@user[:username]))
+  page.find('.users').should(have_content(@user[:username]))
 end
 
 Then /^I should be logged in$/ do
@@ -153,7 +153,7 @@ Then /^My "(.*?)" should be changed$/ do |field|
 end
 
 Then /^I should see an error on "(.*?)"$/ do |field|
-  page.find('.error label').should have_content(field)
+  page.should have_css(".error.#{field}")
 end
 
 Then /^I should see my profile$/ do

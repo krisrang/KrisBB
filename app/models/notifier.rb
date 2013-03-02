@@ -1,6 +1,7 @@
 class Notifier
   def new_message(message, params)
-    pusher('message', {message: message.to_json}, params[:socketid])
+    socketid = params[:socketid].nil? ? "" : params[:socketid].to_s
+    pusher('message', {message: message.to_json}, socketid)
 
     users = User.where(notify_me: true).ne(id: message.user.id, email: nil)
     users.each do |recipient|
@@ -18,7 +19,7 @@ class Notifier
   end
 
   protected
-    def pusher(type, message, socket = nil)
+    def pusher(type, message, socket = "")
       Rails.logger.info "Pusher blocking trigger"
       PUSHER_QUEUE.push({type: type, message: message, socket: socket})
     end

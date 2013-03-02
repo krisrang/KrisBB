@@ -15,11 +15,11 @@ Spork.prefork do
   Capybara.register_driver :poltergeist do |app|
     if RUBY_PLATFORM.downcase.include?("darwin")
       Capybara::Poltergeist::Driver.new(app, 
-        phantomjs: "#{Rails::root}/features/support/darwin/phantomjs/bin/phantomjs")
+        phantomjs: "#{Rails::root}/features/support/darwin/phantomjs")
     elsif RUBY_PLATFORM.downcase.include?("linux")
       bits = 1.size == 4 ? "32" : "64"
       Capybara::Poltergeist::Driver.new(app, 
-        phantomjs: "#{Rails::root}/features/support/linux#{bits}/phantomjs/bin/phantomjs")
+        phantomjs: "#{Rails::root}/features/support/linux#{bits}/phantomjs")
     end
   end
 

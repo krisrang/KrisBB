@@ -11,7 +11,7 @@ Feature: User management
   Scenario: Visitor fails registering
     Given I am logged out
     When I fail to sign up
-    Then I should see an error on "Username"
+    Then I should see an error on "password"
 
   Scenario: User logs in
     Given I am registered
@@ -51,7 +51,7 @@ Feature: User management
   Scenario: User uploads invalid avatar
     Given I am logged in
     When I upload an invalid avatar
-    Then I should see an error on "Set avatar"
+    Then I should see an error on "user_avatar"
 
   Scenario: User logs out
     Given I am logged in
