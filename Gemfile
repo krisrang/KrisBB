@@ -57,7 +57,7 @@ group :assets do
   gem 'js-routes'
   gem 'less-rails'
   gem 'jquery-rails'
-  gem 'jquery-atwho-rails'
+  gem 'jquery-atwho-rails', "~> 0.1.7"
   gem 'turbo-sprockets-rails3'
 end
 
