@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby "1.9.3"
 
-gem 'rails', '~> 3.2.11'
+gem 'rails', '~> 3.2.12'
 gem 'capistrano'
 gem 'foreman'
 gem 'puma'
@@ -29,7 +29,7 @@ gem 'rails_config'
 gem 'rdiscount'
 gem 'mini_magick'
 gem 'carrierwave'
-gem 'carrierwave-mongoid', git: 'git://github.com/krisrang/carrierwave-mongoid.git', branch: 'mongoid-3.0'
+gem 'carrierwave-mongoid'
 gem 'fog'
 gem 'airbrake'
 gem 'oj'
