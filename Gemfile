@@ -84,14 +84,5 @@ group :test, :development do
   gem 'email_spec'
   gem 'poltergeist'
   gem 'database_cleaner'
-
-  gem 'spork', '~> 1.0rc'
-  gem 'spork-rails'
-  gem 'guard-spork'
-  gem 'guard-bundler'
-  gem 'guard-rspec'
-  gem 'guard-cucumber'
-
-  gem 'tddium'
 end
 
