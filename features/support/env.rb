@@ -12,6 +12,8 @@ Spork.prefork do
   require 'email_spec'
   require 'email_spec/cucumber'
 
+  Cucumber::Term::ANSIColor.coloring = true
+
   Capybara.register_driver :poltergeist do |app|
     if RUBY_PLATFORM.downcase.include?("darwin")
       Capybara::Poltergeist::Driver.new(app, 
