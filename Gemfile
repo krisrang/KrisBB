@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby "1.9.3"
 
-gem 'rails', '~> 3.2.12'
+gem 'rails', '~> 3.2.13'
 gem 'capistrano'
 gem 'foreman'
 gem 'puma'
@@ -47,7 +47,7 @@ gem 'action_mailer_cache_delivery'
 group :assets do
   gem 'eco'
   gem 'execjs'
-  gem "therubyracer", "0.10.2"
+  gem "therubyracer"
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
