@@ -4,7 +4,7 @@ ruby "1.9.3"
 gem 'rails', '~> 3.2.13'
 gem 'capistrano'
 gem 'foreman'
-gem 'puma'
+gem 'puma', '2.0.0.b7'
 gem 'pusher'
 gem 'em-http-request'
 gem 'meow-logger'
