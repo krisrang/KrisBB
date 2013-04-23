@@ -216,10 +216,6 @@ GEM
     net-ssh (2.6.7)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
-    newrelic_moped (0.0.6)
-      moped
-      newrelic_rpm (~> 3.6.0)
-    newrelic_rpm (3.6.0.83)
     nokogiri (1.5.9)
     oauth (0.4.7)
     oauth2 (0.8.1)
@@ -278,9 +274,6 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.4)
-    rpm_contrib (2.1.11)
-      newrelic_rpm (>= 3.1.1)
-      newrelic_rpm (>= 3.1.1)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
@@ -387,8 +380,6 @@ DEPENDENCIES
   mini_magick
   mongoid
   mongoid-rspec
-  newrelic_moped
-  newrelic_rpm
   oily_png
   oj
   poltergeist
@@ -399,7 +390,6 @@ DEPENDENCIES
   rails_config
   rb-fsevent
   rdiscount
-  rpm_contrib
   rspec-rails
   sass-rails
   simple_form

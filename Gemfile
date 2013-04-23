@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "1.9.3"
+ruby "2.0.0"
 
 gem 'rails', '~> 3.2.13'
 gem 'capistrano'
@@ -34,9 +34,6 @@ gem 'fog'
 gem 'airbrake'
 gem 'oj'
 gem 'girl_friday'
-gem 'rpm_contrib'
-gem 'newrelic_moped'
-gem 'newrelic_rpm'
 
 # Mailer
 gem 'premailer-rails3'
