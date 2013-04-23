@@ -1,1 +1,1 @@
-web: bundle exec puma -p 4000 --workers 3 --pidfile tmp/puma.pid
+web: bundle exec puma -p $PORT --workers 3 --pidfile tmp/pids/puma.pid
