@@ -24,6 +24,7 @@ public/uploads
 public/assets
 public/avatars
 
+/.env
 /.powenv
 /.rbenv-vars
 
