@@ -31,7 +31,7 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'carrierwave-mongoid'
 gem 'fog'
-gem 'airbrake'
+# gem 'airbrake'
 gem 'oj'
 gem 'girl_friday'
 
