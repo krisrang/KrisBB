@@ -29,12 +29,12 @@ PUSHER_QUEUE = GirlFriday::WorkQueue.new :pusher, size: 3 do |info|
   Pusher['private-main'].trigger(info[:type], info[:message], info[:socket])
 end
 
-AIRBRAKE_QUEUE = GirlFriday::WorkQueue.new :airbrake, size: 3 do |notice|
-  Airbrake.sender.send_to_airbrake(notice)
-end
+# AIRBRAKE_QUEUE = GirlFriday::WorkQueue.new :airbrake, size: 3 do |notice|
+#   Airbrake.sender.send_to_airbrake(notice)
+# end
 
-Airbrake.configure do |config|
-  config.async do |notice|
-    AIRBRAKE_QUEUE.push(notice)
-  end
-end
+# Airbrake.configure do |config|
+#   config.async do |notice|
+#     AIRBRAKE_QUEUE.push(notice)
+#   end
+# end
