@@ -2,12 +2,10 @@ source 'https://rubygems.org'
 ruby "2.0.0"
 
 gem 'rails', '~> 3.2.13'
-gem 'capistrano'
 gem 'foreman'
 gem 'puma', '2.0.0.b7'
 gem 'pusher'
 gem 'em-http-request'
-gem 'meow-logger'
 
 # Persistence & caching
 gem 'mongoid'
@@ -61,7 +59,6 @@ end
 
 group :development do
   gem 'terminal-notifier-guard'
-  gem 'meow-deploy', require: false
   gem "binding_of_caller"
   gem "better_errors"
 end
