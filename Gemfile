@@ -3,7 +3,7 @@ ruby "2.0.0"
 
 gem 'rails', '~> 3.2.13'
 gem 'foreman'
-gem 'puma', '2.0.0.b7'
+gem 'puma'
 gem 'pusher'
 gem 'em-http-request'
 
