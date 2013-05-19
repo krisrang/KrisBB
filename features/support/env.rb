@@ -1,10 +1,5 @@
 require 'rubygems'
 
-unless ENV['CI']
-  require 'simplecov'
-  SimpleCov.start 'rails'
-end
-
 require 'cucumber/rails'
 require 'capybara/poltergeist'
 require 'email_spec'

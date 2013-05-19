@@ -2,9 +2,9 @@ require 'rubygems'
 
 ENV["RAILS_ENV"] ||= 'test'
 
-unless ENV['CI']
-  require 'simplecov'
-  SimpleCov.start 'rails'
+if ENV["CI"]
+  require "coveralls"
+  Coveralls.wear!
 end
 
 # Load railties

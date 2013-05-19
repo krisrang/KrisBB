@@ -63,21 +63,20 @@ group :development do
   gem "better_errors"
 end
 
-group :test do
-  gem 'simplecov', require: false
-  gem 'faker'
-end
-
 group :test, :development do
-  gem 'rb-fsevent'
-
+  gem 'faker'
   gem 'rspec-rails'
   gem 'cucumber-rails', require: false
   gem 'factory_girl_rails'
   gem 'mongoid-rspec'
-
   gem 'email_spec'
   gem 'poltergeist'
   gem 'database_cleaner'
+
+  if ENV["CI"]
+    gem "coveralls", require: false
+  else
+    gem 'rb-fsevent'
+  end
 end
 
