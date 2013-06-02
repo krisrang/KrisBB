@@ -73,10 +73,6 @@ group :test, :development do
   gem 'poltergeist'
   gem 'database_cleaner'
 
-  if ENV["CI"]
-    gem "coveralls", require: false
-  else
-    gem 'rb-fsevent'
-  end
+  gem 'rb-fsevent'
 end
 
