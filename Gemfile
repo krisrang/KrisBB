@@ -73,6 +73,7 @@ group :test, :development do
   gem 'email_spec'
   gem 'poltergeist'
   gem 'database_cleaner'
+  gem 'ci_reporter'
 
   gem 'rb-fsevent'
 end

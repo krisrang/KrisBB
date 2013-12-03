@@ -31,3 +31,6 @@ public/avatars
 /coverage
 .tddium*
 .DS_Store
+
+features/reports
+spec/reports
