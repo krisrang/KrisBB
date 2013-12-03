@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby "2.0.0"
 
-gem 'rails', '~> 3.2.13'
+gem 'rails', '~> 3.2.15'
 gem 'foreman'
 gem 'puma'
 gem 'pusher'
@@ -19,7 +19,7 @@ gem 'twitter-bootstrap-rails'
 
 # Auth & auth
 gem 'bcrypt-ruby'
-gem 'sorcery'
+gem 'sorcery', '0.8.1'
 gem 'cancan'
 
 # Misc frameworks, libs
@@ -33,6 +33,7 @@ gem 'sentry-raven'
 gem 'newrelic_rpm'
 gem 'oj'
 gem 'girl_friday'
+gem 'unf'
 
 # Mailer
 gem 'premailer-rails3'

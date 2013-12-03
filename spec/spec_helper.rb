@@ -2,11 +2,6 @@ require 'rubygems'
 
 ENV["RAILS_ENV"] ||= 'test'
 
-if ENV["CI"]
-  require "coveralls"
-  Coveralls.wear!
-end
-
 # Load railties
 require File.expand_path('../../config/environment', __FILE__)
 Rails.application.railties.all { |r| r.eager_load! }

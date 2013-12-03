@@ -1,10 +1,4 @@
 require 'rubygems'
-
-if ENV["CI"]
-  require "coveralls"
-  Coveralls.wear!
-end
-
 require 'cucumber/rails'
 require 'capybara/poltergeist'
 require 'email_spec'

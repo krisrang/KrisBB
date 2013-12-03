@@ -37,7 +37,7 @@ describe MessagesController do
 
   def stub_notifier
     @notifier = Notifier.new
-    controller.stub!(:notifier).and_return(@notifier)
+    controller.stub(:notifier).and_return(@notifier)
   end
 
   describe "GET #index" do
