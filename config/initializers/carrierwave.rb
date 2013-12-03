@@ -14,9 +14,9 @@ CarrierWave.configure do |config|
     config.fog_public     = true
     config.fog_attributes = {cache_control: "public, max-age=#{one_year}",
                              expires: CGI.rfc1123_date(Time.now + one_year)}
-  elsif Rails.env.test? && ENV['TDDIUM']
+  elsif Rails.env.test?
     config.storage = :file
-    config.root = Dir.tmpdir
+    config.root = "#{Rails.root}/tmp/carrierwave"
     config.cache_dir = "carrierwave"
   end
 end
