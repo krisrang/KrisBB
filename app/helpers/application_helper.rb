@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def icon_text(icon, text)
-    raw("<i class=\"icon-#{icon}\"></i>") + " #{text}"
+    raw("<i class=\"fa fa-#{icon}\"></i>") + " #{text}"
   end
 
   def avatar(user, type)

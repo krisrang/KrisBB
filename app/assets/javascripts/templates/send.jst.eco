@@ -7,7 +7,7 @@
   </button>
 
   <button id="send_message" type="submit" class="message-control-bit message-submit btn btn-small">
-    <i class="icon-comment"></i>
+    <i class="fa fa-comment"></i>
     <i class="pending"></i>
   </button>
 
