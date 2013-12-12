@@ -1,15 +1,6 @@
 @import "twitter/bootstrap/bootstrap";
 @import "twitter/bootstrap/responsive";
 
-// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
-// Note: If you use asset_path() here, your compiled boostrap_and_overrides.css will not
-//       have the proper paths. So for now we use the absolute path.
-@fontAwesomeEotPath: '/assets/fontawesome-webfont.eot';
-@fontAwesomeWoffPath: '/assets/fontawesome-webfont.woff';
-@fontAwesomeTtfPath: '/assets/fontawesome-webfont.ttf';
-@fontAwesomeSvgPath: '/assets/fontawesome-webfont.svg';
-@fontAwesomeEotPath_iefix: '/assets/fontawesome-webfont.eot#iefix';
-
 .icon-white,
 .nav > .active > a > [class^="icon-"],
 .nav > .active > a > [class*=" icon-"],
@@ -19,10 +10,6 @@
 .dropdown-menu > .active > a > [class*=" icon-"] {
   background-image: none;
 }
-
-<% unless Rails.env.test? %>
-@import "fontawesome";
-<% end %>
 
 @bodyBackground:    #F5F4F2;
 @inputBorderRadius: 2px;
