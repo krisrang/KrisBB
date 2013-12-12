@@ -9,7 +9,6 @@ gem 'em-http-request'
 
 # Persistence & caching
 gem 'mongoid'
-gem 'memcachier'
 gem 'dalli'
 
 # Frontend
@@ -34,6 +33,7 @@ gem 'newrelic_rpm'
 gem 'oj'
 gem 'girl_friday'
 gem 'unf'
+gem 'ci_reporter'
 
 # Mailer
 gem 'premailer-rails3'
@@ -73,7 +73,6 @@ group :test, :development do
   gem 'email_spec'
   gem 'poltergeist'
   gem 'database_cleaner'
-  gem 'ci_reporter'
 
   gem 'rb-fsevent'
 end
