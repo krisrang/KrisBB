@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+git push dokku@puma.rang.ee:krisbb master
