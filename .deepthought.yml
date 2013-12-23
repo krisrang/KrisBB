@@ -1,5 +1,0 @@
-deploy_type: shell
-ci:
-  enabled: true
-  name: krisbb
-root: script/deploy
