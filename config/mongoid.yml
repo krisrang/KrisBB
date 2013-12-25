@@ -69,7 +69,7 @@ test:
         consistency: :strong
         identity_map_enabled: true
 
-<% uri = ENV['MONGOLAB_URI'] || 'mongodb://localhost:27017/krisbb_prod' %>
+<% uri = ENV['MONGODB_URI'] || 'mongodb://localhost:27017/krisbb_prod' %>
 production:
   sessions:
     default:
