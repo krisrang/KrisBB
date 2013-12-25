@@ -34,6 +34,7 @@ gem 'oj'
 gem 'girl_friday'
 gem 'unf'
 gem 'ci_reporter'
+gem 'le'
 
 # Mailer
 gem 'premailer-rails3'

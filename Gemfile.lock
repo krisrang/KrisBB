@@ -168,6 +168,7 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.4.2)
       addressable (~> 2.3)
+    le (2.2.2)
     less (2.4.0)
       commonjs (~> 0.2.7)
     less-rails (2.4.2)
@@ -367,6 +368,7 @@ DEPENDENCIES
   jquery-rails
   js-routes
   kaminari
+  le
   less-rails
   mail_view
   mini_magick
