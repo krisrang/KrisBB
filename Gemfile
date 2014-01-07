@@ -35,6 +35,7 @@ gem 'girl_friday'
 gem 'unf'
 gem 'ci_reporter'
 gem 'le'
+gem 'newrelic_rpm'
 
 # Mailer
 gem 'premailer-rails3'
