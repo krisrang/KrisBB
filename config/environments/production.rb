@@ -63,3 +63,5 @@ Kreubb::Application.configure do
 
   config.action_mailer.default_url_options = { host: 'forum.kristjanrang.eu' }
 end
+
+Rails.logger = Le.new(ENV['LOGENTRIES_TOKEN']), local: true, ssl: true)

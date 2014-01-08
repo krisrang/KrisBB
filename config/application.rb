@@ -57,7 +57,3 @@ module Kreubb
     config.threadsafe! if ENV["RAILS_ENV"] != 'test' # enable threadsafe for girl_friday
   end
 end
-
-if Rails.env.production?
-  Rails.logger = Le.new(ENV['LOGENTRIES_TOKEN'])
-end
