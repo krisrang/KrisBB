@@ -35,7 +35,6 @@ gem 'girl_friday'
 gem 'unf'
 gem 'ci_reporter'
 gem 'le'
-gem 'newrelic_rpm'
 
 # Mailer
 gem 'premailer-rails3'
@@ -78,5 +77,3 @@ group :test, :development do
 
   gem 'rb-fsevent'
 end
-
-gem 'rails_12factor', group: :production
